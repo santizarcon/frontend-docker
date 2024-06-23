@@ -14,6 +14,11 @@ app.use("/", ruta);
 // MIDDLEWARE
 app.set('view engine', 'ejs');
 app.set("views", path.join (__dirname, "views"));
-console.log(__dirname);
+
+app.use(express.static (path.join(__dirname, "public")));
+
+app.use("/", (req, res) =>{
+    res.render("views.error404.ejs");
+});
 
 export default app;
