@@ -1,8 +1,11 @@
 import { Router } from "express";
-import { home } from "../controllers/controllers.home";
+import { home, login, register } from "../controllers/controllers.home";
 
 const rutaHome = Router();
 
-rutaHome.get("/", home)
+// RUTAS
+rutaHome.get("/", home);
+rutaHome.get("/login", login);
+rutaHome.get("/register", register);
 
 export default rutaHome;

@@ -1,9 +1,8 @@
 import { Router } from "express";
+import { principalAdmin } from "../controllers/controllers.dash";
 
 const rutaDash = Router();
 
-rutaDash.get("/principal",(req, res) =>{
-    res.render("<h1> DASHBOARD </h1>");
-});
+rutaDash.get("/principalAdmin", principalAdmin);
 
 export default rutaDash;
