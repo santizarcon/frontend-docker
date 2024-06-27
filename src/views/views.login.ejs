@@ -1,78 +1,91 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LOGIN</title>
-    <link rel="icon" href="img/logo-sena.png">
-    <link rel="stylesheet" href="./css/login.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="img/logo-sena.png" />
+    <link rel="stylesheet" href="./css/login.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-
-<body>
-    
+  <body>
     <div class="container">
-        <div class="claro"><!-- FONDO -->
+      <div class="claro">
+        <!-- FONDO -->
 
-            
-            <div class="caja"><!-- CONTENEDOR -->
+        <div class="caja">
+          <!-- CONTENEDOR -->
 
-                <!--INFORMACION DE LA PAGINA  -->
-                <div class="contenido" id="contenido">
-                    <div class="container_logo">
-                        <div class="logo_sena"></div>
-                    </div>
-                    <h1>Bienvenidos Tool Inventory</h1>
-                    <p>Si aun no tienes una cuenta por favor registrate aquí.</p>
-                    <a href="/register" target="_blank" rel="" class="registrarse_cambio" >Registrarse</a>
-                    <!-- <button class="btn-registrarse_cambio" id="btn-registrarse_cambio">Registrate</button> -->
-                    
+          <!--INFORMACION DE LA PAGINA  -->
+          <div class="contenido" id="contenido">
+            <div class="container_logo">
+              <div class="logo_sena"></div>
+            </div>
+            <h1>Bienvenidos Tool Inventory</h1>
+            <p>Si aun no tienes una cuenta por favor registrate aquí.</p>
+            <a href="/register" rel="" class="registrarse_cambio"
+              >Registrarse</a
+            >
+            <!-- <button class="btn-registrarse_cambio" id="btn-registrarse_cambio">Registrate</button> -->
+          </div>
+          <!-- Cierre Contenido -->
 
-                </div> <!-- Cierre Contenido -->
+          <!-- LOGUEARSE -->
+          <div class="login" id="login">
+            <h1>Iniciar Sesión</h1>
 
-                <!-- LOGUEARSE -->
-                <div class="login" id="login">
+            <p>inicia sesion con tu cuenta</p>
 
-                            <h1>Iniciar Sesión</h1>
-                       
-                            <p>inicia sesion con tu cuenta</p>
-              
-                        <div class="container_login_input">
-                            <input type="email" name="correo" id="email" placeholder="Correo Electronico">
-                            <input type="password" id="password" placeholder="Contraseña">
-                        </div>
-                        <div class="texto_olvidar_contrasena">
-                            <a href="olvidar_contra.html" target="_blank">¿Olvidaste tu Contraseña?</a>
-                        </div>
-                        <div class="contenedor_btn_login">
-                            <button class="btn-login" id="btn-login" onclick="logueo();">INICIAR</button>
-                        </div>
-
-                </div> <!-- Cierre Login -->
-
-
-            </div><!-- Cierre Caja -->
-
-
-        </div><!-- Cierre Claro -->
-
-
-        <!-- PIE DE PAGINA -->
-        <div class="contenido_pagina">
-            <ul>
-                <li><a href="#" target="_blank" rel="">Acerca de Nosotros</a></li>
-                <li><a href="#" target="_blank" rel="">Contacto</a></li>
-                <li><a href="#" target="_blank" rel="">Privacidad</a></li>
-            </ul>
+            <div class="container_login_input">
+              <input
+                type="email"
+                name="correo"
+                id="email"
+                placeholder="Correo Electronico"
+              />
+              <input type="password" id="password" placeholder="Contraseña" />
+            </div>
+            <div class="texto_olvidar_contrasena">
+              <a href="olvidar_contra.html" target="_blank"
+                >¿Olvidaste tu Contraseña?</a
+              >
+            </div>
+            <div class="contenedor_btn_login">
+              <button class="btn-login" id="btn-login" onclick="logueo();">
+                INICIAR
+              </button>
+            </div>
+          </div>
+          <!-- Cierre Login -->
         </div>
+        <!-- Cierre Caja -->
 
+        <!-- LOADING -->
+        <div class="container_loading" id="container_loading">
+          <svg viewBox="25 25 50 50" id="loading">
+            <circle r="20" cy="50" cx="50"></circle>
+          </svg>
+        </div>
+        <!-- Cierre del Loading -->
+      </div>
+      <!-- Cierre Claro -->
 
-    </div><!-- Cierre Container -->
+      <!-- PIE DE PAGINA -->
+      <div class="contenido_pagina">
+        <ul>
+          <li><a href="#" target="_blank" rel="">Acerca de Nosotros</a></li>
+          <li><a href="#" target="_blank" rel="">Contacto</a></li>
+          <li><a href="#" target="_blank" rel="">Privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Cierre Container -->
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/login.js"></script>
-</body>
+  </body>
 </html>

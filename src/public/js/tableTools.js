@@ -105,7 +105,6 @@ menu_icon.addEventListener("click", () => {
 
 const pasar = (event) => {
   const fila = event.target.parentElement.parentElement;
-  console.log(fila);
   const idTool = fila.cells[0].innerText;
   const name_tool = fila.cells[1].innerText;
   const descripcion_tool = fila.cells[3].innerText;
@@ -113,7 +112,7 @@ const pasar = (event) => {
   const amount_total = fila.cells[5].innerText;
   const reference = fila.cells[6].innerText;
 
-  localStorage.setItem("idTool", idTool);
+  localStorage.setItem("EditIdTool", idTool);
   localStorage.setItem("editNameTool", name_tool);
   localStorage.setItem("editDescripcion", descripcion_tool);
   localStorage.setItem("editAmountAvailable", amount_available);
@@ -146,7 +145,7 @@ const pasar = (event) => {
 
 // CONSUMO
 
-let url = "http://localhost:4000/api/tool";
+let url = "http://localhost:4000/api/tool/";
 
 // MOSTRAR
 fetch(url)

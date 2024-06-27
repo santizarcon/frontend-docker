@@ -18,7 +18,7 @@ const fotoUsuario2 = document.querySelector(".foto_usuario2");
 // const editarPerfil = document.getElementById("editar_perfil");
 // const cerrarSesion = document.getElementById("cerrar_sesion");
 // const editarHerramienta = document.querySelectorAll(".btn-edit");
-// const btnAddNewAdmin = document.querySelector(".btn-add-subadmin");
+const btnAddNewAdmin = document.querySelector(".btn-add-subadmin");
 
 // ESPECIAL DE ESTA HOJA
 
@@ -123,6 +123,9 @@ menu_icon.addEventListener("click", () => {
 
 
 // ESPECIAL DE ESTA HOJA
+btnAddNewAdmin.addEventListener("click", () => {
+    window.location.href = '/dash/crearSubAdmin';
+})
 
 
 // VENTANA ELIMINAR

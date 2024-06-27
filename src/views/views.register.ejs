@@ -1,82 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SING IN</title>
-    <link rel="icon" href="img/logo-sena.png">
-    <link rel="stylesheet" href="./css/register.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
+    <link rel="icon" href="img/logo-sena.png" />
+    <link rel="stylesheet" href="./css/register.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
-
+  <body>
     <div class="container">
-        <div class="claro"><!-- FONDO -->
+      <div class="claro">
+        <!-- FONDO -->
 
-            <div class="caja register"><!-- CONTENEDOR -->
+        <div class="caja register">
+          <!-- CONTENEDOR -->
 
-                <!-- REGISTRARSE -->
-                <div class="sign_in" id="sign_in">
+          <!-- REGISTRARSE -->
+          <div class="sign_in" id="sign_in">
+            <h1>Crear una Cuenta</h1>
 
-                    <h1>Crear una Cuenta</h1>
+            <p>registrate por aquí.</p>
 
-                    <p>registrate por aquí.</p>
+            <div class="contariner_sig_in_input">
+              <div class="juntas_input">
+                <input
+                  type="text"
+                  name="nombre"
+                  id="names"
+                  placeholder="Nombres"
+                />
+                <input
+                  type="text"
+                  name="apellido"
+                  id="last_names"
+                  placeholder="Apellidos"
+                />
+              </div>
+              <input
+                type="email"
+                name="correo"
+                id="email"
+                placeholder="Correo Electronico"
+              />
+              <input
+                type="password"
+                class="input"
+                id="password"
+                placeholder="Contraseña"
+              />
+              <input
+                type="password"
+                class="input"
+                id="confirm_password"
+                placeholder="Confirmar Contraseña"
+              />
+            </div>
+            <div class="container_btn_sign_in">
+              <div class="container_btn_1">
+                <button
+                  class="btn-sing-in"
+                  id="btn-sing-in"
+                  onclick="register();"
+                >
+                  REGISTRARSE
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Cierre sign_in -->
 
-                    <div class="contariner_sig_in_input">
-                        <div class="juntas_input">
-                            <input type="text" name="nombre" id="names" placeholder="Nombres">
-                            <input type="text" name="apellido" id="last_names" placeholder="Apellidos">
-                        </div>
-                        <input type="email" name="correo" id="email" placeholder="Correo Electronico">
-                        <input type="password" class="input" id="password" placeholder="Contraseña">
-                        <input type="password" class="input" id="confirm_password" placeholder="Confirmar Contraseña">
-                    </div>
-                    <div class="container_btn_sign_in">
-                        <div class="container_btn_1">
-                            <button class="btn-sing-in" id="btn-sing-in" onclick="register();">REGISTRARSE</button>
-                        </div>
-                        
-                    </div>
+          <!--INFORMACION DE LA PAGINA 22 -->
+          <div class="contenido2" id="contenido2">
+            <div class="container_logo2">
+              <div class="logo_sena2"></div>
+            </div>
+            <h1>Tool Inventory</h1>
 
-                </div> <!-- Cierre sign_in -->
-
-                <!--INFORMACION DE LA PAGINA 22 -->
-                <div class="contenido2" id="contenido2">
-                    <div class="container_logo2">
-                        <div class="logo_sena2"></div>
-                    </div>
-                    <h1>Tool Inventory</h1>
-
-                    <a href="/login" target="_blank" rel="" class="registrarse_cambio">Logueo</a>
-
-                </div><!-- Cierre informacion de la pagina 22 -->
-
-
-            </div> <!-- Cierre Caja -->
-
-
-        </div> <!-- Cierre Claro -->
-
-
-        <!-- PIE DE PAGINA -->
-        <div class="contenido_pagina">
-            <ul>
-                <li><a href="#" target="_blank" rel="">Acerca de Nosotros</a></li>
-                <li><a href="#" target="_blank" rel="">Contacto</a></li>
-                <li><a href="#" target="_blank" rel="">Privacidad</a></li>
-            </ul>
+            <a href="/login" rel="" class="registrarse_cambio">Logueo</a>
+          </div>
+          <!-- Cierre informacion de la pagina 22 -->
         </div>
+        <!-- Cierre Caja -->
+      </div>
+      <!-- Cierre Claro -->
 
-
+      <!-- PIE DE PAGINA -->
+      <div class="contenido_pagina">
+        <ul>
+          <li><a href="#" target="_blank" rel="">Acerca de Nosotros</a></li>
+          <li><a href="#" target="_blank" rel="">Contacto</a></li>
+          <li><a href="#" target="_blank" rel="">Privacidad</a></li>
+        </ul>
+      </div>
     </div>
     <!-- Cierre Container -->
-     
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/register.js"></script>
-
-</body>
-
+  </body>
 </html>

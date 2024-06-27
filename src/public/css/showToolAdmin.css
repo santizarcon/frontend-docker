@@ -310,45 +310,103 @@
   width: 100%;
   height: 100%;
   padding: 20px;
-  padding-top: 70px;
+  padding-top: 80px;
   overflow-y: auto;
 }
 
-/* CONTENEDOR DE LOS BOTONES */
-.navbuttons {
+/* Contenedor de la visualizacion de la herramienta */
+.contenedor_herramienta {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-  background-color: rgb(247, 247, 247);
-  border-radius: 8px;
-  padding: 10px;
-
-  margin-bottom: 10px;
-}
-
-.icon-btn {
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-}
-
-.btn-edit,
-.btn-add {
-  width: 150px;
-  height: 50px;
-  border: none;
-  /* background-color: blue; */
+  height: 100%;
+  background-color: rgb(224, 224, 224);
   border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
 
-  color: rgb(255, 255, 255);
-  font-size: 17px;
+/* Contenedor IZQUIERDA icon, imagen y  nombre */
+.contendor_imagen_herramienta {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% 60% 30%;
+}
+
+/* Btn para cerrar */
+.btn-close {
+  padding: 8px;
+  padding-top: 10px;
+  border-radius: 4px;
+
+  text-align: center;
+}
+
+.btn-close:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.btn-close i {
+  font-size: 20px;
+  color: black;
+}
+
+/* Contenedor imagen de la herramienta */
+.imagen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 70%;
+  height: 80%;
+  border: 1px solid rgb(219, 219, 219);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Nombre principal de la herramienta */
+.titulo {
+  display: flex;
+  justify-content: end;
+  font-size: 30px;
+  padding: 20px;
+  padding-right: 76px;
+}
+
+/* Contenedor DERECHA descripcion, referencia y  btn-editar */
+.contenedor_texto {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40% 40% 20%;
+}
+
+/* Texto de la herramienta */
+.texto1,
+.texto2 {
+  padding: 20px;
+  font-size: 18px;
+}
+
+/* Boton editar */
+.contenedor_boton_edit {
+  display: flex;
+  justify-content: end;
+  padding: 20px;
 }
 
 .btn-edit {
-  background-color: rgb(68, 247, 52);
+  width: 90px;
+  height: 40px;
+  border: none;
+  background-color: blue;
+  border-radius: 5px;
+  padding: 5px;
+
+  color: rgb(255, 255, 255);
+  font-size: 17px;
 }
 
 .btn-edit:hover {
@@ -356,224 +414,44 @@
   background-color: rgb(126, 126, 126);
 }
 
-.btn-add {
-  background-color: orange;
-}
-
-.btn-add:hover {
-  cursor: pointer;
-  background-color: rgb(126, 126, 126);
-}
-
-.bxs-edit,
-.bxs-add-to-queue {
-  font-size: 45px;
-  color: rgb(199, 199, 199);
-}
-
-/* CONTENEDOR DEL BUSCADOR */
-.navbar {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  background-color: rgb(247, 247, 247);
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-/* Contenedor del buscador y el boton de busqueda */
-.search-together {
-  width: 60%;
-  display: flex;
-  justify-content: start;
-}
-
-/* Contenedor de filtro de busqueda */
-.search-only {
-  width: 50%;
-  display: flex;
-  justify-content: end;
-}
-
-/* Buscador */
-.search_invenatry {
-  width: 300px;
-  height: 35px;
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  margin-right: 15px;
-}
-
-.search_invenatry:focus {
-  border: 1px solid #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  outline: none;
-}
-
-/* Boton de busqueda */
-.btn-search {
-  min-width: 80px;
-  height: 35px;
-  border: 1px solid blue;
-  border-radius: 5px;
-  color: blue;
-  font-size: 17px;
-}
-
-.btn-search:hover {
-  background-color: blue;
-  border: none;
-  color: white;
-}
-
-/* Filtro de busqueda */
-.filtro {
-  width: 170px;
-  height: 35px;
-  border-radius: 5px;
-  border: none;
-  padding: 5px;
-  background-color: white;
-}
-
-.filtro:focus {
-  border: 1px solid #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  outline: none;
-  /* outline: 1px solid rgb(29, 219, 29);
-    box-shadow: 0 0 5px rgb(29, 219, 29); */
-}
-
-option {
-  padding: 5px;
-}
-
-/* CONTENEDOR DEL INVENTARIO LAS HERRAMIENTAS */
-.inventory-container {
-  width: 100%;
-  height: 68%;
-  background-color: rgb(247, 247, 247);
-  padding: 15px;
-  overflow-y: auto;
-}
-
-/* la lista de las herramientas */
-.inventory-list {
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: start;
-
-  transition: all 1s ease;
-}
-
-.min-lista {
-  gap: 20px;
-}
-
-/* Cada herramienta */
-.card {
-  width: 200px;
-  height: 330px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  margin: 10px;
-}
-
-/* Contenedor de la imagen de la herramienta */
-.cont-img {
-  width: 100%;
-  height: 170px;
-  border-bottom: 1px solid rgb(216, 216, 216);
-}
-
-img {
-  width: 100%;
-  height: 100%;
-}
-
-/* Contenedor del texto y boton */
-.card-body {
-  padding: 15px;
-}
-
-.card-title {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-.card-text {
-  font-size: 15px;
-  margin-bottom: 10px;
-}
-
-.cont-btn {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.btn {
-  padding: 8px 15px;
-  font-size: 18px;
-  color: #fff;
-  background-color: #007bff;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.btn:hover {
-  background-color: #88c1ff;
-  cursor: pointer;
-}
-
 /* RESPONSIVE */
+@media screen and (width<=1000px) {
+  /* Contenedor DERECHA descripcion, referencia y  btn-editar */
+  .contenedor_texto {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60% 20% 20%;
+  }
+
+  .titulo {
+    font-size: 25px;
+  }
+
+  img {
+    width: 90%;
+    height: 80%;
+  }
+}
+
 @media screen and (width<=800px) {
-  .bxs-edit,
-  .bxs-add-to-queue {
-    display: none;
+  /* Contenedor de la visualizacion de la herramienta */
+  .contenedor_herramienta {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    overflow-y: auto;
   }
 
-  /* CONTENEDOR DEL BUSCADOR */
+  /* Contenedor ARRIBA icon, imagen y  nombre */
 
-  /* Buscador */
-  .search_invenatry {
-    width: 150px;
-    margin-right: 10px;
+  /* Nombre principal de la herramienta */
+  .titulo {
+    padding-right: 35px;
   }
 
-  /* Boton de busqueda */
-  .btn-search {
-    min-width: 70px;
-  }
-
-  /* Filtro de busqueda */
-  .filtro {
-    width: 110px;
-  }
-
-  /* CONTENEDOR DEL INVENTARIO LAS HERRAMIENTAS */
-  .inventory-container {
-    padding: 10px;
-  }
-
-  /* la lista de las herramientas */
-  .inventory-list {
-    gap: 10px;
-  }
-
-  /* Cada herramienta */
-  .card {
-    width: 190px;
-    height: 330px;
-    margin: 5px;
+  img {
+    width: 70%;
+    height: 80%;
   }
 }
 
@@ -635,42 +513,38 @@ img {
   .contenido {
     padding: 20px;
     padding-top: 20px;
-    padding-right: 40px;
+    padding-right: 50px;
   }
 
-  /* CONTENEDOR DEL BUSCADOR */
-
-  /* Buscador */
-  .search_invenatry {
-    width: 180px;
-    margin-right: 10px;
+  /* Contenedor de la visualizacion de la herramienta */
+  .contenedor_herramienta {
+    padding: 15px;
   }
 
-  /* Boton de busqueda */
-  .btn-search {
-    min-width: 70px;
+  /* Contenedor ARRIBA icon, imagen y  nombre */
+
+  /* Nombre principal de la herramienta */
+  .titulo {
+    padding: 15px;
+    padding-right: 50px;
   }
 
-  /* Filtro de busqueda */
-  .filtro {
-    width: 130px;
+  /* Contenedor ABAJO descripcion, referencia y  btn-editar */
+  .contenedor_texto {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50% 30% 20%;
   }
 
-  /* CONTENEDOR DEL INVENTARIO LAS HERRAMIENTAS */
-  .inventory-container {
-    padding: 10px;
+  /* Texto de la herramienta */
+  .texto1,
+  .texto2 {
+    padding: 15px;
   }
 
-  /* la lista de las herramientas */
-  .inventory-list {
-    gap: 5px;
-  }
-
-  /* Cada herramienta */
-  .card {
-    width: 180px;
-    height: 340px;
-    margin: 5px;
+  /* Boton editar */
+  .contenedor_boton_edit {
+    padding: 15px;
   }
 }
 

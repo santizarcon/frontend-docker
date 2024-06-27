@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Inventary</title>
+    <link rel="icon" href="img/logo-sena.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/newTool.css">
+</head>
+
+<body>
+
+    <%- include('partials/partials.menu.head.ejs') %>
+
+            <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
+
+
+                <div class="contenedor_agregar_Herramienta">
+
+                    <div class="linea-color"></div>
+
+                    <div class="header">
+                        <div class="encabezado">
+                            Agregar Nueva Herramienta:
+                        </div>
+                        <div class="btn-cerrar"> 
+                            <button class="btn-cerrar-salir" onclick="salir();"> 
+                                <i class='bx bx-exit' title="Salir Editar Perfil"></i> 
+                            </button>  
+                        </div>
+                    </div>
+
+                    <div class="body">
+                        <span>Nombre de la Herramienta:</span>
+                        <input type="text" name="nombre_herramienta" id="name_tool" placeholder="Nombre">
+
+                        <span>Descripcion de la Herramienta:</span>
+                        <textarea name="descripcion_herramienta" id="description" ></textarea>
+
+                        <span>Cantidad de Herramientas:</span>
+                        <input type="number" name="cantidad_herramienta" id="amount_total" placeholder="0">
+
+                        <span>Referencia:</span>
+                        <input type="text" name="referencia_herramienta" id="reference" placeholder="Ubicacion">
+
+                        <span>Foto de la Herramienta:</span>
+                        <input type="file" class="form-control" >
+
+                        
+                    </div>
+
+                    <div class="footer">
+                        <button class="btn-update" onclick="crear();">Agregar Nueva Herramienta</button>
+                    </div>
+
+                </div>
+
+
+            </div><!-- Cierre del Contenedor contenido-->
+
+        </div> <!-- Cierre de lado derecho -->
+
+    </div> <!-- Cierre del contenedor -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/newTool.js"></script>
+
+</body>
+
+</html>

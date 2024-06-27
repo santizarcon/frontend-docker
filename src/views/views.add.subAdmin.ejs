@@ -7,22 +7,23 @@
     <title>Tool Inventary</title>
     <link rel="icon" href="img/logo-sena.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../css/editTool.css">
+    <link rel="stylesheet" href="../css/addSubAdmin.css">
 </head>
 
 <body>
-
 
     <%- include('partials/partials.menu.head.ejs') %>
 
         <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
 
-            <div class="contenedor_editar_herramienta">
+
+            <div class="contenedor_agregar_Herramienta">
+
                 <div class="linea-color"></div>
 
                 <div class="header">
                     <div class="encabezado">
-                        Editar Herramienta:
+                        Agregar Nuevo SubAdmin:
                     </div>
                     <div class="btn-cerrar">
                         <button class="btn-cerrar-salir" onclick="salir();">
@@ -32,26 +33,26 @@
                 </div>
 
                 <div class="body">
+                    <span>Correo del aprendiz:</span>
+                    <input type="email" name="nombre_herramienta" id="name_aprendiz" placeholder="correo">
 
-                    <span>Nombre de la Herramienta:</span>
-                    <input type="text" placeholder="Nombres Herramienta" id="name_tool">
+                    <span>Nombres:</span>
+                    <input type="text" name="cantidad_herramienta" id="names" placeholder="nombres">
 
-                    <span>Descripcion:</span>
-                    <textarea name="descripcion_herramienta" id="descripcion_tool"></textarea>
+                    <span>Apellidos:</span>
+                    <input type="text" name="cantidad_herramienta" id="last" placeholder="apellido">
 
-                    <span>Cantidad de Herramientas Disponibles:</span>
-                    <input type="number" placeholder="Cantidad Herramientas" id="amount_available">
+                    <span>Crear la contraseña:</span>
+                    <input type="password" name="password" id="password" >
 
-                    <span>Cantidad de Herramientas Total:</span>
-                    <input type="number" placeholder="Cantidad Herramientas" id="amount_total">
-
-                    <span>Referencia:</span>
-                    <input type="text" placeholder="Referencia" id="reference">
+                    <span>Confirmar contraseña:</span>
+                    <input type="password" name="confirm_password" id="confirm_password" >
+                    
 
                 </div>
 
                 <div class="footer">
-                    <button class="btn_actalizar_perfil" onclick="modificar();">Actualizar Herramienta</button>
+                    <button class="btn-update">Crearlo</button>
                 </div>
 
             </div>
@@ -61,13 +62,11 @@
 
         </div> <!-- Cierre de lado derecho -->
 
-
         </div> <!-- Cierre del contenedor -->
 
 
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="../js/editTool.js"></script>
+        <script src="../js/addSubAdmin.js"></script>
 
 </body>
 
