@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Inventary</title>
+    <link rel="icon" href="img/logo-sena.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/inventoryAdmin.css">
+</head>
+
+<body>
+
+
+    <%- include('partials/partials.menu.head.ejs') %>
+
+    <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
+
+
+        <div class="navbuttons"> <!-- Contenedor de los botones de acciones del inventario -->
+            <span class="icon-btn">
+                <i class='bx bxs-edit'></i>
+                <button class="btn-edit">Editar las Herramientas</button>
+            </span>
+            <span class="icon-btn">
+                <i class='bx bxs-add-to-queue'></i>
+                <button class="btn-add">Agregar Nueva Herramienta</button>
+            </span>
+        </div> <!-- Cierre del contenedor de los botones del inevnatrio -->
+
+
+        <div class="navbar"> <!-- Contenedor del Buscador y filtro -->
+            <div class="search-together">
+                <input class="search_invenatry" type="search" placeholder="Search">
+                <button class="btn-search" type="submit">Buscar</button>
+            </div>
+            <div class="search-only">
+                <select class="filtro" name="" id="">
+                    <option value="" selected>Filtro</option>
+                    <option value="">Todos</option>
+                    <option value="">Disponibles</option>
+                    <option value="">No Disponibles</option>
+                </select>
+            </div>
+        </div> <!-- Cierre del buscador y filtro -->
+
+        <div class="inventory-container"> <!-- contenedor del inventario -->
+
+            <ul class="inventory-list" id="inventory-list">
+
+                <li>
+                    <div class="card">
+                        <div class="cont-img">
+                            <img src="../img/prensatelas_para_cremallera.webp" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Prensatelas Para Cremallera</h5>
+                            <p class="card-text">Some quick example text to build on the card title.</p>
+                            <div class="cont-btn">
+                                <a href="./visualizarHerramientaAdmin.html" class="btn">Ver dettales</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card">
+                        <div class="cont-img">
+                            <img src="../img/prensatelas_para_cremallera.webp" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Prensatelas Para Cremallera</h5>
+                            <p class="card-text">Some quick example text to build on the card title.</p>
+                            <div class="cont-btn">
+                                <a href="./visualizarHerramientaAdmin.html" class="btn">Ver dettales</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card">
+                        <div class="cont-img">
+                            <img src="../img/prensatelas_para_cremallera.webp" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Prensatelas Para Cremallera</h5>
+                            <p class="card-text">Some quick example text to build on the card title.</p>
+                            <div class="cont-btn">
+                                <a href="./visualizarHerramientaAdmin.html" class="btn">Ver dettales</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card">
+                        <div class="cont-img">
+                            <img src="../img/prensatelas_para_cremallera.webp" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Prensatelas Para Cremallera</h5>
+                            <p class="card-text">Some quick example text to build on the card title.</p>
+                            <div class="cont-btn">
+                                <a href="./visualizarHerramientaAdmin.html" class="btn">Ver dettales</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card">
+                        <div class="cont-img">
+                            <img src="../img/prensatelas_para_cremallera.webp" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Prensatelas Para Cremallera</h5>
+                            <p class="card-text">Some quick example text to build on the card title.</p>
+                            <div class="cont-btn">
+                                <a href="./visualizarHerramientaAdmin.html" class="btn">Ver dettales</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li>
+                    <div class="card">
+                        <div class="cont-img">
+                            <img src="../img/prensatelas_para_cremallera.webp" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Prensatelas Para Cremallera</h5>
+                            <p class="card-text">Some quick example text to build on the card title.</p>
+                            <div class="cont-btn">
+                                <a href="./visualizarHerramientaAdmin.html" class="btn">Ver dettales</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div><!-- Cierre del contenedor del inevnatrio -->
+
+
+    </div><!-- Cierre del Contenedor contenido-->
+
+    </div> <!-- Cierre de lado derecho -->
+
+
+    </div> <!-- Cierre del contenedor -->
+
+
+
+
+
+
+    <script src="../js/inventoryAdmin.js"></script>
+
+</body>
+
+</html>

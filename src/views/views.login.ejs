@@ -41,14 +41,14 @@
                             <p>inicia sesion con tu cuenta</p>
               
                         <div class="container_login_input">
-                            <input type="email" name="correo" id="correo" placeholder="Correo Electronico">
-                            <input type="password" id="contraseña" placeholder="Contraseña">
+                            <input type="email" name="correo" id="email" placeholder="Correo Electronico">
+                            <input type="password" id="password" placeholder="Contraseña">
                         </div>
                         <div class="texto_olvidar_contrasena">
                             <a href="olvidar_contra.html" target="_blank">¿Olvidaste tu Contraseña?</a>
                         </div>
                         <div class="contenedor_btn_login">
-                            <button class="btn-login" id="btn-login">INICIAR</button>
+                            <button class="btn-login" id="btn-login" onclick="logueo();">INICIAR</button>
                         </div>
 
                 </div> <!-- Cierre Login -->
@@ -72,6 +72,7 @@
 
     </div><!-- Cierre Container -->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/login.js"></script>
 </body>
 </html>

@@ -1,24 +1,6 @@
 
 const url = "http://localhost:4000";
 
-// DISEÑO PARA LA PAGINA
-let btnAddFile = document.getElementById("btn-add-flie");
-let btnAgregarFicha = document.getElementById("btn-agregar-ficha");
-let formRegister = document.querySelector(".register");
-let formFichas = document.querySelector(".ficha");
-
-btnAddFile.addEventListener("click", () =>{
-    formRegister.classList.add("hide")
-    formFichas.classList.remove("hide")
-})
-
-btnAgregarFicha.addEventListener("click", () =>{
-    formFichas.classList.add("hide")
-    formRegister.classList.remove("hide")
-})
-
-
-// DATOS
 const register = () =>{
 
     const names = document.getElementById("names").value;
@@ -31,12 +13,16 @@ const register = () =>{
 
     // Verificar que lo campos no esten vacios
     if (!names || !lastNames || !email || !password || !confirmPassword) {
-        Swal.fire("Campos vacios!");
+        Swal.fire({
+            icon: "warning",
+            title: "Campos vacios!",
+            showConfirmButton: false,
+            timer: 1500
+        });
         return;
     }
     // Validar si la contraseña es correcta en los dos campos
     if (password === confirmPassword) {
-
 
     }else{
         Swal.fire("Las contraseñas no coinciden!");
@@ -61,13 +47,69 @@ const register = () =>{
     .then(res=>res.json())
     .then(data=>{
         if(data.error==false){
-            window.location.href = '/dash/principalAdmin';
+            Swal.fire({
+                icon: "success",
+                title: "Haz sido registrado Exitosamente",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+            setTimeout(function() {
+                window.location.href = '/login';
+            }, 2000);
+        }else{
+
+            Swal.fire({
+                icon: "error",
+                title: "El correo ya existe, Intenta con otro",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
         }
+        
     })
     .catch(err=>{
         console.log("Tenemos un problema", err);
     });
 
 }
+
+
+// const mostrarFichas = () =>{
+//     const urlF = "http://localhost:4000/api/ficha";
+
+//     fetch(urlF)
+//     .then(res=>res.json())
+//     .then(data=>{
+//         if(data.error){
+//             console.error("error al mostrar los datos", data);
+//         }else{
+//             mostrar(data.body[0]);
+//         }
+//     })
+//     .catch(err=>{
+//         console.log("Tenemos un problema", err);
+//     });
+
+//     const mostrar = (data) =>{
+//         // const numeroFicha = document.getElementById("numero_ficha");
+//         let body = '';
+        
+//         for (let i = 0; i < data.length; i++) {
+//               body += `
+//                 <option value="${data[i].numero_ficha}">${data[i].numero_ficha}</option>
+//             `;
+
+//         }
+//         document.getElementById('numero_ficha').innerHTML = body;
+
+//         // document.getElementById("numero_ficha") = numeroFicha;
+       
+//     }
+
+// }
+
+
 
 

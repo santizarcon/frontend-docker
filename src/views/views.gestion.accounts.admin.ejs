@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Inventary</title>
+    <link rel="icon" href="img/logo-sena.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/gestionAccountsAdmin.css">
+</head>
+
+<body>
+
+    <%- include('partials/partials.menu.head.ejs') %>
+
+            <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
+
+                <div class="navbuttons"> <!-- Contenedor de los botones de acciones del inventario -->
+                    <span class="icon-btn">
+                        <i class='bx bxs-add-to-queue'></i>
+                        <button class="btn-add-subadmin" id="btn-add-subAdmin">Añadir Nueva Cuenta SubAdmin</button>
+                    </span>
+                    <span class="icon-btn">
+                        <i class='bx bx-group'></i>
+                        <button class="btn-change">Trasladar Responsabilidad</button>
+                    </span>
+                </div> <!-- Cierre del contenedor de los botones del inevnatrio -->
+
+
+                <div class="navbar"> <!-- Contenedor del Buscador y filtro -->
+
+                    <div class="search-together">
+                        <input class="search_invenatry" type="search" placeholder="Search">
+                        <button class="btn-search" type="submit">Buscar</button>
+                    </div>
+                    <div class="search-only">
+                        <select class="filtro" name="" id="">
+                            <option value="" selected>Filtro</option>
+                            <option value="">Todos</option>
+                            <option value="">Usuarios</option>
+                            <option value="">SubAdmin</option>
+                        </select>
+                    </div>
+
+                </div><!-- Cierre del buscador y filtro -->
+
+                <div class="container_tabla">
+
+
+                    <table class="table"> <!-- TABLA -->
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Rol</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Nombres</th>
+                                <th scope="col">Apellidos</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Accciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td> xxxx </td>
+                                <td>@mdo</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td scope="btn">
+                                    <button class="act-icon green btn-edit"> <i class='bx bxs-edit'></i> </button>
+                                    <button class="act-icon red btn-trash-open" > <i class='bx bx-trash'></i> </button>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>Jacob</td>
+                                <td>---</td>
+                                <td>@fat</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+
+                    </table> <!-- CIERRE DE LA TABLA -->
+
+                </div>
+
+
+                <div class="ventana_eliminar_herramienta" id="ventana_eliminar_herramienta"> <!-- VENTANA ELIMINAR -->
+                    <div class="header">
+                        <button class="btn-close" id="btn-close"> &times; </button>
+                    </div>
+                    <div class="body">
+                        <h3 class="text_information">¿Estas seguro de eliminar la herramienta?</h3>
+                    </div>
+                    <div class="footer">
+                        <button class="btn-confirm yes" id="btn-yes">Si</button>
+                        <button class="btn-confirm not" id="btn-not">No</button>
+                    </div>
+                </div> <!-- Cierre VENTANA ELIMINAR -->
+
+
+
+            </div><!-- Cierre del Contenedor contenido-->
+
+
+
+        </div> <!-- Cierre de lado derecho -->
+
+    </div> <!-- Cierre del contenedor -->
+
+
+
+    <script src="js/gestionAccountsAdmin.js"></script>
+
+</body>
+
+</html>

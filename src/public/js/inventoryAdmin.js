@@ -4,19 +4,27 @@ const spans = document.querySelectorAll("span");
 const menu = document.querySelector(".menu");
 const contenedorContenido = document.querySelector(".contenedor_contenido");
 const barraUsuario = document.querySelector(".barra_usuario");
+const inventoryList = document.getElementById("inventory-list");
+
+
 
 
 const fotoUsuario = document.querySelector(".foto_usuario");
 const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 
-// Funcion de navegacion de botones
-// const editarPerfil = document.getElementById("editar_perfil");
-// const cerrarSesion = document.getElementById("cerrar_sesion");
-
 // DEL RESPONSIVE
 const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
+// Funcion de navegacion de botones
+// const editarPerfil = document.querySelectorAll(".editar_perfil");
+// const cerrarSesion = document.getElementById("cerrar_sesion");
+// const btnAdd = document.querySelector(".btn-add");
+
+
+
+//ESPECIAL DE ESTA HOJA 
+const btnEdit = document.querySelector(".btn-edit");
 
 
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
@@ -84,6 +92,8 @@ menu_icon.addEventListener("click", () => {
     // organizar el margin-left del CONTENIDO. 
     contenedorContenido.classList.toggle("min-contenido");
 
+    // organizar lista cuando el menu esta cerrado
+    inventoryList.classList.toggle("min-lista");
 
 
     // Para todos los span encontrados le agregamos la CALSE .oculto
@@ -94,17 +104,27 @@ menu_icon.addEventListener("click", () => {
 
 
 
-// NAVEGACION a otras paginas de html
-// editarPerfil.forEach(function (button) {
-//     button.addEventListener("click", function () {
-//         window.location.href = 'editarPerfilAdmin.html';
-//     });
-// });
 
+// //ESPECIAL DE ESTA HOJA
+btnEdit.addEventListener("click", () => {
+    window.location.href = './tablaHerramientas';
+})
+// NAVEGACION a otras paginas de html
+editarPerfil.forEach(function (button) {
+    button.addEventListener("click", function () {
+        window.location.href = 'editarPerfilAdmin.html';
+    });
+});
 
 // cerrarSesion.addEventListener("click", () => {
 //     window.location.href = 'index.html';
 // })
+
+
+// btnAdd.addEventListener("click", () => {
+//     window.location.href = 'agregarHerramienta.html';
+// })
+
 
 
 

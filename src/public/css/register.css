@@ -153,39 +153,11 @@ button:hover {
     width: 100%;
     height: auto;
     margin: 15px 0px;
-    text-align: center;
-    display: grid;
-    grid-template-columns: 3fr 2fr 1fr;
-    grid-template-rows: 1fr;
-}
-
-.container_btn_2>button {
-    width: 90px;
-    height: 35px;
-    font-size: 12px;
-    background-color: red;
-}
-
-.container_btn_2>button:hover {
-    background-color: rgb(252, 89, 89);
-}
-
-.contador_fichas {
-    padding-left: 3px;
-    padding-top: 3px;
-}
-
-.numero_fichas {
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    border: 1px solid red;
-
     display: flex;
     justify-content: center;
-    align-items: center;
-    color: red;
+    
 }
+
 
 
 /* INFORMACION DE LA PAGINA 22 (REGISTRASE) */
@@ -244,157 +216,10 @@ button:hover {
 }
 
 
-/* JAVASCRIPT TRANSICION */
-.hide {
-    position: absolute;
-    transform: translateY(-300%);
-    
-}
-
-
-/* FICHAS */
-.ficha{
-    grid-template-columns: 5fr 4fr;
-}
-
-
-.fichas {
-    width: 100%;
-    height: 100%;
-    background-color: rgb(231, 231, 231);
-    border-radius: 15px 0px 0px 15px;
-    text-align: center;
-}
-
-/* Titulo fichas */
-.fichas>h1 {
-    font-size: 30px;
-    margin: 15px;
-    margin-top: 60px
-}
-
-/* Texto fichas */
-.fichas>p {
-    font-size: 20px;
-    padding: 0px 40px;
-}
-
-/* Select  */
-select {
-    width: 300px;
-    height: 35px;
-    background-color: rgb(241, 241, 241);
-    border-radius: 15px;
-    border: none;
-    outline: none;
-    box-shadow: 0 0 10px rgb(189, 188, 188);
-    padding: 0px 5px;
-    color: gray;
-    margin: 10px 0px;
-}
-
-select:focus {
-    background-color: rgb(228, 228, 228);
-    box-shadow: 0 0 10px rgb(82, 82, 82);
-}
-
-select:hover {
-    cursor: pointer;
-}
-
-option {
-    color: black;
-}
-
-/* Contenedor input */
-.contariner_fichas_input {
-    height: 38%;
-    display: flex;
-    justify-content: center;
-    margin: 15px 0px;
-}
-
-.numero_ficha{
-    width: 220px;
-    height: 35px;
-    background-color: rgb(241, 241, 241);
-    border-radius: 15px;
-    border: none;
-    outline: none;
-    box-shadow: 0 0 10px rgb(189, 188, 188);
-    padding: 0px 5px;
-    color: gray;
-    margin: 10px 0px;
-    margin-top: 30px;
-}
-
-.container_btn_ficha {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    margin: 15px 0px;
-    column-gap: 30px;
-}
-
-
-/* VISTAS FICHAS */
-.container-vista-fichas {
-    width: 100%;
-    height: 100%;
-    background-color: rgb(121, 172, 250);
-    border-radius: 0px 15px 15px 0px;
-   
-}
-
-.table {
-    width: 70%;
-    border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 45px;
-
-}
-
-.table th,
-.table td {
-    /* Aplica padding, bordes y alinea el texto a la izquierda. */
-    padding: 8px 8px;
-    border: 1px solid #d8d8d8;
-    text-align: left;
-
-}
-
-.table thead th {
-    /* Aplica un fondo azul y texto blanco a los encabezados. Además, centra el texto. */
-    /* background-color: #b4b4b4; */
-    background-color: rgb(230, 230, 230);
-    color: rgb(0, 0, 0);
-    text-align: left;
-
-}
-
-
-.table tbody tr:hover {
-    /* Cambia el fondo al pasar el ratón sobre una fila para mejorar la usabilidad. */
-    background-color: #e9ecef;
-}
-
-.table th[scope="row"] {
-    /* Aplica un fondo claro y centra el texto para las celdas de encabezado de fila. */
-    background-color: #f8f9fa;
-    text-align: center;
-}
 
 
 
-.table th {
-    background-color: #f8f9fa;
-    font-weight: bold;
-    text-align: center;
-}
+
 
 
 

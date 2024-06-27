@@ -6,16 +6,28 @@ const contenedorContenido = document.querySelector(".contenedor_contenido");
 const barraUsuario = document.querySelector(".barra_usuario");
 
 
+
 const fotoUsuario = document.querySelector(".foto_usuario");
 const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
-
-// Funcion de navegacion de botones
-// const editarPerfil = document.getElementById("editar_perfil");
-// const cerrarSesion = document.getElementById("cerrar_sesion");
 
 // DEL RESPONSIVE
 const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
+
+// Funcion de navegacion de botones
+// const editarPerfil = document.getElementById("editar_perfil");
+// const cerrarSesion = document.getElementById("cerrar_sesion");
+// const editarHerramienta = document.querySelectorAll(".btn-edit");
+// const btnAddNewAdmin = document.querySelector(".btn-add-subadmin");
+
+// ESPECIAL DE ESTA HOJA
+
+// VENTANA ELIMINAR
+const btnTrash = document.querySelectorAll(".btn-trash-open");
+const ventanaEliminarHerramienta = document.querySelector(".ventana_eliminar_herramienta");
+const noEliminar = document.getElementById("btn-not");
+const btnCerrar = document.getElementById("btn-close");
+
 
 
 
@@ -95,21 +107,54 @@ menu_icon.addEventListener("click", () => {
 
 
 // NAVEGACION a otras paginas de html
-// editarPerfil.forEach(function (button) {
-//     button.addEventListener("click", function () {
-//         window.location.href = 'editarPerfilAdmin.html';
-//     });
-// });
-
+// editarPerfil.addEventListener("click", () => {
+//     window.location.href = 'editarPerfilAdmin.html';
+// })
 
 // cerrarSesion.addEventListener("click", () => {
 //     window.location.href = 'index.html';
 // })
 
+// editarHerramienta.forEach(function (button) {
+//     button.addEventListener("click", function () {
+//         window.location.href = 'editarHerramienta.html';
+//     });
+// });
+
+
+// ESPECIAL DE ESTA HOJA
+
+
+// VENTANA ELIMINAR
+// Añade un evento de clic a cada botón de 'Abrir Ventana'
+btnTrash.forEach(function (button) {
+    button.addEventListener("click", function () {
+        ventanaEliminarHerramienta.style.display = 'block';
+        // ventanaEliminarHerramienta.classList.add("open");
+    });
+});
+
+
+noEliminar.addEventListener("click", function () {
+    ventanaEliminarHerramienta.style.display = 'none';
+    // ventanaEliminarHerramienta.classList.add("close");
+});
+
+// NAVEGACION a otras paginas de html
+
+// cerrarSesion.addEventListener("click", () => {
+//     window.location.href = 'index.html';
+// });
 
 
 
 
+
+// editarPerfil.forEach(function (button) {
+//     button.addEventListener("click", function () {
+//         window.location.href = 'editarPerfilAdmin.html';
+//     });
+// });
 
 
 
