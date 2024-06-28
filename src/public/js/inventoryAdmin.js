@@ -135,6 +135,8 @@ btnAdd.addEventListener("click", () => {
 
 let url = "http://localhost:4000/api/tool/";
 
+ 
+
 // MOSTRAR
 fetch(url)
   .then((res) => res.json())
@@ -145,33 +147,36 @@ fetch(url)
       mostrar(data.body);
     }
   })
-  .catch((error) => console.log(err));
+  .catch((error) => console.log(error));
 
 const mostrar = (data) => {
   console.log(data);
 
-//   let body = "";
+  let body = "";
 
-//   for (let i = 0; i < data.length; i++) {
-//     body += `
+  for (let i = 0; i < data.length; i++) {
+    body += `
+
+     <li>
+                    <div class="card">
+                        <div class="cont-img">
+                            <img src="../img/prensatelas_para_cremallera.webp" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${data[i].nombre_herramienta}</h5>
+                            <p class="card-text">${data[i].descripcion}</p>
+                            <div class="cont-btn">
+                                <a href="./verHerramienta" class="btn">Ver dettales</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
     
-//             <tr>
-//                 <th scope="row">${data[i].id}</th>
-//                     <td>${data[i].nombre_herramienta}</td>
-//                     <td scope="btn"> <button class="see-img btn-img-open"> <i class='bx bx-image'></i> </button> </td>
-//                     <td>${data[i].descripcion}</td>
-//                     <td>${data[i].cantidad_disponible}</td>
-//                     <td>${data[i].cantidad_total}</td>
-//                     <td>${data[i].referencia}</td>
-//                     <td scope="btn">
-//                         <button class="act-icon green btn-edit" onclick="pasar(event);">  </button>
-//                         <button class="act-icon red btn-trash-open" onclick="eliminar(event);">  </button>
-//                     </td>
-//             </tr>                        
-//     `;
-//   }
+                                
+    `;
+  }
 
-//   document.getElementById("data").innerHTML = body;
+  document.getElementById("data").innerHTML = body;
 };
 
 

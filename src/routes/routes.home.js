@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { home, login, register } from "../controllers/controllers.home";
+import { cambioContra, home, login, register } from "../controllers/controllers.home";
 
 const rutaHome = Router();
 
@@ -7,5 +7,6 @@ const rutaHome = Router();
 rutaHome.get("/", home);
 rutaHome.get("/login", login);
 rutaHome.get("/register", register);
+rutaHome.use("/cambioContra", cambioContra)
 
 export default rutaHome;
