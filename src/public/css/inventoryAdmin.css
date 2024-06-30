@@ -429,7 +429,7 @@
 }
 
 /* Filtro de busqueda */
-.filtro {
+.filtroBuscar {
   width: 170px;
   height: 35px;
   border-radius: 5px;
@@ -438,7 +438,7 @@
   background-color: white;
 }
 
-.filtro:focus {
+.filtroBuscar:focus {
   border: 1px solid #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   outline: none;
@@ -524,9 +524,8 @@ img {
   font-size: 18px;
   color: #fff;
   background-color: #007bff;
-  text-align: center;
-  text-decoration: none;
   border-radius: 5px;
+  border: none;
 }
 
 .btn:hover {
@@ -555,7 +554,7 @@ img {
   }
 
   /* Filtro de busqueda */
-  .filtro {
+  .filtroBuscar {
     width: 110px;
   }
 
@@ -652,7 +651,7 @@ img {
   }
 
   /* Filtro de busqueda */
-  .filtro {
+  .filtroBuscar {
     width: 130px;
   }
 

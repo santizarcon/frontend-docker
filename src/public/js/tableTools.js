@@ -99,10 +99,26 @@ menu_icon.addEventListener("click", () => {
 //     window.location.href = 'editarPerfilAdmin.html';
 // })
 
-// cerrarSesion.addEventListener("click", () => {
-//     window.location.href = 'index.html';
-// })
+// // VENTANA IMAGEN
+// btnImg.forEach(function (button) {
+//     button.addEventListener("click", function () {
+//         ventanaImagenHerramienta.style.display = 'block';
+//         // ventanaEliminarHerramienta.classList.add("open");
+//     });
+// });
 
+// btnCerrarImg.addEventListener("click", function () {
+//     ventanaImagenHerramienta.style.display = 'none';
+// });
+
+// CERRAS SESION
+const cerrarSesion = () => {
+  sessionStorage.setItem("token", "");
+  sessionStorage.setItem("urlBuho", "");
+  window.location.href = '/login';
+}    
+
+// PASAR DE HOJA A HOJA con informacion
 const pasar = (event) => {
   const fila = event.target.parentElement.parentElement;
   const idTool = fila.cells[0].innerText;
@@ -122,33 +138,40 @@ const pasar = (event) => {
   window.location.href = "/dash/editarHerramienta";
 };
 
-// ESPECIAL DE ESTA HOJA
-
-// NAVEGACION a otras paginas de html
-// editarPerfil.forEach(function (button) {
-//     button.addEventListener("click", function () {
-//         window.location.href = 'editarPerfilAdmin.html';
-//     });
-// });
-
-// // VENTANA IMAGEN
-// btnImg.forEach(function (button) {
-//     button.addEventListener("click", function () {
-//         ventanaImagenHerramienta.style.display = 'block';
-//         // ventanaEliminarHerramienta.classList.add("open");
-//     });
-// });
-
-// btnCerrarImg.addEventListener("click", function () {
-//     ventanaImagenHerramienta.style.display = 'none';
-// });
-
 // CONSUMO
 
-let url = "http://localhost:4000/api/tool/";
+const token = sessionStorage.getItem("token");
+const url = sessionStorage.getItem("urlApi");
+const endpoint = "/api/tool/";
+const recurso = url + endpoint;
 
-// MOSTRAR
-fetch(url)
+// VERIFICAR INGRESO
+const urlComprobar = url + "/api/oauth";
+
+if (token == "" || token == null) {
+  window.location.href = "/login"
+};
+if (url == "" || url == null) {
+  window.location.href = "/login"
+};
+
+const options = {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json',
+     'Authorization' : `Bearer ${token}`
+  }
+}
+fetch(urlComprobar, options)
+  .then(res => res.json())
+  .then(data => {
+    if (data.error == true) {
+      window.location.href = "/login"
+    }
+  });
+
+// MOSTRAR las herramientas del inventario en una tabla
+fetch(recurso)
   .then((res) => res.json())
   .then((data) => {
     if (data.error) {
@@ -160,8 +183,6 @@ fetch(url)
   .catch((error) => console.log(err));
 
 const mostrar = (data) => {
-  console.log(data);
-
   let body = "";
 
   for (let i = 0; i < data.length; i++) {
@@ -182,16 +203,13 @@ const mostrar = (data) => {
             </tr>                        
     `;
   }
-
   document.getElementById("data").innerHTML = body;
 };
 
-// ELIMINAR
 
+// CONSEGUIR el id de la herramienta, y mostrar el mensaje de aceptar o no
 const eliminar = (event) => {
-  const eliminar_id =
-    event.target.parentElement.parentElement.children[0].innerText;
-  console.log(eliminar_id);
+  const eliminar_id =event.target.parentElement.parentElement.children[0].innerText;
 
   Swal.fire({
     title: "Estas seguro?",
@@ -213,9 +231,8 @@ const eliminar = (event) => {
   });
 };
 
+// ELIMINAR la herramienta
 const eliminarApi = (idusu) => {
-  // const token = sessionStorage.getItem("token");
-  // "x-access-token": token
 
   const options = {
     method: "DELETE",
@@ -227,7 +244,7 @@ const eliminarApi = (idusu) => {
     }),
   };
 
-  fetch(url, options)
+  fetch(recurso, options)
     .then((res) => res.json())
     .then((data) => {
       if (data.error == false) {

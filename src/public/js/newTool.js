@@ -99,12 +99,6 @@ menu_icon.addEventListener("click", () => {
 });
 
 
-
-// NAVEGACION a otras paginas de html
-// cerrarSesion.addEventListener("click", () => {
-//     window.location.href = 'index.html';
-// });
-
 // salirAgregarHerramienta.addEventListener("click", () => {
 //     window.location.href = 'editarHerramientasAdmin.html';
 // });
@@ -117,19 +111,52 @@ menu_icon.addEventListener("click", () => {
 
 
 
+// CERRAS SESION
+const cerrarSesion = () => {
+    sessionStorage.setItem("token", "");
+    sessionStorage.setItem("urlBuho", "");
+    window.location.href = '/login';
+}
 
-
-// ESPECIAL DE ESTA HOJA
-
-
-
-
+// PASAR DE HOJA A HOJA
 const salir = () => {
     window.location.href = "/dash/tablaHerramientas";
 };
 
-const url = "http://localhost:4000";
 
+// CONSUMO
+const token = sessionStorage.getItem("token");
+const url = sessionStorage.getItem("urlApi");
+const endpoint = "/api/tool";
+const recurso = url + endpoint;
+
+
+// VERIFICAR INGRESO
+const urlComprobar = url + "/api/oauth";
+
+if (token == "" || token == null) {
+  window.location.href = "/login"
+};
+if (url == "" || url == null) {
+  window.location.href = "/login"
+};
+
+const options = {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json',
+     'Authorization' : `Bearer ${token}`
+  }
+}
+fetch(urlComprobar, options)
+  .then(res => res.json())
+  .then(data => {
+    if (data.error == true) {
+      window.location.href = "/login"
+    }
+  });
+
+// CREAR una nueva herramienta
 const crear = () =>{
 
     const name_tool = document.getElementById("name_tool").value;
@@ -138,7 +165,6 @@ const crear = () =>{
     const reference = document.getElementById("reference").value;
     const idAdmin = 1;
 
-    // const input = document.querySelectorAll(".input");
 
     // Verificar que lo campos no esten vacios
     if (!name_tool || !description || !amount_total || !reference) {
@@ -151,12 +177,11 @@ const crear = () =>{
         return;
     }
 
-    sessionStorage.setItem("urlApi", url);
-    const urlApi = sessionStorage.getItem("urlApi") + "/api/tool";
     const options ={
         method:"POST",
         headers:{
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json',
+            'Authorization' : `Bearer ${token}`
         },
         body: JSON.stringify({
             nombre_herramienta : name_tool,
@@ -167,7 +192,7 @@ const crear = () =>{
             id_admin : idAdmin,
         })
     };
-    fetch(urlApi, options)
+    fetch(recurso, options)
     .then(res=>res.json())
     .then(data=>{
         if(data.error==false){

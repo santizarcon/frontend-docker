@@ -11,7 +11,7 @@ const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 
 // Funcion de navegacion de botones
 // const editarPerfil = document.getElementById("editar_perfil");
-// const cerrarSesion = document.getElementById("cerrar_sesion");
+
 
 // DEL RESPONSIVE
 const eleccionUsuario = document.querySelector(".eleccion_usuario");
@@ -93,7 +93,6 @@ menu_icon.addEventListener("click", () => {
 });
 
 
-
 // NAVEGACION a otras paginas de html
 // editarPerfil.forEach(function (button) {
 //     button.addEventListener("click", function () {
@@ -102,11 +101,40 @@ menu_icon.addEventListener("click", () => {
 // });
 
 
-// cerrarSesion.addEventListener("click", () => {
-//     window.location.href = 'index.html';
-// })
+// CERRAS SESION
+const cerrarSesion = () => {
+    sessionStorage.setItem("token", "");
+    sessionStorage.setItem("urlBuho", "");
+    window.location.href = '/login';
+}
 
+const token = sessionStorage.getItem("token");
+const url = sessionStorage.getItem("urlApi");
 
+// VERIFICAR INGRESO
+const urlComprobar = url + "/api/oauth";
+
+if (token == "" || token == null) {
+  window.location.href = "/login"
+};
+if (url == "" || url == null) {
+  window.location.href = "/login"
+};
+
+const options = {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json',
+     'Authorization' : `Bearer ${token}`
+  }
+}
+fetch(urlComprobar, options)
+  .then(res => res.json())
+  .then(data => {
+    if (data.error == true) {
+      window.location.href = "/login"
+    }
+  });
 
 
 

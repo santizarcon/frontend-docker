@@ -103,17 +103,6 @@ menu_icon.addEventListener("click", () => {
 });
 
 
-
-
-// //ESPECIAL DE ESTA HOJA
-btnEdit.addEventListener("click", () => {
-    window.location.href = './tablaHerramientas';
-});
-
-btnAdd.addEventListener("click", () => {
-    window.location.href = './agregarHerramienta';
-});
-
 // NAVEGACION a otras paginas de html
 // editarPerfil.forEach(function (button) {
 //     button.addEventListener("click", function () {
@@ -131,14 +120,56 @@ btnAdd.addEventListener("click", () => {
 // })
 
 
+// PASAR DE HOJA A HOJA
+btnEdit.addEventListener("click", () => {
+    window.location.href = './tablaHerramientas';
+});
+
+btnAdd.addEventListener("click", () => {
+    window.location.href = './agregarHerramienta';
+});
+
+// CERRAS SESION
+const cerrarSesion = () => {
+    sessionStorage.setItem("token", "");
+    sessionStorage.setItem("urlBuho", "");
+    window.location.href = '/login';
+}    
+
 // CONSUMO
 
-let url = "http://localhost:4000/api/tool/";
+const url = sessionStorage.getItem("urlApi");
+const endpoint = "/api/tool/";
+const recurso = url + endpoint;
 
- 
+// VERIFICAR INGRESO
+const urlComprobar = url + "/api/oauth";
 
-// MOSTRAR
-fetch(url)
+if (token == "" || token == null) {
+  window.location.href = "/login"
+};
+if (url == "" || url == null) {
+  window.location.href = "/login"
+};
+
+const options = {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json',
+     'Authorization' : `Bearer ${token}`
+  }
+}
+fetch(urlComprobar, options)
+  .then(res => res.json())
+  .then(data => {
+    if (data.error == true) {
+      window.location.href = "/login"
+    }
+  });
+
+
+// MOSTRAR herramientas en el inventario
+fetch(recurso)
   .then((res) => res.json())
   .then((data) => {
     if (data.error) {
@@ -150,37 +181,65 @@ fetch(url)
   .catch((error) => console.log(error));
 
 const mostrar = (data) => {
-  console.log(data);
-
   let body = "";
-
   for (let i = 0; i < data.length; i++) {
     body += `
-
      <li>
-                    <div class="card">
-                        <div class="cont-img">
-                            <img src="../img/prensatelas_para_cremallera.webp" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">${data[i].nombre_herramienta}</h5>
-                            <p class="card-text">${data[i].descripcion}</p>
-                            <div class="cont-btn">
-                                <a href="./verHerramienta" class="btn">Ver dettales</a>
-                            </div>
-                        </div>
+            <div class="card">
+                <div class="cont-img">
+                    <img src="../img/prensatelas_para_cremallera.webp" alt="">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${data[i].nombre_herramienta}</h5>
+                    <p class="card-text">${data[i].descripcion}</p>
+                    <div class="cont-btn">
+                        <button class="btn" onclick="viewDetails('${data[i].nombre_herramienta}', '${data[i].descripcion}', '${data[i].cantidad_disponible}', '${data[i].nombre_total}', '${data[i].referencia}');">Ver dettales</button>
                     </div>
-                </li>
-    
-                                
+                </div>
+            </div>
+    </li>                  
     `;
   }
-
   document.getElementById("data").innerHTML = body;
 };
 
 
+// CAPTURAR datos y mandarlos a otra hoja, (showTool)
+function viewDetails(nombre_herramienta, descripcion, cantidad_disponible, cantidad_total, referencia) {
+    // Guardar los datos en localStorage
+    localStorage.setItem('nombreHerramienta', nombre_herramienta);
+    localStorage.setItem('descripcion', descripcion);
+    localStorage.setItem('cantidadDisponible', cantidad_disponible);
+    localStorage.setItem('cantidadTotal', cantidad_total);
+    localStorage.setItem('referencia', referencia);
+
+    // Redirigir a la página de detalles
+    window.location.href = './verHerramienta';
+}
 
 
+// BARRA DE BUSQUEDA
+const search = document.getElementById("search_invenatry");
 
+search.addEventListener("keyup", e => {
+    const query = e.target.value.toLowerCase();
+    
+    document.querySelectorAll('#data li').forEach(row =>{
+        const nombreHerramienta = row.querySelector('.card-title').textContent.toLowerCase();
 
+        if(nombreHerramienta.includes(query)){
+            row.classList.remove('filtro');
+        } else {
+            row.classList.add('filtro');
+        }
+    });
+});
+
+const style = document.createElement('style')
+style.innerHTML = `
+.filtro {
+    display: none;
+    }
+`;
+
+document.head.appendChild(style);

@@ -99,12 +99,6 @@ menu_icon.addEventListener("click", () => {
 });
 
 
-
-const salir = () => {
-    window.location.href = "/dash/gestionCuentasAdmin";
-};
-    
-
 // NAVEGACION a otras paginas de html
 // cerrarSesion.addEventListener("click", () => {
 //     window.location.href = 'index.html';
@@ -120,11 +114,13 @@ const salir = () => {
 //     });
 // });
 
+// PASAR DE UNA HOJA A OTRA
+const salir = () => {
+    window.location.href = "/dash/gestionCuentasAdmin";
+};
+    
 
 
-
-
-// ESPECIAL DE ESTA HOJA
 
 
 

@@ -111,47 +111,6 @@ menu_icon.addEventListener("click", () => {
 //     window.location.href = 'editarPerfilAdmin.html';
 // })
 
-// cerrarSesion.addEventListener("click", () => {
-//     window.location.href = 'index.html';
-// })
-
-// editarHerramienta.forEach(function (button) {
-//     button.addEventListener("click", function () {
-//         window.location.href = 'editarHerramienta.html';
-//     });
-// });
-
-
-// ESPECIAL DE ESTA HOJA
-btnAddNewAdmin.addEventListener("click", () => {
-    window.location.href = '/dash/crearSubAdmin';
-})
-
-
-// VENTANA ELIMINAR
-// Añade un evento de clic a cada botón de 'Abrir Ventana'
-btnTrash.forEach(function (button) {
-    button.addEventListener("click", function () {
-        ventanaEliminarHerramienta.style.display = 'block';
-        // ventanaEliminarHerramienta.classList.add("open");
-    });
-});
-
-
-noEliminar.addEventListener("click", function () {
-    ventanaEliminarHerramienta.style.display = 'none';
-    // ventanaEliminarHerramienta.classList.add("close");
-});
-
-// NAVEGACION a otras paginas de html
-
-// cerrarSesion.addEventListener("click", () => {
-//     window.location.href = 'index.html';
-// });
-
-
-
-
 
 // editarPerfil.forEach(function (button) {
 //     button.addEventListener("click", function () {
@@ -159,5 +118,44 @@ noEliminar.addEventListener("click", function () {
 //     });
 // });
 
+// PASAR DE HOJA A HOJA
+btnAddNewAdmin.addEventListener("click", () => {
+    window.location.href = '/dash/crearSubAdmin';
+});
 
+
+// CERRAS SESION
+const cerrarSesion = () => {
+    sessionStorage.setItem("token", "");
+    sessionStorage.setItem("urlBuho", "");
+    window.location.href = '/login';
+};
+
+const token = sessionStorage.getItem("token");
+const url = sessionStorage.getItem("urlApi");
+
+// VERIFICAR INGRESO
+const urlComprobar = url + "/api/oauth";
+
+if (token == "" || token == null) {
+  window.location.href = "/login"
+};
+if (url == "" || url == null) {
+  window.location.href = "/login"
+};
+
+const options = {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json',
+     'Authorization' : `Bearer ${token}`
+  }
+}
+fetch(urlComprobar, options)
+  .then(res => res.json())
+  .then(data => {
+    if (data.error == true) {
+      window.location.href = "/login"
+    }
+  });
 
