@@ -4,7 +4,9 @@
   "description": "frontend del proyecto tool_inventory",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js --exec babel-node"
+    "dev": "nodemon src/index.js --exec babel-node",
+    "build": "babel src --out-dir dist && copyfiles -u 1 src/**/* dist",
+    "start": "node ./dist/index.js"
   },
   "author": "Marithza",
   "license": "ISC",
@@ -17,7 +19,9 @@
     "@babel/cli": "^7.24.7",
     "@babel/core": "^7.24.7",
     "@babel/node": "^7.24.7",
+    "@babel/plugin-transform-runtime": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
+    "copyfiles": "^2.4.1",
     "nodemon": "^3.1.4"
   }
 }

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Inventary</title>
+    <link rel="icon" href="img/logo-sena.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/tableTools.css">
+</head>
+
+<body>
+
+    <%- include('partials/partials.menu.head.ejs') %>
+
+            <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
+
+
+                <div class="navbar"> <!-- Contenedor del Buscador y filtro -->
+
+                    <div class="search-together">
+                        <input class="search_invenatry" type="search" placeholder="Search">
+                        <button class="btn-search" type="submit">Buscar</button>
+                    </div>
+                    <div class="search-only">
+                        <select class="filtro" name="" id="">
+                            <option value="" selected>Filtro</option>
+                            <option value="">Todos</option>
+                            <option value="">Disponibles</option>
+                            <option value="">No Disponibles</option>
+                        </select>
+                    </div>
+
+                </div><!-- Cierre del buscador y filtro -->
+
+                <div class="container_tabla">
+
+
+                    <table class="table"> <!-- TABLA -->
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre Herramienta</th>
+                                <th scope="col">imagen</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Referencia</th>
+                                <th scope="col">Cantidad Disponible</th>
+                                <th scope="col">Cantidad Prestada</th>
+                                <th scope="col">Accciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data">
+                           
+                        </tbody>
+
+                    </table> <!-- CIERRE DE LA TABLA -->
+
+                </div>
+
+
+                <div class="ventana_imagen_herramienta"> <!-- VENTANA IMAGEN -->
+                    <div class="header">
+                        <button class="btn-close" id="btn-close-img"> &times; </button>
+                    </div>
+                    <div class="body">
+                        <img src="./img/prensatela.jpg" alt="">
+                    </div>
+                </div> <!-- Cierre VENTANA IMAGEN -->
+
+
+            </div><!-- Cierre del Contenedor contenido-->
+
+
+
+        </div> <!-- Cierre de lado derecho -->
+
+    </div> <!-- Cierre del contenedor -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/tableTools.js"></script>
+
+</body>
+
+</html>
