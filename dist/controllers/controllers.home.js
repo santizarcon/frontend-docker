@@ -1,3 +1,6 @@
+import { config } from "dotenv";
+config();
+
 export const home = (req, res) =>{
     res.render("views.home.ejs");
 };
@@ -7,11 +10,15 @@ export const register = (req, res) =>{
 };
 
 export const login = (req, res) =>{
-    res.render("views.login.ejs");
+    const url = process.env.BACKEND_URL;
+    const options = {
+        url : url
+    }
+    res.render("views.login.ejs", options);
 };
 
-export const ruperarContra = (req, res) =>{
-    res.render("views.password.recover.ejs");
+export const cambioContraFirst = (req, res) =>{
+    res.render("views.email.changed.password.ejs");
 };
 
 export const cambioContra = (req, res) =>{

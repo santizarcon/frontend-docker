@@ -99,28 +99,126 @@ menu_icon.addEventListener("click", () => {
 });
 
 
-// NAVEGACION a otras paginas de html
-// cerrarSesion.addEventListener("click", () => {
-//     window.location.href = 'index.html';
-// });
-
-// salirAgregarHerramienta.addEventListener("click", () => {
-//     window.location.href = 'editarHerramientasAdmin.html';
-// });
-
-// editarPerfil.forEach(function (button) {
-//     button.addEventListener("click", function () {
-//         window.location.href = 'editarPerfilAdmin.html';
-//     });
-// });
-
 // PASAR DE UNA HOJA A OTRA
 const salir = () => {
     window.location.href = "/dash/gestionCuentasAdmin";
 };
-    
+
+const editarPerfil = () => {
+    window.location.href = "/dash/editarPerfil";
+};
+
+// CONSUMO
+
+const token = sessionStorage.getItem("token");
+const url = sessionStorage.getItem("urlApi");
+const endpoint = "/api/admin";
+const recurso = url + endpoint;
+
+// CERRAS SESION
+const cerrarSesion = () => {
+  sessionStorage.setItem("token", "");
+  sessionStorage.setItem("urlApi", "");
+  window.location.href = '/login';
+}
 
 
+// VERIFICAR INGRESO
+const urlComprobar = url + "/api/oauth";
+
+if (token === "" || token === null) {
+  window.location.href = "/login"
+};
+if (url === "" || url === null) {
+  window.location.href = "/login"
+};
+
+const options = {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json',
+     'Authorization' : `Bearer ${token}`
+  }
+}
+fetch(urlComprobar, options)
+  .then(res => res.json())
+  .then(data => {
+    if (data.error == true) {
+      window.location.href = "/login"
+    }
+  });
+
+
+// CREAR una nuevo SubAdmin
+const crear = () =>{
+
+    const email = document.getElementById("email_aprendiz").value;
+    const password = document.getElementById("password").value;
+    const confirm_password = document.getElementById("confirm_password").value;
+    const nombre = document.getElementById("names").value;
+    const apellido = document.getElementById("last_names").value;
+
+
+    // Verificar que lo campos no esten vacios
+    if (!email || !password || !confirm_password || !nombre || !apellido) {
+        Swal.fire({
+            icon: "warning",
+            title: "Campos vacios!",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        return;
+    }
+
+    // Validar si la contraseña es correcta en los dos campos
+    if (password === confirm_password) {
+
+    }else{
+        Swal.fire("Las contraseñas no coinciden!");
+        return;
+    }
+
+    const options ={
+        method:"POST",
+        headers:{
+            'Content-Type' : 'application/json',
+            'Authorization' : `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            email : email,
+            password : password,
+            nombre : nombre,
+            apellido : apellido,
+        })
+    };
+    fetch(recurso, options)
+    .then(res=>res.json())
+    .then(data=>{
+        if(data.error==false){
+            Swal.fire({
+                icon: "success",
+                title: "Se ha creado una cuenta de SubAdmin nueva.",
+                showConfirmButton: false,
+                timer: 1500
+            });
+      
+        }else{
+
+            Swal.fire({
+                icon: "error",
+                title: "No se pudo crear",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        }
+        
+    })
+    .catch(err=>{
+        console.log("Tenemos un problema", err);
+    });
+
+}
 
 
 

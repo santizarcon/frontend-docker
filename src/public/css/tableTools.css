@@ -227,7 +227,7 @@
     height: 1px;
     background-color: white;
     margin: 10px 0px;
-    margin-top: 195px;
+    margin-top: 190px;
 }
 
 /* CONTENIDO DE LA PAGINA */
@@ -380,7 +380,7 @@
 }
 
 /* Filtro de busqueda */
-.filtro {
+.filtros {
     width: 170px;
     height: 35px;
     border-radius: 5px;
@@ -389,7 +389,7 @@
     background-color: white;
 }
 
-.filtro:focus {
+.filtros:focus {
     border: 1px solid #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     outline: none;
@@ -583,7 +583,7 @@ img{
     }
 
     /* Filtro de busqueda */
-    .filtro {
+    .filtros {
         width: 110px;
     }
 
@@ -663,7 +663,7 @@ img{
     }
 
     /* Filtro de busqueda */
-    .filtro {
+    .filtros {
         width: 130px;
     }
 

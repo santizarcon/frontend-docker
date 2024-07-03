@@ -111,18 +111,14 @@ menu_icon.addEventListener("click", () => {
 
 
 
-// CERRAS SESION
-const cerrarSesion = () => {
-    sessionStorage.setItem("token", "");
-    sessionStorage.setItem("urlBuho", "");
-    window.location.href = '/login';
-}
-
 // PASAR DE HOJA A HOJA
 const salir = () => {
     window.location.href = "/dash/tablaHerramientas";
 };
-
+ 
+const editarPerfil = () => {
+    window.location.href = "/dash/editarPerfil";
+};
 
 // CONSUMO
 const token = sessionStorage.getItem("token");
@@ -130,6 +126,12 @@ const url = sessionStorage.getItem("urlApi");
 const endpoint = "/api/tool";
 const recurso = url + endpoint;
 
+// CERRAS SESION
+const cerrarSesion = () => {
+    sessionStorage.setItem("token", "");
+    sessionStorage.setItem("urlApi", "");
+    window.location.href = '/login';
+}
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
@@ -163,11 +165,12 @@ const crear = () =>{
     const description = document.getElementById("description").value;
     const amount_total = document.getElementById("amount_total").value;
     const reference = document.getElementById("reference").value;
+    const imagen = document.getElementById("imagen").value;
     const idAdmin = 1;
 
 
     // Verificar que lo campos no esten vacios
-    if (!name_tool || !description || !amount_total || !reference) {
+    if (!name_tool || !description || !amount_total || !imagen || !reference) {
         Swal.fire({
             icon: "warning",
             title: "Campos vacios!",
@@ -185,7 +188,7 @@ const crear = () =>{
         },
         body: JSON.stringify({
             nombre_herramienta : name_tool,
-            imagen : "",
+            imagen : imagen,
             descripcion : description,
             cantidad_total : amount_total,
             referencia : reference,

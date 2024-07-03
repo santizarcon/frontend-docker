@@ -94,29 +94,6 @@ menu_icon.addEventListener("click", () => {
   });
 });
 
-// NAVEGACION a otras paginas de html
-// editarPerfil.addEventListener("click", () => {
-//     window.location.href = 'editarPerfilAdmin.html';
-// })
-
-// // VENTANA IMAGEN
-// btnImg.forEach(function (button) {
-//     button.addEventListener("click", function () {
-//         ventanaImagenHerramienta.style.display = 'block';
-//         // ventanaEliminarHerramienta.classList.add("open");
-//     });
-// });
-
-// btnCerrarImg.addEventListener("click", function () {
-//     ventanaImagenHerramienta.style.display = 'none';
-// });
-
-// CERRAS SESION
-const cerrarSesion = () => {
-  sessionStorage.setItem("token", "");
-  sessionStorage.setItem("urlBuho", "");
-  window.location.href = '/login';
-}    
 
 // PASAR DE HOJA A HOJA con informacion
 const pasar = (event) => {
@@ -138,12 +115,24 @@ const pasar = (event) => {
   window.location.href = "/dash/editarHerramienta";
 };
 
+const editarPerfil = () => {
+  window.location.href = "/dash/editarPerfil";
+};
+
 // CONSUMO
 
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
 const endpoint = "/api/tool/";
 const recurso = url + endpoint;
+
+
+// CERRAS SESION
+const cerrarSesion = () => {
+  sessionStorage.setItem("token", "");
+  sessionStorage.setItem("urlApi", "");
+  window.location.href = '/login';
+}    
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
@@ -190,15 +179,15 @@ const mostrar = (data) => {
     
             <tr>
                 <th scope="row">${data[i].id}</th>
-                    <td>${data[i].nombre_herramienta}</td>
+                    <td class="n">${data[i].nombre_herramienta}</td>
                     <td scope="btn"> <button class="see-img btn-img-open"> <i class='bx bx-image'></i> </button> </td>
-                    <td>${data[i].descripcion}</td>
+                    <td class="d">${data[i].descripcion.substring(0, 40) + '...'}</td>
                     <td>${data[i].cantidad_disponible}</td>
                     <td>${data[i].cantidad_total}</td>
                     <td>${data[i].referencia}</td>
                     <td scope="btn">
-                        <button class="act-icon green btn-edit" onclick="pasar(event);">  </button>
-                        <button class="act-icon red btn-trash-open" onclick="eliminar(event);">  </button>
+                        <button class="act-icon green btn-edit" onclick="pasar(event);">Editar</button>
+                        <button class="act-icon red btn-trash-open" onclick="eliminar(event);">Eliminar</button>
                     </td>
             </tr>                        
     `;
@@ -256,3 +245,29 @@ const eliminarApi = (idusu) => {
       console.log("Tenemos un problema", err);
     });
 };
+
+// BARRA DE BUSQUEDA
+const search = document.getElementById("search_invenatry");
+
+search.addEventListener("keyup", e => {
+    const query = e.target.value.toLowerCase();
+    
+    document.querySelectorAll('#data tr').forEach(row =>{
+        const nombreHerramienta = row.querySelector('.n').textContent.toLowerCase();
+        const descripcionHerramienta = row.querySelector('.d').textContent.toLowerCase();
+        if(nombreHerramienta.includes(query) || descripcionHerramienta.includes(query)){
+            row.classList.remove('filtro');
+        } else {
+            row.classList.add('filtro');
+        }
+    });
+});
+
+const style = document.createElement('style')
+style.innerHTML = `
+.filtro {
+    display: none;
+    }
+`;
+
+document.head.appendChild(style);

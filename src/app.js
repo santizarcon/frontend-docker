@@ -1,9 +1,13 @@
 import express from "express";
 import {config} from "dotenv";
-import ruta from "./routes";
+import ruta from "./routes/index.js";
 import ejs from "ejs";
 import path from "path";
 config();
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 

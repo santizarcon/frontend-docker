@@ -14,20 +14,9 @@ const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
-// Funcion de navegacion de botones
-// const editarPerfil = document.getElementById("editar_perfil");
-// const cerrarSesion = document.getElementById("cerrar_sesion");
-// const editarHerramienta = document.querySelectorAll(".btn-edit");
+
 const btnAddNewAdmin = document.querySelector(".btn-add-subadmin");
-
-// ESPECIAL DE ESTA HOJA
-
-// VENTANA ELIMINAR
-const btnTrash = document.querySelectorAll(".btn-trash-open");
-const ventanaEliminarHerramienta = document.querySelector(".ventana_eliminar_herramienta");
-const noEliminar = document.getElementById("btn-not");
-const btnCerrar = document.getElementById("btn-close");
-
+const btn_change = document.querySelector(".btn-change");
 
 
 
@@ -123,16 +112,23 @@ btnAddNewAdmin.addEventListener("click", () => {
     window.location.href = '/dash/crearSubAdmin';
 });
 
+btn_change.addEventListener("click", () =>{
+    window.location.href = '/dash/trasnferirResponsabilidad';
+});
 
-// CERRAS SESION
-const cerrarSesion = () => {
-    sessionStorage.setItem("token", "");
-    sessionStorage.setItem("urlBuho", "");
-    window.location.href = '/login';
+const editarPerfil = () => {
+    window.location.href = "/dash/editarPerfil";
 };
 
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
+
+// CERRAS SESION
+const cerrarSesion = () => {
+    sessionStorage.setItem("token", "");
+    sessionStorage.setItem("urlApi", "");
+    window.location.href = '/login';
+};
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";

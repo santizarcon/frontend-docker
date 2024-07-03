@@ -1,6 +1,6 @@
 import { Router } from "express";
-import rutaHome from "./routes.home";
-import rutaDash from "./routes.dash";
+import rutaHome from "./routes.home.js";
+import rutaDash from "./routes.dash.js";
 
 const ruta = Router();
 

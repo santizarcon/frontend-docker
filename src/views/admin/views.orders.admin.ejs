@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Inventary</title>
+    <link rel="icon" href="img/logo-sena.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/ordersAdmin.css">
+</head>
+
+<body>
+
+    <%- include('../partials/partials.menu.head.ejs') %>
+
+            <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
+
+                <div class="navbuttons"> <!-- Contenedor de los botones de acciones del inventario -->
+                    <span class="icon-btn red">
+
+                        <div class="texto">
+                            <p>Descargar el Reporte de Herramientas Prestadas</p>
+                        </div>
+        
+                        <button class="descargar_reporte">
+                            <i class='bx bx-download'></i>
+                        </button>
+
+                    </span>
+
+                    <span class="icon-btn blue">
+
+                        <i class='bx bx-file'></i>
+                        <button class="btn-add" onclick="pasar();"> Formularios </button>
+
+                    </span>
+                </div> <!-- Cierre del contenedor de los botones del inevnatrio -->
+
+                <div class="navbar"> <!-- Contenedor del Buscador y filtro -->
+
+                    <div class="search-together">
+                        <input class="search_invenatry" id="search_invenatry" type="search" placeholder="Search">
+                        <!-- <button class="btn-search" type="submit">Buscar</button> -->
+                    </div>
+                    <div class="search-only">
+                        <select class="filtros" name="" id="">
+                            <option value="" selected>Filtro</option>
+                            <option value="">Todos</option>
+                            <option value="">Disponibles</option>
+                            <option value="">No Disponibles</option>
+                        </select>
+                    </div>
+
+                </div><!-- Cierre del buscador y filtro -->
+
+                <div class="container_tabla">
+
+                    <div class="tabla">
+
+                        <div class="caja_reporte">
+
+                            <div class="contenido_reporte">
+                                <div class="content-between">
+                                    <h5 class="contexto_title">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="contexto">Some placeholder content in a paragraph.</p>
+                            </div>
+
+                            <div class="acciones">
+                                <div class="mensaje">
+                                    Leido
+                                </div>
+                                <div class="ojito">
+                                    <!-- <i class='bx bx-show-alt'></i> -->
+                                    <i class='icono bx bxs-hide' onclick="mostrar();"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="caja_reporte">
+
+                            <div class="contenido_reporte">
+                                <div class="content-between">
+                                    <h5 class="contexto_title">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <p class="contexto">Some placeholder content in a paragraph.</p>
+                            </div>
+
+                            <div class="acciones">
+                                <div class="mensaje">
+                                    Leido
+                                </div>
+                                <div class="ojito">
+                                    <!-- <i class='bx bx-show-alt'></i> -->
+                                    <i class='icono bx bxs-hide' onclick="mostrar();"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+
+
+            </div><!-- Cierre del Contenedor contenido-->
+
+
+
+        </div> <!-- Cierre de lado derecho -->
+
+    </div> <!-- Cierre del contenedor -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/ordersAdmin.js"></script>
+
+</body>
+
+</html>

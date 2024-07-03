@@ -109,19 +109,14 @@ menu_icon.addEventListener("click", () => {
 
 
 
-
-// CERRAS SESION
-const cerrarSesion = () => {
-  sessionStorage.setItem("token", "");
-  sessionStorage.setItem("urlBuho", "");
-  window.location.href = '/login';
-}
-
 // PASAR DE HOJA A HOJA 
 const salir = () => {
   window.location.href = "/dash/tablaHerramientas";
 };
 
+const editarPerfil = () => {
+  window.location.href = "/dash/editarPerfil";
+};
 
 // CONSUMO
 
@@ -129,6 +124,13 @@ const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
 const endpoint = "/api/tool";
 const recurso = url + endpoint;
+
+// CERRAS SESION
+const cerrarSesion = () => {
+  sessionStorage.setItem("token", "");
+  sessionStorage.setItem("urlApi", "");
+  window.location.href = '/login';
+}
 
 // DATOS TRAIDOS (tableTools.js)
 id_tool = localStorage.getItem("EditIdTool");
@@ -173,6 +175,7 @@ const modificar = () => {
   const amount_available = document.getElementById("amount_available").value;
   const amount_total = document.getElementById("amount_total").value;
   const reference = document.getElementById("reference").value;
+  const imagen = document.getElementById("imagen").value;
   const id_admin = 1;
 
   const options = {
@@ -183,7 +186,7 @@ const modificar = () => {
     body: JSON.stringify({
       id: id,
       nombre_herramienta: name_tool,
-      imagen: "",
+      imagen: imagen,
       descripcion: descripcion_tool,
       cantidad_disponible: amount_available,
       cantidad_total: amount_total,

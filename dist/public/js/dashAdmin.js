@@ -93,31 +93,32 @@ menu_icon.addEventListener("click", () => {
 });
 
 
-// NAVEGACION a otras paginas de html
-// editarPerfil.forEach(function (button) {
-//     button.addEventListener("click", function () {
-//         window.location.href = 'editarPerfilAdmin.html';
-//     });
-// });
 
+// PASAR DE HOJA A HOJA 
+const editarPerfil = () => {
+  window.location.href = "/dash/editarPerfil";
+};
 
-// CERRAS SESION
-const cerrarSesion = () => {
-    sessionStorage.setItem("token", "");
-    sessionStorage.setItem("urlBuho", "");
-    window.location.href = '/login';
-}
+// CONSUMO
 
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
 
+// CERRAS SESION
+const cerrarSesion = () => {
+  sessionStorage.setItem("token", "");
+  sessionStorage.setItem("urlApi", "");
+  window.location.href = '/login';
+}
+
+
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
 
-if (token == "" || token == null) {
+if (token === "" || token === null) {
   window.location.href = "/login"
 };
-if (url == "" || url == null) {
+if (url === "" || url === null) {
   window.location.href = "/login"
 };
 

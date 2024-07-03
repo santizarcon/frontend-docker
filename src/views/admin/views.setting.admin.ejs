@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Inventary</title>
+    <link rel="icon" href="img/logo-sena.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/settingAdmin.css">
+</head>
+
+<body>
+
+    <%- include('../partials/partials.menu.head.ejs') %>
+
+        <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
+
+            <div class="contenedor_editarPerdil"> <!-- Contenedor EDITAR PERFIL -->
+                <h1 class="text_admin">Administrador</h1>
+                <p class="text_nom">Tatiana</p>
+                <button class="btn_go_edit_perfil" onclick="ir();">Editar Perfil</button>
+            </div> <!-- Cierre del contenedor EDITAR PERFIL -->
+
+            <div class="contenedor_documentacion"> <!-- Contenedor DOCUMENTACION -->
+
+                <span class="text">Docuemntacion Tecnica del Codigo BACKEND:</span>
+                <button class="btn_tecnica red">Documentacion Tenica</button>
+
+                <span class="text">Docuemntacion  del crud BACKEND:</span>
+                <button class="btn_tecnica green">Documentacion doc</button>
+
+                <span class="text">PDF Requisitos funcionales:</span>
+                <button class="btn_tecnica yellow">Requisitos</button>
+
+                <span class="text">PDF Casos de uso:</span>
+                <button class="btn_tecnica blue">Casos de Uso</button>
+
+            </div> <!-- Cierre del contenedor DOCUMENTACION -->
+
+
+        </div><!-- Cierre del Contenedor contenido-->
+
+        </div> <!-- Cierre de lado derecho -->
+
+
+        </div> <!-- Cierre del contenedor -->
+
+
+        <script src="../js/settingAdmin.js"></script>
+
+</body>
+
+</html>

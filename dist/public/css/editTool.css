@@ -227,7 +227,7 @@
     height: 1px;
     background-color: white;
     margin: 10px 0px;
-    margin-top: 195px;
+    margin-top: 190px;
 }
 
 /* CONTENIDO DE LA PAGINA */
@@ -395,7 +395,7 @@
     height: 80%;  
     padding: 20px; 
     display: block;
-    overflow: hidden;
+    overflow: auto;
 
     text-align: start;
     

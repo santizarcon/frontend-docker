@@ -1,9 +1,12 @@
 // CONSUMO
+const url = document.getElementById("url").value;
+sessionStorage.setItem("urlApi", url);
 
-// const token = sessionStorage.getItem("token");
-const url = sessionStorage.getItem("urlApi");
+const token = sessionStorage.getItem("token");
+const url2 = sessionStorage.getItem("urlApi");
 const endpoint = "/api/user";
-const recurso = url + endpoint;
+const recurso = url2 + endpoint;
+// const endpoint = "https://tool-inventory.cleverapps.io/api/user";
 
 
 const register = () =>{
@@ -31,22 +34,27 @@ const register = () =>{
         return;
     }
 
+
     const options ={
         method:"POST",
         headers:{
-            'Content-Type' : 'application/json'
+            "Content-Type" : "application/json",
+            'Authorization' : `Bearer ${token}`
         },
         body: JSON.stringify({
             email : email,
             password : password,
             nombre : names,
-            apellido : lastNames
-        })
-    };
+            apellido : lastNames,
+        }),
+
+
+    }
     fetch(recurso, options)
     .then(res=>res.json())
     .then(data=>{
-        if(data.error==false){
+
+        if(data.error ==false){
             Swal.fire({
                 icon: "success",
                 title: "Haz sido registrado Exitosamente",

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Inventary</title>
+    <link rel="icon" href="img/logo-sena.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/showOrderAdmin.css">
+</head>
+
+<body>
+
+    <%- include('../partials/partials.menu.head.ejs') %>
+
+        <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
+
+            <div class="contenedor_reporte"> <!-- Contenedor para visualizar la herramienta -->
+
+                <div class="contendor_header">
+
+                    <div class="contenedor_btn">
+                        <a class="btn-close" href="./pedidosAdmin">
+                            <i class='bx bx-exit'></i>
+                        </a>
+                    </div>
+
+                    <div class="contenedor_titulo">
+                        Solicitud de Herramientas
+                    </div>
+
+                </div>
+
+                <div class="contenido_user">
+                    <span class="pi">
+                        <h1>Nombre quien lo envia:</h1>
+                        <p>Tatiana</p>
+                    </span>
+
+                    <span class="s">
+                        <select name="" id="" class="select_ficha">
+                            <option value="">2696188</option>
+                            <option value="">5566779</option>
+                        </select>
+                    </span>
+
+                </div>
+
+                <div class="contenedor_body">
+
+                    <div class="caja_herramienta">
+                        <p>Nombre de la Herramienta</p>
+                        <p>Cantidad</p>
+                    </div>
+                    <div class="caja_herramienta">
+                        <p>Nombre de la Herramienta</p>
+                        <p>Cantidad</p>
+                    </div>
+                    <div class="caja_herramienta">
+                        <p>Nombre de la Herramienta</p>
+                        <p>Cantidad</p>
+                    </div>
+                    <div class="caja_herramienta">
+                        <p>Nombre de la Herramienta</p>
+                        <p>Cantidad</p>
+                    </div>
+                    <div class="caja_herramienta">
+                        <p>Nombre de la Herramienta</p>
+                        <p>Cantidad</p>
+                    </div>
+                    <div class="caja_herramienta">
+                        <p>Nombre de la Herramienta</p>
+                        <p>Cantidad</p>
+                    </div>
+                    
+
+                </div>
+
+                <div class="contenedor_botons">
+                    <button class="rechazar btn">Rechazar</button>
+                    <button class="aceptar btn">Aceptar</button>
+
+                </div>
+
+            </div> <!-- Cierre del contenedor para visualizar la herramienta -->
+
+
+        </div><!-- Cierre del Contenedor contenido-->
+
+        </div> <!-- Cierre de lado derecho -->
+
+
+        </div> <!-- Cierre del contenedor -->
+
+
+        <script src="../js/showOrderAdmin.js"></script>
+
+</body>
+
+</html>

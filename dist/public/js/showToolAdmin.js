@@ -100,17 +100,21 @@ btnEdit.addEventListener("click", () => {
   window.location.href = "./editarHerramienta";
 });
 
-// CERRAS SESION
-const cerrarSesion = () => {
-  sessionStorage.setItem("token", "");
-  sessionStorage.setItem("urlBuho", "");
-  window.location.href = '/login';
-}    
+const editarPerfil = () => {
+  window.location.href = "/dash/editarPerfil";
+};
 
 // CONSUMO
 
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
+
+// CERRAS SESION
+const cerrarSesion = () => {
+  sessionStorage.setItem("token", "");
+  sessionStorage.setItem("urlApi", "");
+  window.location.href = '/login';
+}    
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";

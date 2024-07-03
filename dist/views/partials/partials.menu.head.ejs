@@ -12,7 +12,7 @@
     <!-- SELECION DEL NORMAL (PRINCIPAL) -->
     <div class="eleccion_usuario2">
         <!-- <i class='bx bx-edit'></i> -->
-        <button class="editar_perfil" id="editar_perfil">Editar Perfil</button>
+        <button class="editar_perfil" id="editar_perfil" onclick="editarPerfil();">Editar Perfil</button>
         <div class="linea2"></div>
         <!-- <i class='bx bx-exit'></i> -->
         <button class="cerrarsesion" id="cerrar_sesion" onclick="cerrarSesion();">Cerrar Sesion</button>
@@ -20,9 +20,9 @@
 
     <!-- SELECION DEL RESPONSIVE -->
     <div class="eleccion_usuario">
-        <button class="editar_perfil" id="editar_perfil">Editar Perfil</button>
+        <button class="editar_perfil" id="editar_perfil" onclick="editarPerfil();">Editar Perfil</button>
         <div class="linea2"></div>
-        <button class="cerrarsesion" id="cerrar_sesion">Cerrar Sesion</button>
+        <button class="cerrarsesion" id="cerrar_sesion" onclick="cerrarSesion();">Cerrar Sesion</button>
     </div>
 
 
@@ -57,9 +57,9 @@
                 </li>
 
                 <li>
-                    <a href="#"> <!--Link-->
+                    <a href="./pedidosAdmin"> <!--Link-->
                         <i class='bx bxs-folder-open '></i><!--icono-->
-                        <span>Reportes</span> <!--Nombre-->
+                        <span>Pedidos</span> <!--Nombre-->
                     </a>
                 </li>
 
@@ -71,7 +71,7 @@
                 </li>
 
                 <li>
-                    <a href="#"> <!--Link-->
+                    <a href="./verNotificacionesAdmin"> <!--Link-->
                         <i class="bx bx-bell "></i><!--icono-->
                         <span>Notificaciones</span> <!--Nombre-->
                     </a>
@@ -80,7 +80,7 @@
                 <div class="linea"></div>
 
                 <li>
-                    <a href="#"> <!--Link-->
+                    <a href="./ajustesAdmin"> <!--Link-->
                         <i class='bx bx-cog icon'></i><!--icono-->
                         <span>Ajustes</span> <!--Nombre-->
                     </a>

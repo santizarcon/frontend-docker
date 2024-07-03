@@ -4,9 +4,7 @@ const spans = document.querySelectorAll("span");
 const menu = document.querySelector(".menu");
 const contenedorContenido = document.querySelector(".contenedor_contenido");
 const barraUsuario = document.querySelector(".barra_usuario");
-const inventoryList = document.getElementById("inventory-list");
-
-
+const inventoryList = document.querySelector(".inventory-list");
 
 
 const fotoUsuario = document.querySelector(".foto_usuario");
@@ -18,7 +16,6 @@ const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
 // Funcion de navegacion de botones
 // const editarPerfil = document.querySelectorAll(".editar_perfil");
-// const cerrarSesion = document.getElementById("cerrar_sesion");
 
 
 
@@ -103,16 +100,6 @@ menu_icon.addEventListener("click", () => {
 });
 
 
-// NAVEGACION a otras paginas de html
-// editarPerfil.forEach(function (button) {
-//     button.addEventListener("click", function () {
-//         window.location.href = 'editarPerfilAdmin.html';
-//     });
-// });
-
-// cerrarSesion.addEventListener("click", () => {
-//     window.location.href = 'index.html';
-// })
 
 
 // btnAdd.addEventListener("click", () => {
@@ -129,18 +116,22 @@ btnAdd.addEventListener("click", () => {
     window.location.href = './agregarHerramienta';
 });
 
-// CERRAS SESION
-const cerrarSesion = () => {
-    sessionStorage.setItem("token", "");
-    sessionStorage.setItem("urlBuho", "");
-    window.location.href = '/login';
-}    
+const editarPerfil = () => {
+  window.location.href = "/dash/editarPerfil";
+};
 
 // CONSUMO
-
+const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
 const endpoint = "/api/tool/";
 const recurso = url + endpoint;
+
+// CERRAS SESION
+const cerrarSesion = () => {
+  sessionStorage.setItem("token", "");
+  sessionStorage.setItem("urlApi", "");
+  window.location.href = '/login';
+}    
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
@@ -182,16 +173,21 @@ fetch(recurso)
 
 const mostrar = (data) => {
   let body = "";
+
+  // const file = data[0].imagen;
+  // const blobUrl = URL.createObjectURL(file);
+  // console.log(blobUrl);
+
   for (let i = 0; i < data.length; i++) {
     body += `
      <li>
             <div class="card">
                 <div class="cont-img">
-                    <img src="../img/prensatelas_para_cremallera.webp" alt="">
+                    <img src="data:image/png;base64,${data[0].imagen}" alt="">
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">${data[i].nombre_herramienta}</h5>
-                    <p class="card-text">${data[i].descripcion}</p>
+                    <h5 class="card-title">${data[i].nombre_herramienta.substring(0, 30) + '...'}</h5>
+                    <p class="card-text">${data[i].descripcion.substring(0, 20) + '...'}</p>
                     <div class="cont-btn">
                         <button class="btn" onclick="viewDetails('${data[i].nombre_herramienta}', '${data[i].descripcion}', '${data[i].cantidad_disponible}', '${data[i].nombre_total}', '${data[i].referencia}');">Ver dettales</button>
                     </div>
@@ -199,6 +195,7 @@ const mostrar = (data) => {
             </div>
     </li>                  
     `;
+
   }
   document.getElementById("data").innerHTML = body;
 };

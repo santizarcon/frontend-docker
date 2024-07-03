@@ -1,10 +1,12 @@
 const container_loading = document.getElementById("container_loading");
 
-const url = "http://localhost:4000";
+// const url = "https://tool-inventory.cleverapps.io";
+
 
 const logueo = () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  const url = document.getElementById("url").value;
 
   if (!email || !password) {
     Swal.fire({
@@ -20,7 +22,7 @@ const logueo = () => {
   const urlApi = sessionStorage.getItem("urlApi") + "/api/login";
   const options = {
     method: "POST",
-    headers: {
+    headers:{
       "Content-Type": "application/json",
       
     },
@@ -48,6 +50,7 @@ const logueo = () => {
           window.location.href = "/dash/principalAdmin";
           container_loading.style.display = "none";
         }, 2000);
+        
       }
     })
     .catch((err) => {
