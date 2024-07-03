@@ -6,7 +6,11 @@ export const home = (req, res) =>{
 };
 
 export const register = (req, res) =>{
-    res.render("views.register.ejs");
+    const url = process.env.BACKEND_URL;
+    const options = {
+        url : url
+    }
+    res.render("views.register.ejs", options);
 };
 
 export const login = (req, res) =>{
