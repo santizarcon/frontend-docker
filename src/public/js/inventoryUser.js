@@ -4,6 +4,7 @@ const spans = document.querySelectorAll("span");
 const menu = document.querySelector(".menu");
 const contenedorContenido = document.querySelector(".contenedor_contenido");
 const barraUsuario = document.querySelector(".barra_usuario");
+const inventoryList = document.querySelector(".inventory-list");
 
 const fotoUsuario = document.querySelector(".foto_usuario");
 const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
@@ -12,8 +13,7 @@ const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
-// ESPECIAL DE ESTA HOJA
-
+//ESPECIAL DE ESTA HOJA
 
 
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
@@ -79,52 +79,89 @@ menu_icon.addEventListener("click", () => {
   // organizar el margin-left del CONTENIDO.
   contenedorContenido.classList.toggle("min-contenido");
 
+  // organizar lista cuando el menu esta cerrado
+  inventoryList.classList.toggle("min-lista");
+
   // Para todos los span encontrados le agregamos la CALSE .oculto
   spans.forEach((span) => {
     span.classList.toggle("oculto");
   });
 });
 
+// btnAdd.addEventListener("click", () => {
+//     window.location.href = 'agregarHerramienta.html';
+// })
 
+// PASAR DE HOJA A HOJA
+const editarPerfil = () => {
+  window.location.href = "/dash/editarPerfil";
+};
 
 // CONSUMO
-
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
 const endpoint = "/api/tool/";
 const recurso = url + endpoint;
 
-
 // CERRAS SESION
 const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
-  window.location.href = '/login';
-}    
+  window.location.href = "/login";
+};
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
 
 if (token == "" || token == null) {
-  window.location.href = "/login"
-};
+  window.location.href = "/login";
+}
 if (url == "" || url == null) {
-  window.location.href = "/login"
-};
+  window.location.href = "/login";
+}
+
 
 const options = {
   method: "POST",
   headers: {
-    'Content-Type': 'application/json',
-     'Authorization' : `Bearer ${token}`
-  }
-}
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+};
 fetch(urlComprobar, options)
-  .then(res => res.json())
-  .then(data => {
+  .then((res) => res.json())
+  .then((data) => {
     if (data.error == true) {
-      window.location.href = "/login"
+      window.location.href = "/login";
     }
   });
 
 
+
+// BARRA DE BUSQUEDA
+// const search = document.getElementById("search_invenatry");
+
+// search.addEventListener("keyup", (e) => {
+//   const query = e.target.value.toLowerCase();
+
+//   document.querySelectorAll("#data li").forEach((row) => {
+//     const nombreHerramienta = row
+//       .querySelector(".card-title")
+//       .textContent.toLowerCase();
+
+//     if (nombreHerramienta.includes(query)) {
+//       row.classList.remove("filtro");
+//     } else {
+//       row.classList.add("filtro");
+//     }
+//   });
+// });
+
+// const style = document.createElement("style");
+// style.innerHTML = `
+// .filtro {
+//     display: none;
+//     }
+// `;
+
+// document.head.appendChild(style);

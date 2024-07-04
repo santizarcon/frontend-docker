@@ -7,7 +7,7 @@
     <title>Tool Inventary</title>
     <link rel="icon" href="img/logo-sena.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../css/gestionAccountsAdmin.css">
+    <link rel="stylesheet" href="../css/fichasAdmin.css">
 </head>
 
 <body>
@@ -18,12 +18,8 @@
 
                 <div class="navbuttons"> <!-- Contenedor de los botones de acciones del inventario -->
                     <span class="icon-btn">
-                        <i class='bx bxs-add-to-queue'></i>
-                        <button class="btn-add-subadmin" >Añadir Nueva Cuenta SubAdmin</button>
-                    </span>
-                    <span class="icon-btn">
                         <i class='bx bx-group'></i>
-                        <button class="btn-change">Trasladar Responsabilidad</button>
+                        <button class="btn-change">Agregar Nueva Ficha</button>
                     </span>
                 </div> <!-- Cierre del contenedor de los botones del inevnatrio -->
 
@@ -33,14 +29,6 @@
                     <div class="search-together">
                         <input class="search_invenatry" type="search" placeholder="Search">
                         <!-- <button class="btn-search" type="submit">Buscar</button> -->
-                    </div>
-                    <div class="search-only">
-                        <select class="filtro" name="" id="">
-                            <option value="" selected>Filtro</option>
-                            <option value="">Todos</option>
-                            <option value="">Usuarios</option>
-                            <option value="">SubAdmin</option>
-                        </select>
                     </div>
 
                 </div><!-- Cierre del buscador y filtro -->
@@ -52,16 +40,16 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Rol</th>
-                                <th scope="col">Correo</th>
-                                <th scope="col">Nombres</th>
-                                <th scope="col">Apellidos</th>
-                                <th scope="col">Estado</th>
+                                <th scope="col">Numero Ficha</th>
+                                <th scope="col">Cantidad de Aprendices</th>
+                                <th scope="col">Nivel de Formacion</th>
+                                <th scope="col">Programa de Formacion</th>
+                                <th scope="col">Ambiente</th>
                                 <th scope="col">Accciones</th>
                             </tr>
                         </thead>
-                        <tbody id="data">
-                            <!-- <tr>
+                        <tbody>
+                            <tr>
                                 <th scope="row">1</th>
                                 <td>Mark</td>
                                 <td> xxxx </td>
@@ -70,9 +58,9 @@
                                 <td>Otto</td>
                                 <td scope="btn">
                                     <button class="act-icon green btn-edit"> Editar </button>
-                                    <button class="act-icon red btn-trash-open" > Modificar </button>
+                                    <button class="act-icon red btn-trash-open" > Eliminar </button>
                                 </td>
-                            </tr> -->
+                            </tr>
 
                         </tbody>
 
@@ -85,13 +73,14 @@
             </div><!-- Cierre del Contenedor contenido-->
 
 
+
         </div> <!-- Cierre de lado derecho -->
 
     </div> <!-- Cierre del contenedor -->
 
 
 
-    <script src="../js/gestionAccountsAdmin.js"></script>
+    <script src="../js/fichasAdmin.js"></script>
 
 </body>
 

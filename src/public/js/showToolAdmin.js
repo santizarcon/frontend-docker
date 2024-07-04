@@ -17,7 +17,7 @@ const fotoUsuario2 = document.querySelector(".foto_usuario2");
 // const cerrarSesion = document.getElementById("cerrar_sesion");
 
 // ESPECIAL DE ESTA HOJA
-const btnEdit = document.querySelector(".btn-edit");
+
 
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
@@ -96,9 +96,6 @@ menu_icon.addEventListener("click", () => {
 // });
 
 // PASAR DE HOJA A HOJA
-btnEdit.addEventListener("click", () => {
-  window.location.href = "./editarHerramienta";
-});
 
 const editarPerfil = () => {
   window.location.href = "/dash/editarPerfil";
@@ -145,4 +142,5 @@ fetch(urlComprobar, options)
 document.getElementById('titulo').innerText = localStorage.getItem('nombreHerramienta');
 document.getElementById('texto1').innerText = localStorage.getItem('descripcion');
 document.getElementById('texto2').innerText = localStorage.getItem('referencia');
-
+document.getElementById('texto3').innerText = localStorage.getItem('cantidadDisponible');
+document.getElementById('texto4').innerText = localStorage.getItem('cantidadTotal');

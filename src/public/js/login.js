@@ -42,14 +42,27 @@ const logueo = () => {
           timer: 1500,
         });
       } else {
-        sessionStorage.setItem("token", data.body);
+        sessionStorage.setItem("token", data.body.token);
+        // sessionStorage.setItem("idUser", data.body.info[0].id);
 
         container_loading.style.display = "block";
 
-        setTimeout(function () {
-          window.location.href = "/dash/principalAdmin";
-          container_loading.style.display = "none";
-        }, 2000);
+        // Cmprobar si es user o admin
+        if (data.body.info[0].rol) {
+
+          setTimeout(function () {
+            window.location.href = "/dash/principalAdmin";
+            container_loading.style.display = "none";
+          }, 2000);
+
+        } else {
+
+          setTimeout(function () {
+            window.location.href = "/dash/inventarioUser";
+            container_loading.style.display = "none";
+          }, 2000);
+
+        }
         
       }
     })

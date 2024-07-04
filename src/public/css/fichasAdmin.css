@@ -322,105 +322,237 @@
     overflow-y: auto;
 }
 
+
+/* CONTENEDOR DE LOS BOTONES */
+.navbuttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    background-color: rgb(247, 247, 247);
+    border-radius: 8px;
+    padding: 10px;
+
+    margin-bottom: 10px;
+}
+
+.icon-btn {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.btn-change {
+    width: 150px;
+    height: 50px;
+    border: none;
+    /* background-color: blue; */
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+}
+
+.btn-change{
+    background-color: rgb(0, 255, 123);
+}
+
+.btn-change:hover {
+    cursor: pointer;
+    background-color: rgb(126, 126, 126);
+}
+
+.bx-group,
+.bxs-add-to-queue {
+    font-size: 45px;
+    color: rgb(199, 199, 199);
+}
+
+/* Contenedor del bucador y filtro */
+.navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(247, 247, 247);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor del buscador y el boton de busqueda */
+.search-together {
+    width: 60%;
+    display: flex;
+    justify-content: start;
+}
+
+/* Contenedor de filtro de busqueda */
+.search-only {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+}
+
+/* Buscador */
+.search_invenatry {
+    width: 300px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 15px;
+}
+
+.search_invenatry:focus {
+    border: 1px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Boton de busqueda */
+.btn-search {
+    min-width: 80px;
+    height: 35px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    color: blue;
+    font-size: 17px;
+}
+
+.btn-search:hover {
+    background-color: blue;
+    border: none;
+    color: white;
+}
+
+/* Filtro de busqueda */
+.filtro {
+    width: 170px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    background-color: white;
+}
+
+.filtro:focus {
+    border: 1px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+    /* outline: 1px solid rgb(29, 219, 29);
+    box-shadow: 0 0 5px rgb(29, 219, 29); */
+}
+
+option {
+    padding: 5px;
+}
+
 /* TABLA */
 /* colapsa los bordes y aplica un fondo blanco con una sombra sutil para darle un 
 efecto de tarjeta. Además, se agregan bordes redondeados. */
 
 .container_tabla {
-    height: 95%;
-    /* max-height: 85%; */
+    /* height: 85%; */
+    max-height: 85%;
     background-color: rgb(247, 247, 247);
     border-radius: 4px;
     padding: 20px 10px;
     padding-top: 50px;
+    overflow-x: auto;
     overflow-y: auto;
 }
 
-/* Tabla de los REPORTES */
-.tabla {
+.table {
     width: 100%;
-    background-color: aqua;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Cada contenedor REPORTES */
-.caja_reporte {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 1fr;
-    border: 1px solid gainsboro;
-}
-
-/* Caja de la IZQUIERDA */
-.contenido_reporte {
-    display: block;
-    padding: 15px 15px;
-    background-color: #fff;
-    transition: background-color 0.3s ease;
-}
-
-/* Contenedor flexible, contiene el titulo y la fecha */
-.content-between {
-    display: flex;
-    justify-content: space-between;
-}
-
-.contexto_title {
-    font-size: 17px;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
 
 }
 
-.contexto {
-    margin-top: 10px;
+.table th,
+.table td {
+    /* Aplica padding, bordes y alinea el texto a la izquierda. */
+    padding: 8px 8px;
+    border: 1px solid #d8d8d8;
+    text-align: left;
 
 }
 
-/* Márgenes en la parte inferior titulo y contexto */
-.contexto,
-.contexto_title {
-    margin-bottom: 5px;
-    color: black;
-}
-
-/* Estilo para pequeños textos fecha */
-small {
-    font-size: 15px;
-    color: #6c757d;
-}
-
-/* Caja de la DERECHA */
-.acciones {
-    display: block;
-    padding: 15px 15px;
-    background-color: #fff;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    place-items: center;
+.table thead th {
+    /* Aplica un fondo azul y texto blanco a los encabezados. Además, centra el texto. */
+    /* background-color: #b4b4b4; */
+    background-color: rgb(204, 204, 204);
+    color: rgb(255, 255, 255);
+    text-align: left;
 
 }
 
-/* MENSAJE con color */
-.mensaje {
-    width: 90px;
-    height: 35px;
-    background-color: rgba(59, 255, 59, 0.548);
-    border: 2px solid rgb(59, 255, 59);
+.table tbody tr:nth-child(even) {
+    /* Alterna el fondo de las filas para mejorar la legibilidad */
+    background-color: rgb(247, 247, 247);
+}
+
+.table tbody tr:hover {
+    /* Cambia el fondo al pasar el ratón sobre una fila para mejorar la usabilidad. */
+    background-color: #e9ecef;
+}
+
+.table th[scope="row"] {
+    /* Aplica un fondo claro y centra el texto para las celdas de encabezado de fila. */
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.table td[scope="btn"] {
+    text-align: center;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ICONOS DE LA TABLA */
+/* Para las acciones aciones, los enlaces que actúan como botones */
+.act-icon {
+    display: inline-block;
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border: none;
+    padding: 10px;
+    margin: 2px;
+
+    text-align: center;
+    color: white;
 }
 
-.icono {
-    font-size: 25px;
+/* Colores de fondo para cada botón */
+/* background-color: rgb(45, 129, 255); */
+
+.act-icon.green {
+    background-color: rgb(1, 233, 13);
 }
 
-.icono:hover {
-    color: rgb(160, 160, 160);
-    cursor: pointer;
+.act-icon.red {
+    background-color: red;
 }
+
+.act-icon.blue:hover,
+.act-icon.green:hover,
+.act-icon.red:hover {
+    background-color: rgb(182, 182, 182);
+}
+
+.act-icon:focus {
+    border: 1px solid #7c7c7c;
+    box-shadow: 0 0 5px rgba(82, 95, 109, 0.5);
+} 
+
 
 /* RESPONSIVE */
 @media screen and (width<=800px) {
@@ -437,7 +569,7 @@ small {
     }
 
     /* Filtro de busqueda */
-    .filtros {
+    .filtro {
         width: 110px;
     }
 
@@ -517,7 +649,7 @@ small {
     }
 
     /* Filtro de busqueda */
-    .filtros {
+    .filtro {
         width: 130px;
     }
 

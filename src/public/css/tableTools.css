@@ -472,31 +472,6 @@ efecto de tarjeta. Además, se agregan bordes redondeados. */
 
 /* ICONOS DE LA TABLA */
 
-/* Para la imagen*/
-.see-img {
-    width: 25px;
-    height: 24px;
-    background-color: orchid;
-    border: none;
-    border-radius: 3px;
-    text-align: center;
-}
-
-.see-img:hover {
-    background-color: rgb(182, 182, 182);
-    cursor: pointer;
-}
-
-.see-img:focus{
-    border: 1px solid #7c7c7c;
-    box-shadow: 0 0 5px rgba(82, 95, 109, 0.5);
-}
-
-.see-img i {
-    font-size: 20px;
-    color: rgb(255, 255, 255);
-}
-
 /* Para las acciones aciones, los enlaces que actúan como botones */
 .act-icon {
     display: inline-block;
@@ -530,42 +505,6 @@ efecto de tarjeta. Además, se agregan bordes redondeados. */
     border: 1px solid #7c7c7c;
     box-shadow: 0 0 5px rgba(82, 95, 109, 0.5);
 } 
-
-
-
-/* VENTANA IMAGEN */
-.ventana_imagen_herramienta{
-    width: 390px;
-    height: 290px;
-    background-color: white;
-    border-radius: 5px;
-    border: 1px solid rgb(209, 209, 209);
-    flex-direction: column;
-
-    position: absolute;
-    top: 190px;
-    right: 350px;
-    display: none;
-}
-
-
-.ventana_imagen_herramienta .body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: none;
-}
-
-img{
-    width: 70%;
-    height: 80%;
-    border: 1px solid rgb(219, 219, 219);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-
-
-
 
 
 /* RESPONSIVE */

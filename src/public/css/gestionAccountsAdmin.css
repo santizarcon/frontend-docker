@@ -530,46 +530,16 @@ efecto de tarjeta. Además, se agregan bordes redondeados. */
 }
 
 /* ICONOS DE LA TABLA */
-
-/* Para la imagen*/
-.see-img {
-    width: 25px;
-    height: 24px;
-    background-color: orchid;
-    border: none;
-    border-radius: 3px;
-    text-align: center;
-}
-
-.see-img:hover {
-    background-color: rgb(182, 182, 182);
-    cursor: pointer;
-}
-
-.see-img:focus{
-    border: 1px solid #7c7c7c;
-    box-shadow: 0 0 5px rgba(82, 95, 109, 0.5);
-}
-
-.see-img i {
-    font-size: 20px;
-    color: rgb(255, 255, 255);
-}
-
 /* Para las acciones aciones, los enlaces que actúan como botones */
 .act-icon {
     display: inline-block;
     border-radius: 5px;
     border: none;
-    padding: 4px;
+    padding: 10px;
     margin: 2px;
 
     text-align: center;
     color: white;
-}
-
-.act-icon i {
-    font-size: 15px;
 }
 
 /* Colores de fondo para cada botón */
@@ -577,7 +547,6 @@ efecto de tarjeta. Además, se agregan bordes redondeados. */
 
 .act-icon.green {
     background-color: rgb(1, 233, 13);
-
 }
 
 .act-icon.red {
@@ -594,79 +563,6 @@ efecto de tarjeta. Además, se agregan bordes redondeados. */
     border: 1px solid #7c7c7c;
     box-shadow: 0 0 5px rgba(82, 95, 109, 0.5);
 } 
-
-
-/* VENTANA ELIMINAR */
-.ventana_eliminar_herramienta {
-    width: 370px;
-    height: 220px;
-    background-color: white;
-    border-radius: 5px;
-    border: 1px solid rgb(209, 209, 209);
-    flex-direction: column;
-
-    position: absolute;
-    top: 200px;
-    right: 350px;
-    display: none;
-}
-
-/* Encabezado, btn (x) */
-.header{
-    padding: 10px;
-    border-bottom: 1px solid #dee2e6;
-    display: flex;
-    justify-content: end;
-}
-
-.btn-close{
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 30px;
-}
-.btn-close:hover{
-    color: gray;
-}
-
-/* Cuerpo, texto */
-.body{
-    padding: 20px;
-    border-bottom: 1px solid #dee2e6;
-}
-.text_information {
-    font-size: 20px; 
-}
-
-/* Pie, botones, si y no */
-.footer{
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-
-.btn-confirm{
-    width: 50px;
-    height: 30px;
-    border: none;
-    background-color: blue;
-    border-radius: 5px;
-    padding: 5px;
-
-    color: rgb(255, 255, 255);
-    font-size: 17px;
-}
-.btn-confirm:hover {
-    cursor: pointer;
-    background-color: rgb(126, 126, 126);
-}
-
-.yes{
-    margin-right: 20px;
-}
-
 
 
 

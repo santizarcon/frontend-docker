@@ -12,18 +12,6 @@ const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
-// Funcion de navegacion de botones
-// const editarPerfil = document.getElementById("editar_perfil");
-// const cerrarSesion = document.getElementById("cerrar_sesion");
-
-// ESPECIAL DE ESTA HOJA
-
-// VENTANA IMAGEN
-const btnImg = document.querySelectorAll(".btn-img-open");
-const ventanaImagenHerramienta = document.querySelector(
-  ".ventana_imagen_herramienta"
-);
-const btnCerrarImg = document.getElementById("btn-close-img");
 
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
@@ -100,10 +88,10 @@ const pasar = (event) => {
   const fila = event.target.parentElement.parentElement;
   const idTool = fila.cells[0].innerText;
   const name_tool = fila.cells[1].innerText;
-  const descripcion_tool = fila.cells[3].innerText;
-  const amount_available = fila.cells[4].innerText;
-  const amount_total = fila.cells[5].innerText;
-  const reference = fila.cells[6].innerText;
+  const descripcion_tool = fila.cells[2].innerText;
+  const amount_available = fila.cells[3].innerText;
+  const amount_total = fila.cells[4].innerText;
+  const reference = fila.cells[5].innerText;
 
   localStorage.setItem("EditIdTool", idTool);
   localStorage.setItem("editNameTool", name_tool);
@@ -180,8 +168,7 @@ const mostrar = (data) => {
             <tr>
                 <th scope="row">${data[i].id}</th>
                     <td class="n">${data[i].nombre_herramienta}</td>
-                    <td scope="btn"> <button class="see-img btn-img-open"> <i class='bx bx-image'></i> </button> </td>
-                    <td class="d">${data[i].descripcion.substring(0, 40) + '...'}</td>
+                    <td class="d">${data[i].descripcion.substring(0, 35) + '...'}</td>
                     <td>${data[i].cantidad_disponible}</td>
                     <td>${data[i].cantidad_total}</td>
                     <td>${data[i].referencia}</td>
@@ -210,7 +197,9 @@ const eliminar = (event) => {
     confirmButtonText: "Si, eliminar!",
   }).then((result) => {
     if (result.isConfirmed) {
+
       eliminarApi(eliminar_id);
+      
       Swal.fire({
         title: "¡Borrado!",
         text: "Tu archivo ha sido eliminado.",
