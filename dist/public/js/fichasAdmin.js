@@ -6,7 +6,6 @@ const contenedorContenido = document.querySelector(".contenedor_contenido");
 const barraUsuario = document.querySelector(".barra_usuario");
 
 
-
 const fotoUsuario = document.querySelector(".foto_usuario");
 const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 
@@ -15,9 +14,7 @@ const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
 
-const btnAddNewAdmin = document.querySelector(".btn-add-subadmin");
 const btn_change = document.querySelector(".btn-change");
-
 
 
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
@@ -95,12 +92,8 @@ menu_icon.addEventListener("click", () => {
 
 
 // PASAR DE HOJA A HOJA
-btnAddNewAdmin.addEventListener("click", () => {
-    window.location.href = '/dash/crearSubAdmin';
-});
-
 btn_change.addEventListener("click", () =>{
-    window.location.href = '/dash/trasnferirResponsabilidad';
+    window.location.href = '/dash/addFichas';
 });
 
 const editarPerfil = () => {
@@ -109,8 +102,6 @@ const editarPerfil = () => {
 
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
-const endpoint = "/api/accounts";
-const recurso = url + endpoint;
 
 // CERRAS SESION
 const cerrarSesion = () => {
@@ -143,42 +134,4 @@ fetch(urlComprobar, options)
       window.location.href = "/login"
     }
   });
-
-
-// MOSTRAR llos todos los usuarios
-fetch(recurso)
-  .then((res) => res.json())
-  .then((data) => {
-    if (data.error) {
-      console.error("error al mostrar datos", data);
-    } else {
-      mostrar(data.body);
-    }
-  })
-  .catch((err) => console.log(err));
-
-const mostrar = (data) => {
-  let body = "";
-
-  for (let i = 0; i < data.length; i++) {
-    body += `
-
-     <tr>
-        <th scope="row">${data[i].id}</th>
-        <td>${data[i].rol}</td>
-        <td> xxxx </td>
-        <td>@mdo</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td scope="btn">
-            <button class="act-icon red btn-trash-open" onclick="eliminar(event);"> Eliminar </button>
-        </td>
-    </tr>
-                      
-    `;
-  }
-  document.getElementById("data").innerHTML = body;
-};
-
-
 

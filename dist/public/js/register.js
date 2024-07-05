@@ -26,6 +26,18 @@ const register = () =>{
         });
         return;
     }
+
+    // Validar que el correo contenga un @
+    if (!email.includes('@')) {
+        Swal.fire({
+            icon: "error",
+            title: "Su correo es incorrecto!",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        return;
+    } 
+
     // Validar si la contraseña es correcta en los dos campos
     if (password === confirmPassword) {
 

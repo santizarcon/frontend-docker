@@ -94,21 +94,6 @@ menu_icon.addEventListener("click", () => {
   });
 });
 
-
-
-
-// volverEditarHerrmienta.addEventListener("click", () => {
-//     window.location.href = 'editarHerramientasAdmin.html';
-// })
-
-// editarPerfil.forEach(function (button) {
-//     button.addEventListener("click", function () {
-//         window.location.href = 'editarPerfilAdmin.html';
-//     });
-// });
-
-
-
 // PASAR DE HOJA A HOJA 
 const salir = () => {
   window.location.href = "/dash/tablaHerramientas";
@@ -176,7 +161,7 @@ const modificar = () => {
   const amount_total = document.getElementById("amount_total").value;
   const reference = document.getElementById("reference").value;
   const imagen = document.getElementById("imagen").value;
-  const id_admin = 1;
+  const id_admin = sessionStorage.getItem("idUser");
 
   const options = {
     method: "PUT",
