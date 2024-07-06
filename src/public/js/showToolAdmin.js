@@ -88,13 +88,6 @@ menu_icon.addEventListener("click", () => {
   });
 });
 
-// NAVEGACION a otras paginas de html
-// editarPerfil.forEach(function (button) {
-//   button.addEventListener("click", function () {
-//     window.location.href = "editarPerfilAdmin.html";
-//   });
-// });
-
 // PASAR DE HOJA A HOJA
 
 const editarPerfil = () => {
@@ -110,6 +103,7 @@ const url = sessionStorage.getItem("urlApi");
 const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
+  sessionStorage.setItem("idUser", "");
   window.location.href = '/login';
 }    
 

@@ -91,6 +91,28 @@ menu_icon.addEventListener("click", () => {
 });
 
 
+
+// PASAR DE HOJA A HOJA con informacion
+const pasar = (event) => {
+  const fila = event.target.parentElement.parentElement;
+  const idFicha = fila.cells[0].innerText;
+  const number_ficha = fila.cells[1].innerText;
+  const account_aprendices = fila.cells[2].innerText;
+  const level_formacion = fila.cells[3].innerText;
+  const program_formacion = fila.cells[4].innerText;
+  const ambiente = fila.cells[5].innerText;
+
+  localStorage.setItem("EditIdFicha", idFicha);
+  localStorage.setItem("editNumeroFicha", number_ficha);
+  localStorage.setItem("editCantidad", account_aprendices);
+  localStorage.setItem("editNivel", level_formacion);
+  localStorage.setItem("editPrograma", program_formacion);
+  localStorage.setItem("editAmbiente", ambiente);
+
+  window.location.href = "/dash/editarFicha";
+};
+
+
 // PASAR DE HOJA A HOJA
 btn_change.addEventListener("click", () =>{
     window.location.href = '/dash/addFichas';
@@ -102,11 +124,14 @@ const editarPerfil = () => {
 
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
+const endpoint = "/api/ficha";
+const recurso = url + endpoint;
 
 // CERRAS SESION
 const cerrarSesion = () => {
     sessionStorage.setItem("token", "");
     sessionStorage.setItem("urlApi", "");
+    sessionStorage.setItem("idUser", "");
     window.location.href = '/login';
 };
 
@@ -135,3 +160,121 @@ fetch(urlComprobar, options)
     }
   });
 
+
+// MOSTRAR las fichas
+fetch(recurso)
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.error) {
+      console.error("error al mostrar datos", data);
+    } else {
+      mostrar(data.body);
+    }
+  })
+  .catch((err) => console.log(err));
+
+const mostrar = (data) => {
+  let body = "";
+
+  for (let i = 0; i < data.length; i++) {
+    body += `
+
+     <tr>
+            <th scope="row">${data[i].id}</th>
+            <td class="numberF">${data[i].numero_ficha}</td>
+            <td>${data[i].cantidad_aprendices}</td>
+            <td class="levelF">${data[i].nivel_formacion}</td>
+            <td class="programF">${data[i].programa_formacion}</td>
+            <td class="ambi">${data[i].ambiente}</td>
+            <td scope="btn">
+                <button class="act-icon green btn-edit" onclick="pasar(event);"> Editar </button>
+                <button class="act-icon red btn-trash-open" onclick="eliminar(event);"> Eliminar </button>
+            </td>
+    </tr> 
+                      
+    `;
+  }
+  document.getElementById("data").innerHTML = body;
+};
+
+
+// CONSEGUIR el id de la ficha, y mostrar el mensaje de aceptar o no
+const eliminar = (event) => {
+  const eliminar_ficha =event.target.parentElement.parentElement.children[1].innerText;
+
+  Swal.fire({
+    title: "Estas seguro?",
+    text: "¡No podrás revertirlo!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, eliminar!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+
+      eliminarApi(eliminar_ficha);
+      
+      Swal.fire({
+        title: "¡Borrado!",
+        text: "La ficha ha sido eliminada.",
+        icon: "success",
+      });
+    }
+  });
+};
+
+// ELIMINAR la ficha
+const eliminarApi = (number_ficha) => {
+
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      numero_ficha: number_ficha,
+    }),
+  };
+
+  fetch(recurso, options)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.error == false) {
+        Swal.fire(data.body);
+        window.location.href = "/dash/fichasAdmin";
+      }
+    })
+    .catch((err) => {
+      console.log("Tenemos un problema", err);
+    });
+};
+
+
+// BARRA DE BUSQUEDA
+const search = document.getElementById("search_invenatry");
+
+search.addEventListener("keyup", e => {
+    const query = e.target.value.toLowerCase();
+    
+    document.querySelectorAll('#data tr').forEach(row =>{
+        const numeroFicha = row.querySelector('.numberF').textContent.toLowerCase();
+        const nivelFormacion = row.querySelector('.levelF').textContent.toLowerCase();
+        const programaFormacion = row.querySelector('.programF').textContent.toLowerCase();
+        const ambiente = row.querySelector('.ambi').textContent.toLowerCase();
+        if(numeroFicha.includes(query) || nivelFormacion.includes(query) || programaFormacion.includes(query) || ambiente.includes(query)){
+            row.classList.remove('filtro');
+        } else {
+            row.classList.add('filtro');
+        }
+    });
+});
+
+const style = document.createElement('style')
+style.innerHTML = `
+.filtro {
+    display: none;
+    }
+`;
+
+document.head.appendChild(style);

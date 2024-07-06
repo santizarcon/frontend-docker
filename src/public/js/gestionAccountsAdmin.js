@@ -109,6 +109,7 @@ const editarPerfil = () => {
 
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
+const id_admin = sessionStorage.getItem("idUser");
 const endpoint = "/api/accounts";
 const recurso = url + endpoint;
 
@@ -116,6 +117,7 @@ const recurso = url + endpoint;
 const cerrarSesion = () => {
     sessionStorage.setItem("token", "");
     sessionStorage.setItem("urlApi", "");
+    sessionStorage.setItem("idUser", "");
     window.location.href = '/login';
 };
 
@@ -165,13 +167,13 @@ const mostrar = (data) => {
 
      <tr>
         <th scope="row">${data[i].id}</th>
-        <td>${data[i].rol}</td>
-        <td> xxxx </td>
-        <td>@mdo</td>
-        <td>Mark</td>
-        <td>Otto</td>
+        <td class="rol">${data[i].rol}</td>
+        <td class="email">${data[i].email}</td>
+        <td class="nombre"> ${data[i].nombre}</td>
+        <td class="apellido">${data[i].apellido}</td>
+        <td class="estado">${data[i].estado}</td>
         <td scope="btn">
-            <button class="act-icon red btn-trash-open" onclick="eliminar(event);"> Eliminar </button>
+            <button class="act-icon red btn-trash-open" onclick="eliminar(event);"> Inactivar </button>
         </td>
     </tr>
                       
@@ -182,3 +184,90 @@ const mostrar = (data) => {
 
 
 
+
+// CONSEGUIR el id del usuario o subadmin, y mostrar el mensaje de aceptar o no
+const eliminar = (event) => {
+    const eliminar_id =event.target.parentElement.parentElement.children[0].innerText;
+    console.log(eliminar_id);
+  
+    Swal.fire({
+      title: "Estas seguro de inactivar la cuenta?",
+      text: "¡No podrás revertirlo!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, Desactivar!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+  
+        eliminarApi(eliminar_id);
+        
+        Swal.fire({
+          title: "¡Exitoso!",
+          text: "Este usuario esta desactivado.",
+          icon: "success",
+        });
+      }
+    });
+  };
+  
+  // DESACTIVAR el usuario
+  const eliminarApi = (idusu) => {
+  
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id_user: idusu,
+        id_admin: id_admin,
+      }),
+    };
+  
+    fetch(recurso, options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error == false) {
+          Swal.fire(data.body);
+          window.location.href = "/dash/gestionCuentasAdmin";
+        }
+      })
+      .catch((err) => {
+        console.log("Tenemos un problema", err);
+      });
+  };
+
+
+
+// BARRA DE BUSQUEDA
+const search = document.getElementById("search_invenatry");
+
+search.addEventListener("keyup", e => {
+    const query = e.target.value.toLowerCase();
+    
+    document.querySelectorAll('#data tr').forEach(row =>{
+
+        const rol = row.querySelector('.rol').textContent.toLowerCase();
+        const email = row.querySelector('.email').textContent.toLowerCase();
+        const nombre = row.querySelector('.nombre').textContent.toLowerCase();
+        const apellido = row.querySelector('.apellido').textContent.toLowerCase();
+        const estado = row.querySelector('.estado').textContent.toLowerCase();
+
+        if(rol.includes(query) || email.includes(query) || nombre.includes(query) || apellido.includes(query) || estado.includes(query)){
+            row.classList.remove('filtro');
+        } else {
+            row.classList.add('filtro');
+        }
+    });
+});
+
+const style = document.createElement('style')
+style.innerHTML = `
+.filtro {
+    display: none;
+    }
+`;
+
+document.head.appendChild(style);

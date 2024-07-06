@@ -14,16 +14,6 @@ const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
-// Funcion de navegacion de botones
-// const editarPerfil = document.getElementById("editar_perfil");
-// const cerrarSesion = document.getElementById("cerrar_sesion");
-// const salirAgregarHerramienta = document.querySelector(".btn-cerrar-salir");
-
-// ESPECIAL DE ESTA HOJA
-
-
-
-
 
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
@@ -90,44 +80,54 @@ menu_icon.addEventListener("click", () => {
     // organizar el margin-left del CONTENIDO. 
     contenedorContenido.classList.toggle("min-contenido");
 
-
-
     // Para todos los span encontrados le agregamos la CALSE .oculto
     spans.forEach((span) => {
         span.classList.toggle("oculto");
     });
 });
 
-// PASAR DE HOJA A HOJA
+
+// DATOS TRAIDOS (fichaAmin.js)
+id_ficha = localStorage.getItem("EditIdFicha");
+document.getElementById("number_ficha").value = localStorage.getItem("editNumeroFicha");
+document.getElementById("account_aprendices").value = localStorage.getItem("editCantidad");
+document.getElementById("level_formacion").value = localStorage.getItem("editNivel");
+document.getElementById("program_formacion").value = localStorage.getItem("editPrograma");
+document.getElementById("ambiente").value = localStorage.getItem("editAmbiente");
+
+
+// PASAR DE UNA HOJA A OTRA
 const salir = () => {
-    window.location.href = "/dash/tablaHerramientas";
+    window.location.href = "/dash/fichasAdmin";
 };
- 
+
 const editarPerfil = () => {
     window.location.href = "/dash/editarPerfil";
 };
 
 // CONSUMO
+
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
-const endpoint = "/api/tool";
+const endpoint = "/api/ficha";
 const recurso = url + endpoint;
 
 // CERRAS SESION
 const cerrarSesion = () => {
-    sessionStorage.setItem("token", "");
-    sessionStorage.setItem("urlApi", "");
-    sessionStorage.setItem("idUser", "");
-    window.location.href = '/login';
+  sessionStorage.setItem("token", "");
+  sessionStorage.setItem("urlApi", "");
+  sessionStorage.setItem("idUser", "");
+  window.location.href = '/login';
 }
+
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
 
-if (token == "" || token == null) {
+if (token === "" || token === null) {
   window.location.href = "/login"
 };
-if (url == "" || url == null) {
+if (url === "" || url === null) {
   window.location.href = "/login"
 };
 
@@ -146,68 +146,62 @@ fetch(urlComprobar, options)
     }
   });
 
-// CREAR una nueva herramienta
-const crear = () =>{
-
-    const name_tool = document.getElementById("name_tool").value;
-    const description = document.getElementById("description").value;
-    const amount_total = document.getElementById("amount_total").value;
-    const reference = document.getElementById("reference").value;
-    const imagen = document.getElementById("imagen").value;
-    const idAdmin = 1;
 
 
-    // Verificar que lo campos no esten vacios
-    if (!name_tool || !description || !amount_total || !imagen || !reference) {
-        Swal.fire({
-            icon: "warning",
-            title: "Campos vacios!",
-            showConfirmButton: false,
-            timer: 1500
-        });
-        return;
-    }
-
-    const options ={
-        method:"POST",
-        headers:{
-            'Content-Type' : 'application/json',
-            'Authorization' : `Bearer ${token}`
-        },
-        body: JSON.stringify({
-            nombre_herramienta : name_tool,
-            imagen : imagen,
-            descripcion : description,
-            cantidad_total : amount_total,
-            referencia : reference,
-            id_admin : idAdmin,
-        })
+// MODIFICAR las fichas
+const modificar = () => {
+    const id = id_ficha;
+    const number_ficha = document.getElementById("number_ficha").value;
+    const account_aprendices = document.getElementById("account_aprendices").value;
+    const level_formacion = document.getElementById("level_formacion").value;
+    const program_formacion =  document.getElementById("program_formacion").value;
+    const ambiente = document.getElementById("ambiente").value;
+    const estado = "activo";
+  
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+        numero_ficha: number_ficha,
+        cantidad_aprendices: account_aprendices,
+        nivel_formacion: level_formacion,
+        programa_formacion: program_formacion,
+        ambiente: ambiente,
+        estado: estado,
+      }),
     };
+  
     fetch(recurso, options)
-    .then(res=>res.json())
-    .then(data=>{
-        if(data.error==false){
-            Swal.fire({
-                icon: "success",
-                title: "Se ha creado una nueva herramienta",
-                showConfirmButton: false,
-                timer: 1500
-            });
-      
-        }else{
-
-            Swal.fire({
-                icon: "error",
-                title: "No se pudo crear",
-                showConfirmButton: false,
-                timer: 1500
-            });
-
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error == false) {
+          Swal.fire({
+            icon: "success",
+            title: "¡Ha sido actualizado exitosamente!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "¡No se puedo actualizar!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
-        
-    })
-    .catch(err=>{
+      })
+      .catch((err) => {
         console.log("Tenemos un problema", err);
-    });
+      });
+  };
+  
+  
+  
 
-}
+
+
+
+

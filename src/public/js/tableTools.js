@@ -103,6 +103,7 @@ const pasar = (event) => {
   window.location.href = "/dash/editarHerramienta";
 };
 
+// PASAR DE HOJA A HOJA
 const editarPerfil = () => {
   window.location.href = "/dash/editarPerfil";
 };
@@ -119,6 +120,7 @@ const recurso = url + endpoint;
 const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
+  sessionStorage.setItem("idUser", "");
   window.location.href = '/login';
 }    
 
@@ -202,7 +204,7 @@ const eliminar = (event) => {
       
       Swal.fire({
         title: "¡Borrado!",
-        text: "Tu archivo ha sido eliminado.",
+        text: "La herramienta ha sido eliminada.",
         icon: "success",
       });
     }
@@ -210,7 +212,7 @@ const eliminar = (event) => {
 };
 
 // ELIMINAR la herramienta
-const eliminarApi = (idusu) => {
+const eliminarApi = (idtool) => {
 
   const options = {
     method: "DELETE",
@@ -218,7 +220,7 @@ const eliminarApi = (idusu) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      id: idusu,
+      id: idtool,
     }),
   };
 

@@ -27,7 +27,7 @@
                 <div class="navbar"> <!-- Contenedor del Buscador y filtro -->
 
                     <div class="search-together">
-                        <input class="search_invenatry" type="search" placeholder="Search">
+                        <input class="search_invenatry" id="search_invenatry" type="search" placeholder="Search">
                         <!-- <button class="btn-search" type="submit">Buscar</button> -->
                     </div>
 
@@ -48,8 +48,8 @@
                                 <th scope="col">Accciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id="data">
+                            <!-- <tr>
                                 <th scope="row">1</th>
                                 <td>Mark</td>
                                 <td> xxxx </td>
@@ -60,7 +60,7 @@
                                     <button class="act-icon green btn-edit"> Editar </button>
                                     <button class="act-icon red btn-trash-open" > Eliminar </button>
                                 </td>
-                            </tr>
+                            </tr> -->
 
                         </tbody>
 
@@ -79,7 +79,7 @@
     </div> <!-- Cierre del contenedor -->
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/fichasAdmin.js"></script>
 
 </body>

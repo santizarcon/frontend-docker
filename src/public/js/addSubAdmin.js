@@ -14,16 +14,6 @@ const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
-// Funcion de navegacion de botones
-// const editarPerfil = document.getElementById("editar_perfil");
-// const cerrarSesion = document.getElementById("cerrar_sesion");
-// const salirAgregarHerramienta = document.querySelector(".btn-cerrar-salir");
-
-// ESPECIAL DE ESTA HOJA
-
-
-
-
 
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
@@ -119,6 +109,7 @@ const recurso = url + endpoint;
 const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
+  sessionStorage.setItem("idUser", "");
   window.location.href = '/login';
 }
 
@@ -153,14 +144,14 @@ fetch(urlComprobar, options)
 const crear = () =>{
 
     const email = document.getElementById("email_aprendiz").value;
-    const password = document.getElementById("password").value;
-    const confirm_password = document.getElementById("confirm_password").value;
     const nombre = document.getElementById("names").value;
     const apellido = document.getElementById("last_names").value;
+    const password = document.getElementById("password").value;
+    const confirm_password = document.getElementById("confirm_password").value;
 
 
     // Verificar que lo campos no esten vacios
-    if (!email || !password || !confirm_password || !nombre || !apellido) {
+    if (!email || !nombre || !apellido ||  !password || !confirm_password) {
         Swal.fire({
             icon: "warning",
             title: "Campos vacios!",
@@ -206,7 +197,7 @@ const crear = () =>{
 
             Swal.fire({
                 icon: "error",
-                title: "No se pudo crear",
+                title: "No se pudo crear la nueva cuenta.",
                 showConfirmButton: false,
                 timer: 1500
             });

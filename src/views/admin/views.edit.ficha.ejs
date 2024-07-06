@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Inventary</title>
+    <link rel="icon" href="img/logo-sena.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/editFicha.css">
+</head>
+
+<body>
+
+
+    <%- include('../partials/partials.menu.head.ejs') %>
+
+        <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
+
+            <div class="contenedor_editar_herramienta">
+                <div class="linea-color"></div>
+
+                <div class="header">
+                    <div class="encabezado">
+                        Editar Ficha:
+                    </div>
+                    <div class="btn-cerrar">
+                        <button class="btn-cerrar-salir" onclick="salir();">
+                            <i class='bx bx-exit' title="Salir Editar Perfil"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="body">
+
+                    <span>Numero de la Ficha:</span>
+                    <input type="number" placeholder="Numero de la ficha" id="number_ficha">
+
+                    <span>Cantidad de Aprendices:</span>
+                    <input type="number" placeholder="Cantidad de aprendices" id="account_aprendices">
+
+                    <span>Nivel de Formacion:</span>
+                    <select name="" id="level_formacion" class="level_of_education">
+                        <option value="tecnico" id="level_formacion">Tecnico</option>
+                        <option value="tecnologia" id="level_formacion">Tecnologia</option>
+                    </select>
+
+                    <span>Programa de Formacion:</span>
+                    <input type="text" placeholder="Nivel de formacion" id="program_formacion">
+
+                    <span>Ambiente:</span>
+                    <input type="text" placeholder="Ambiente" id="ambiente">
+
+
+                </div>
+
+                <div class="footer">
+                    <button class="btn_actalizar_perfil" onclick="modificar();">Actualizar Ficha</button>
+                </div>
+
+            </div>
+
+
+        </div><!-- Cierre del Contenedor contenido-->
+
+        </div> <!-- Cierre de lado derecho -->
+
+
+        </div> <!-- Cierre del contenedor -->
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../js/editFicha.js"></script>
+
+</body>
+
+</html>
