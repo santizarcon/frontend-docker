@@ -118,6 +118,10 @@ eliminar_carrito.addEventListener("click", () => {
 //   window.location.href = "/dash/editarPerfil";
 // };
 
+const reporte = () =>{
+  window.location.href = "/dash/informeSolicitudUser"; 
+}
+
 // CONSUMO
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
