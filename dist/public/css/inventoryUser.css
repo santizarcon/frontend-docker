@@ -310,131 +310,271 @@
   width: 100%;
   height: 100%;
   padding: 20px;
-  padding-top: 80px;
+  padding-top: 70px;
   overflow-y: auto;
 }
 
-/* Contenedor de la visualizacion de la herramienta */
-.contenedor_herramienta {
+/* CONTENEDOR DE LOS BOTONES */
+.navbuttons {
   width: 100%;
-  height: 100%;
-  background-color: rgb(236, 236, 236);
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  background-color: rgb(247, 247, 247);
+  border-radius: 8px;
+  padding: 10px;
+
+  margin-bottom: 10px;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.btn-edit,
+.btn-add {
+  width: 150px;
+  height: 50px;
+  border: none;
+  /* background-color: blue; */
   border-radius: 5px;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
+  padding: 5px;
+  margin: 5px;
+
+  color: rgb(255, 255, 255);
+  font-size: 17px;
 }
 
-/* Contenedor IZQUIERDA icon, imagen y  nombre */
-.contendor_imagen_herramienta {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 10% 12% 40% 15% 23%;
+.btn-edit {
+  background-color: rgb(68, 247, 52);
 }
 
-/* Btn para cerrar */
-.btn-close {
-  padding: 8px;
-  padding-top: 10px;
-  border-radius: 4px;
-
-  text-align: center;
+.btn-edit:hover {
+  cursor: pointer;
+  background-color: rgb(126, 126, 126);
 }
 
-.btn-close:hover {
-  background-color: rgb(255, 255, 255);
+.btn-add {
+  background-color: orange;
 }
 
-.btn-close i {
-  font-size: 20px;
-  color: black;
+.btn-add:hover {
+  cursor: pointer;
+  background-color: rgb(126, 126, 126);
 }
 
-.encabezados_min{
+.bxs-edit,
+.bxs-add-to-queue {
+  font-size: 45px;
+  color: rgb(199, 199, 199);
+}
+
+/* CONTENEDOR DEL BUSCADOR */
+.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(247, 247, 247);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* Contenedor del buscador y el boton de busqueda */
+.search-together {
+  width: 60%;
   display: flex;
   justify-content: start;
-  padding: 20px;
-  color: blue;
 }
 
-/* Contenedor imagen de la herramienta */
-.imagen {
-  width: 100%;
-  height: 100%;
+/* Contenedor de filtro de busqueda */
+.search-only {
+  width: 50%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: end;
+}
+
+/* Buscador */
+.search_invenatry {
+  width: 300px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 15px;
+}
+
+.search_invenatry:focus {
+  border: 1px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+/* Boton de busqueda */
+.btn-search {
+  min-width: 80px;
+  height: 35px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  color: blue;
+  font-size: 17px;
+}
+
+.btn-search:hover {
+  background-color: blue;
+  border: none;
+  color: white;
+}
+
+/* Filtro de busqueda */
+.filtroBuscar {
+  width: 170px;
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  background-color: white;
+}
+
+.filtroBuscar:focus {
+  border: 1px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+  /* outline: 1px solid rgb(29, 219, 29);
+    box-shadow: 0 0 5px rgb(29, 219, 29); */
+}
+
+option {
+  padding: 5px;
+}
+
+/* CONTENEDOR DEL INVENTARIO LAS HERRAMIENTAS */
+.inventory-container {
+  width: 100%;
+  height: 68%;
+  background-color: rgb(247, 247, 247);
+  padding: 15px;
+  overflow-y: auto;
+}
+
+/* la lista de las herramientas */
+.inventory-list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: start;
+
+  transition: all 1s ease;
+}
+
+.min-lista {
+  gap: 25px;
+}
+
+/* Cada herramienta */
+.card {
+  width: 200px;
+  height: 330px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 10px;
+}
+
+/* Contenedor de la imagen de la herramienta */
+.cont-img {
+  width: 100%;
+  height: 170px;
+  border-bottom: 1px solid rgb(216, 216, 216);
 }
 
 img {
-  width: 60%;
-  height: 90%;
-  border: 1px solid rgb(219, 219, 219);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
 }
 
-/* Nombre principal de la herramienta */
-.titulo {
+/* Contenedor del texto y boton */
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.cont-btn {
+  width: 100%;
   display: flex;
-  justify-content: start;
-  font-size: 30px;
-  padding: 20px;
-  padding-right: 76px;
+  justify-content: center;
 }
 
-/* Contenedor DERECHA descripcion, referencia y  btn-editar */
-.contenedor_texto {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 10% 20% 10% 10% 10% 10% 10% 10%;
+.btn {
+  padding: 8px 15px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 5px;
+  border: none;
 }
 
-/* Texto de la herramienta */
-.texto {
-  padding: 10px 20px;
-  font-size: 20px;
+.btn:hover {
+  background-color: #88c1ff;
+  cursor: pointer;
 }
-
 
 /* RESPONSIVE */
-@media screen and (width<=1000px) {
-  /* Contenedor DERECHA descripcion, referencia y  btn-editar */
-  .contenedor_texto {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 60% 20% 20%;
-  }
-
-  .titulo {
-    font-size: 25px;
-  }
-
-  img {
-    width: 90%;
-    height: 80%;
-  }
-}
-
 @media screen and (width<=800px) {
-  /* Contenedor de la visualizacion de la herramienta */
-  .contenedor_herramienta {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    overflow-y: auto;
+  .bxs-edit,
+  .bxs-add-to-queue {
+    display: none;
   }
 
-  /* Contenedor ARRIBA icon, imagen y  nombre */
+  /* CONTENEDOR DEL BUSCADOR */
 
-  /* Nombre principal de la herramienta */
-  .titulo {
-    padding-right: 35px;
+  /* Buscador */
+  .search_invenatry {
+    width: 150px;
+    margin-right: 10px;
   }
 
-  img {
-    width: 70%;
-    height: 80%;
+  /* Boton de busqueda */
+  .btn-search {
+    min-width: 70px;
+  }
+
+  /* Filtro de busqueda */
+  .filtroBuscar {
+    width: 110px;
+  }
+
+  /* CONTENEDOR DEL INVENTARIO LAS HERRAMIENTAS */
+  .inventory-container {
+    padding: 10px;
+  }
+
+  /* la lista de las herramientas */
+  .inventory-list {
+    gap: 10px;
+  }
+
+  /* Cada herramienta */
+  .card {
+    width: 190px;
+    height: 330px;
+    margin: 5px;
   }
 }
 
@@ -496,30 +636,43 @@ img {
   .contenido {
     padding: 20px;
     padding-top: 20px;
-    padding-right: 50px;
+    padding-right: 40px;
   }
 
-  /* Contenedor de la visualizacion de la herramienta */
-  .contenedor_herramienta {
-    padding: 15px;
+  /* CONTENEDOR DEL BUSCADOR */
+
+  /* Buscador */
+  .search_invenatry {
+    width: 180px;
+    margin-right: 10px;
   }
 
-  /* Contenedor ARRIBA icon, imagen y  nombre */
-
-  /* Nombre principal de la herramienta */
-  .titulo {
-    padding: 15px;
-    padding-right: 50px;
+  /* Boton de busqueda */
+  .btn-search {
+    min-width: 70px;
   }
 
-  /* Contenedor ABAJO descripcion, referencia y  btn-editar */
-
-  /* Texto de la herramienta */
-  .texto1,
-  .texto2 {
-    padding: 15px;
+  /* Filtro de busqueda */
+  .filtroBuscar {
+    width: 130px;
   }
 
+  /* CONTENEDOR DEL INVENTARIO LAS HERRAMIENTAS */
+  .inventory-container {
+    padding: 10px;
+  }
+
+  /* la lista de las herramientas */
+  .inventory-list {
+    gap: 5px;
+  }
+
+  /* Cada herramienta */
+  .card {
+    width: 180px;
+    height: 340px;
+    margin: 5px;
+  }
 }
 
 @media screen and (height<=590px) {

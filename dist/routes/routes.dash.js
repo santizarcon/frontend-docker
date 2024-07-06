@@ -1,19 +1,22 @@
 import { Router } from "express";
 import {
+  addFichas,
   agregarHerramienta,
   ajustesAdmin,
   crearSubAdmin,
+  editarFicha,
   editarHerramienta,
   editarPerfil,
+  fichasAdmin,
   gestionarCuentasAdmin,
   inventarioAdmin,
+  inventarioUser,
   pedidosAdmin,
   principalAdmin,
   tablaHerramientas,
   trasnferirResponsabilidad,
   verFormularios,
   verHerramienta,
-  verNotificacionesAdmin,
   verReporte,
 } from "../controllers/controllers.dash.js";
 
@@ -39,12 +42,15 @@ rutaDash.get("/verReporte", verReporte);
 
 rutaDash.get("/verFormularios", verFormularios);
 
-rutaDash.get("/verNotificacionesAdmin", verNotificacionesAdmin);
+rutaDash.get("/fichasAdmin", fichasAdmin);
+rutaDash.get("/addFichas", addFichas);
+rutaDash.get("/editarFicha", editarFicha);
 
 rutaDash.get("/editarPerfil", editarPerfil);
 rutaDash.get("/ajustesAdmin", ajustesAdmin);
 
 // RUTAS USER
+rutaDash.get("/inventarioUser", inventarioUser);
 
 
 export default rutaDash;

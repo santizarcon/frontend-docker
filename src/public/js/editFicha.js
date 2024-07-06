@@ -15,11 +15,6 @@ const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
 
-const btnAddNewAdmin = document.querySelector(".btn-add-subadmin");
-const btn_change = document.querySelector(".btn-change");
-
-
-
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
     eleccionUsuario.classList.toggle("aparece");
@@ -85,8 +80,6 @@ menu_icon.addEventListener("click", () => {
     // organizar el margin-left del CONTENIDO. 
     contenedorContenido.classList.toggle("min-contenido");
 
-
-
     // Para todos los span encontrados le agregamos la CALSE .oculto
     spans.forEach((span) => {
         span.classList.toggle("oculto");
@@ -94,38 +87,47 @@ menu_icon.addEventListener("click", () => {
 });
 
 
-// PASAR DE HOJA A HOJA
-btnAddNewAdmin.addEventListener("click", () => {
-    window.location.href = '/dash/crearSubAdmin';
-});
+// DATOS TRAIDOS (fichaAmin.js)
+id_ficha = localStorage.getItem("EditIdFicha");
+document.getElementById("number_ficha").value = localStorage.getItem("editNumeroFicha");
+document.getElementById("account_aprendices").value = localStorage.getItem("editCantidad");
+document.getElementById("level_formacion").value = localStorage.getItem("editNivel");
+document.getElementById("program_formacion").value = localStorage.getItem("editPrograma");
+document.getElementById("ambiente").value = localStorage.getItem("editAmbiente");
 
-btn_change.addEventListener("click", () =>{
-    window.location.href = '/dash/trasnferirResponsabilidad';
-});
+
+// PASAR DE UNA HOJA A OTRA
+const salir = () => {
+    window.location.href = "/dash/fichasAdmin";
+};
 
 const editarPerfil = () => {
     window.location.href = "/dash/editarPerfil";
 };
 
+// CONSUMO
+
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
-const endpoint = "/api/accounts";
+const endpoint = "/api/ficha";
 const recurso = url + endpoint;
 
 // CERRAS SESION
 const cerrarSesion = () => {
-    sessionStorage.setItem("token", "");
-    sessionStorage.setItem("urlApi", "");
-    window.location.href = '/login';
-};
+  sessionStorage.setItem("token", "");
+  sessionStorage.setItem("urlApi", "");
+  sessionStorage.setItem("idUser", "");
+  window.location.href = '/login';
+}
+
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
 
-if (token == "" || token == null) {
+if (token === "" || token === null) {
   window.location.href = "/login"
 };
-if (url == "" || url == null) {
+if (url === "" || url === null) {
   window.location.href = "/login"
 };
 
@@ -145,40 +147,61 @@ fetch(urlComprobar, options)
   });
 
 
-// MOSTRAR llos todos los usuarios
-fetch(recurso)
-  .then((res) => res.json())
-  .then((data) => {
-    if (data.error) {
-      console.error("error al mostrar datos", data);
-    } else {
-      mostrar(data.body);
-    }
-  })
-  .catch((err) => console.log(err));
 
-const mostrar = (data) => {
-  let body = "";
+// MODIFICAR las fichas
+const modificar = () => {
+    const id = id_ficha;
+    const number_ficha = document.getElementById("number_ficha").value;
+    const account_aprendices = document.getElementById("account_aprendices").value;
+    const level_formacion = document.getElementById("level_formacion").value;
+    const program_formacion =  document.getElementById("program_formacion").value;
+    const ambiente = document.getElementById("ambiente").value;
+    const estado = "activo";
+  
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+        numero_ficha: number_ficha,
+        cantidad_aprendices: account_aprendices,
+        nivel_formacion: level_formacion,
+        programa_formacion: program_formacion,
+        ambiente: ambiente,
+        estado: estado,
+      }),
+    };
+  
+    fetch(recurso, options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error == false) {
+          Swal.fire({
+            icon: "success",
+            title: "¡Ha sido actualizado exitosamente!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "¡No se puedo actualizar!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log("Tenemos un problema", err);
+      });
+  };
+  
+  
+  
 
-  for (let i = 0; i < data.length; i++) {
-    body += `
 
-     <tr>
-        <th scope="row">${data[i].id}</th>
-        <td>${data[i].rol}</td>
-        <td> xxxx </td>
-        <td>@mdo</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td scope="btn">
-            <button class="act-icon red btn-trash-open" onclick="eliminar(event);"> Eliminar </button>
-        </td>
-    </tr>
-                      
-    `;
-  }
-  document.getElementById("data").innerHTML = body;
-};
 
 
 

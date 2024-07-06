@@ -106,6 +106,7 @@ const recurso = url + endpoint;
 const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
+  sessionStorage.setItem("idUser", "");
   window.location.href = '/login';
 }    
 

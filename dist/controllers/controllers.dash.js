@@ -1,3 +1,5 @@
+// ADMIN
+
 export const principalAdmin = (req, res) => {
   res.render("admin/views.dash.admin.ejs");
 };
@@ -46,15 +48,29 @@ export const verFormularios = (req, res) => {
   res.render("admin/views.form.admin.ejs");
 };
 
-export const verNotificacionesAdmin = (req, res) => {
-  res.render("admin/views.notifications.admin.ejs");
+export const fichasAdmin = (req, res) => {
+  res.render("admin/views.fichas.admin.ejs");
+};
+
+export const addFichas = (req, res) => {
+  res.render("admin/views.add.ficha.ejs");
 };
 
 export const editarPerfil = (req, res) => {
   res.render("admin/views.edit.perfil.ejs");
 };
 
+export const editarFicha = (req, res) => {
+  res.render("admin/views.edit.ficha.ejs");
+};
+
 export const ajustesAdmin = (req, res) => {
   res.render("admin/views.setting.admin.ejs");
+};
+
+
+// USER
+export const inventarioUser = (req, res) => {
+  res.render("user/views.inventory.user.ejs");
 };
 

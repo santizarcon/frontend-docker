@@ -7,22 +7,23 @@
     <title>Tool Inventary</title>
     <link rel="icon" href="img/logo-sena.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../css/editPerfil.css">
+    <link rel="stylesheet" href="../css/addFicha.css">
 </head>
 
 <body>
-
 
     <%- include('../partials/partials.menu.head.ejs') %>
 
         <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
 
-            <div class="contenedor_editar_herramienta">
+
+            <div class="contenedor_agregar_Herramienta">
+
                 <div class="linea-color"></div>
 
                 <div class="header">
                     <div class="encabezado">
-                        Editar Perfil:
+                        Agregar Nueva Ficha:
                     </div>
                     <div class="btn-cerrar">
                         <button class="btn-cerrar-salir" onclick="salir();">
@@ -32,26 +33,26 @@
                 </div>
 
                 <div class="body">
+                    <span>Numero de ficha:</span>
+                    <input type="number" id="number_ficha" placeholder="Numero de ficha">
 
-                    <span>Correo electronico:</span>
-                    <input type="text" placeholder="Correo" id="email" readonly>
+                    <span>Cantidad de Aprendices:</span>
+                    <input type="number"  id="amount_of_aprendices" placeholder="Cantidad de aprendices">
 
-                    <span>Nombres:</span>
-                    <input type="text" placeholder="Nombres" id="names">
+                    <span>Nivel de Formacion:</span>
+                    <input type="text"  id="level_of_education" placeholder="Nivel de formacion">
 
-                    <span>Apellidos:</span>
-                    <input type="text" placeholder="Apellidos" id="last_names">
+                    <span>Programa de Formacion:</span>
+                    <input type="text" id="Training_program" placeholder="Programa de formacion">
 
-                    <span>Contraseña:</span>
-                    <input type="password" id="password">
-
-                    <span>Confirmar la contraseña:</span>
-                    <input type="password" id="confirm_password">
+                    <span>Ambiente:</span>
+                    <input type="text"  id="atmos" placeholder="Ambiente">
+                    
 
                 </div>
 
                 <div class="footer">
-                    <button class="btn_actalizar_perfil" onclick="modificar();">Actualizar Pefil</button>
+                    <button class="btn-update" onclick="crear();">Crear la nueva ficha</button>
                 </div>
 
             </div>
@@ -61,13 +62,11 @@
 
         </div> <!-- Cierre de lado derecho -->
 
-
         </div> <!-- Cierre del contenedor -->
 
 
-
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="../js/editPerfil.js"></script>
+        <script src="../js/addFicha.js"></script>
 
 </body>
 

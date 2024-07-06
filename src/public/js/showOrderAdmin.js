@@ -105,6 +105,7 @@ const url = sessionStorage.getItem("urlApi");
 const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
+  sessionStorage.setItem("idUser", "");
   window.location.href = '/login';
 }    
 

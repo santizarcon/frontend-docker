@@ -98,19 +98,6 @@ menu_icon.addEventListener("click", () => {
     });
 });
 
-
-// salirAgregarHerramienta.addEventListener("click", () => {
-//     window.location.href = 'editarHerramientasAdmin.html';
-// });
-
-// editarPerfil.forEach(function (button) {
-//     button.addEventListener("click", function () {
-//         window.location.href = 'editarPerfilAdmin.html';
-//     });
-// });
-
-
-
 // PASAR DE HOJA A HOJA
 const salir = () => {
     window.location.href = "/dash/tablaHerramientas";
@@ -130,6 +117,7 @@ const recurso = url + endpoint;
 const cerrarSesion = () => {
     sessionStorage.setItem("token", "");
     sessionStorage.setItem("urlApi", "");
+    sessionStorage.setItem("idUser", "");
     window.location.href = '/login';
 }
 

@@ -100,13 +100,15 @@ const editarPerfil = () => {
 
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
-const endpoint = "/api/tool";
+const idUser = sessionStorage.getItem("idUser");
+const endpoint = "/api/admin";
 const recurso = url + endpoint;
 
 // CERRAS SESION
 const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
+  sessionStorage.setItem("idUser", "");
   window.location.href = '/login';
 }
 
@@ -134,5 +136,33 @@ fetch(urlComprobar, options)
       window.location.href = "/login"
     }
   });
+
+// MOSTRAR las los datos del usuario
+
+
+const optionss = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    id: idUser,
+  }),
+};
+fetch(recurso, optionss)
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    // if (data.error) {
+    //   console.error("error al mostrar datos", data);
+    // } else {
+      
+    // }
+  })
+  .catch((err) => console.log(err));
+
+
+
+
 
 
