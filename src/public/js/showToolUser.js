@@ -12,91 +12,91 @@ const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
-
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
-    eleccionUsuario.classList.toggle("aparece");
+  eleccionUsuario.classList.toggle("aparece");
 });
 
 // Ocultar el menú si se hace clic fuera de él RESPONSIVE
 document.addEventListener("click", (event) => {
-    const isClickInside =
-        eleccionUsuario.contains(event.target) ||
-        fotoUsuario2.contains(event.target);
-    // Comprueba si el elemento en el que se hizo clic (event.target) está contenido dentro del div (eleccion_usuario2 o fotoUsuario)
-    // ||, si el clic ocurrió dentro de cualquiera de estos elementos, isClickInside será TRUE.
-    //  contains, se usa para determinar si el elemento en el que se hizo clic (event.target) es un descendiente del div con la clase.
+  const isClickInside =
+    eleccionUsuario.contains(event.target) ||
+    fotoUsuario2.contains(event.target);
+  // Comprueba si el elemento en el que se hizo clic (event.target) está contenido dentro del div (eleccion_usuario2 o fotoUsuario)
+  // ||, si el clic ocurrió dentro de cualquiera de estos elementos, isClickInside será TRUE.
+  //  contains, se usa para determinar si el elemento en el que se hizo clic (event.target) es un descendiente del div con la clase.
 
-    if (!isClickInside) {
-        // si es diferente a TRUE, significa que el clic no ocurrio dentro del div
-        eleccionUsuario.classList.remove("aparece");
-    }
+  if (!isClickInside) {
+    // si es diferente a TRUE, significa que el clic no ocurrio dentro del div
+    eleccionUsuario.classList.remove("aparece");
+  }
 });
 
 // NORMAL ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario.addEventListener("click", () => {
-    eleccionUsuario2.classList.toggle("apareceInicial");
+  eleccionUsuario2.classList.toggle("apareceInicial");
 });
 
 // Ocultar el menú si se hace clic fuera de él NORMAL
 document.addEventListener("click", (event) => {
-    const isClickInside =
-        eleccionUsuario2.contains(event.target) ||
-        fotoUsuario.contains(event.target);
+  const isClickInside =
+    eleccionUsuario2.contains(event.target) ||
+    fotoUsuario.contains(event.target);
 
-    if (!isClickInside) {
-        eleccionUsuario2.classList.remove("apareceInicial");
-    }
+  if (!isClickInside) {
+    eleccionUsuario2.classList.remove("apareceInicial");
+  }
 });
 
 // MENU RESPONSIVE
 menu.addEventListener("click", () => {
-    // Esta el el RESPOSIVE, vuelva a la posicion
-    barraLateral.classList.toggle("max-barra-lateral");
+  // Esta el el RESPOSIVE, vuelva a la posicion
+  barraLateral.classList.toggle("max-barra-lateral");
 
-    // classList.contains() es una función de JavaScript que se
-    // utiliza para verificar si un elemento HTML tiene una clase específica
-    if (barraLateral.classList.contains("max-barra-lateral")) {
-        menu.children[0].style.display = "none"; // icon menu
-        menu.children[1].style.display = "block"; //icon circulo
-    } else {
-        menu.children[0].style.display = "block"; // icon menu
-        menu.children[1].style.display = "none"; // icon circulo
-    }
+  // classList.contains() es una función de JavaScript que se
+  // utiliza para verificar si un elemento HTML tiene una clase específica
+  if (barraLateral.classList.contains("max-barra-lateral")) {
+    menu.children[0].style.display = "none"; // icon menu
+    menu.children[1].style.display = "block"; //icon circulo
+  } else {
+    menu.children[0].style.display = "block"; // icon menu
+    menu.children[1].style.display = "none"; // icon circulo
+  }
 });
 
 // MENU DESPEGABLE NORMAL VISTA
 menu_icon.addEventListener("click", () => {
-    // Barra de Arriba
-    barraUsuario.classList.toggle("min-barra");
+  // Barra de Arriba
+  barraUsuario.classList.toggle("min-barra");
 
-    // Barra Lateral
-    barraLateral.classList.toggle("mini-barra-lateral");
+  // Barra Lateral
+  barraLateral.classList.toggle("mini-barra-lateral");
 
-    // organizar el margin-left del CONTENIDO.
-    contenedorContenido.classList.toggle("min-contenido");
+  // organizar el margin-left del CONTENIDO.
+  contenedorContenido.classList.toggle("min-contenido");
 
-    // Para todos los span encontrados le agregamos la CALSE .oculto
-    spans.forEach((span) => {
-        span.classList.toggle("oculto");
-    });
+  // Para todos los span encontrados le agregamos la CALSE .oculto
+  spans.forEach((span) => {
+    span.classList.toggle("oculto");
+  });
 });
 
 // FUNCION DE BOTON SE + Y -
-const decrementButton = document.getElementById('decrement');
-const incrementButton = document.getElementById('increment');
-const numberInput = document.getElementById('number');
+const decrementButton = document.getElementById("decrement");
+const incrementButton = document.getElementById("increment");
+const numberInput = document.getElementById("number");
 
-decrementButton.addEventListener('click', () => {
-    let currentValue = parseInt(numberInput.value);
-    if (currentValue > 0) { // optional: Prevenir numeros menores de 0
-        numberInput.value = currentValue - 1;
-    }
+decrementButton.addEventListener("click", () => {
+  let currentValue = parseInt(numberInput.value);
+  if (currentValue > 0) {
+    // optional: Prevenir numeros menores de 0
+    numberInput.value = currentValue - 1;
+  }
 });
 
-incrementButton.addEventListener('click', () => {
-    let currentValue = parseInt(numberInput.value);
-    numberInput.value = currentValue + 1;
+incrementButton.addEventListener("click", () => {
+  let currentValue = parseInt(numberInput.value);
+  numberInput.value = currentValue + 1;
 });
 
 // PASAR DE HOJA A HOJA
@@ -112,38 +112,94 @@ const url = sessionStorage.getItem("urlApi");
 
 // CERRAS SESION
 const cerrarSesion = () => {
-    sessionStorage.setItem("token", "");
-    sessionStorage.setItem("urlApi", "");
-    sessionStorage.setItem("idUser", "");
-    window.location.href = '/login';
-}
+  sessionStorage.setItem("token", "");
+  sessionStorage.setItem("urlApi", "");
+  sessionStorage.setItem("idUser", "");
+  window.location.href = "/login";
+};
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
 
 if (token == "" || token == null) {
-    window.location.href = "/login"
-};
+  window.location.href = "/login";
+}
 if (url == "" || url == null) {
-    window.location.href = "/login"
-};
+  window.location.href = "/login";
+}
 
 const options = {
-    method: "POST",
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-    }
-}
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+};
 fetch(urlComprobar, options)
-    .then(res => res.json())
-    .then(data => {
-        if (data.error == true) {
-            window.location.href = "/login"
-        }
-    });
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.error == true) {
+      window.location.href = "/login";
+    }
+  });
 
 // CARGAR los datos de localStorage y mostrarlos en la página
-document.getElementById('name_tool').innerText = localStorage.getItem('nombreHerramienta');
-document.getElementById('texto').innerText = localStorage.getItem('descripcion');
-document.getElementById('cantidad').innerText = localStorage.getItem('cantidadDisponible');
+document.getElementById("name_tool").innerText =
+  localStorage.getItem("nombreHerramienta");
+document.getElementById("texto").innerText =
+  localStorage.getItem("descripcion");
+document.getElementById("cantidad").innerText =
+  localStorage.getItem("cantidadDisponible");
+
+// Agregar herramienta al carrito
+const addToolCart = () => {
+  const urlApi = url + "/api/cartTool";
+  const idUser = sessionStorage.getItem("idUser");
+  const idTool = localStorage.getItem("idTool");
+  const stock = localStorage.getItem("cantidadDisponible");
+  const order = document.getElementById("number").value;
+
+  if (order > stock) {
+    Swal.fire({
+      icon: "warning",
+      title: "Cantidad pedida es mayor a la disponible",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    return;
+  }
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      cantidad_herramienta: order,
+      id_herramienta: idTool,
+      id_user: idUser,
+    }),
+  };
+  fetch(urlApi, options)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.error == true) {
+        Swal.fire({
+          icon: "warning",
+          title: "No se pudo agregar la herramienta",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "Herramienta agregada al carrito",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log("Tenemos un problema", err);
+    });
+};
