@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Inventary</title>
+    <link rel="icon" href="img/logo-sena.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/showToolUser.css">
+</head>
+
+<body>
+
+    <%- include('../partials/partials.menu.user.ejs') %>
+
+        <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
+
+            <div class="contenedor_herramienta"> <!-- Contenedor para visualizar la herramienta -->
+                <div class="contendor_imagen_herramienta"> <!-- Contenedor Izquierda, btn, imagen y nombre -->
+
+                    <div class="btn">
+                        <a class="btn-close" href="./inventarioUser">
+                            <i class='bx bx-exit'></i>
+                        </a>
+                    </div>
+
+                    <div class="imagen">
+                        <img src="../img/prensatelas_para_cremallera.webp" alt="" class="tool_img">
+
+                    </div>
+
+                    <div class="contenedor_title">
+                        <h1 class="name_tool" id="name_tool"></h1>
+                    </div>
+
+                    <div class="container_botones_cantidad">
+
+                        <button class="btn_mate" id="decrement">-</button>
+                        <input type="text" id="number" value="0" readonly>
+                        <button class="btn_mate" id="increment">+</button>
+
+                    </div>
+
+
+                </div> <!-- Cierre del contenedor de la parte Izquierda, btn, imagen y nombre -->
+
+                <div class="contenedor_texto"> <!-- Contenedor Derecha, descripcion, referencia y btn-editar -->
+
+                    <div class="texto" id="texto">
+
+                    </div>
+
+                    <div class="cantidad">
+                        <p>Cantidad Disponible: </p>
+                        <p id="cantidad"></p>
+                        
+                    </div>
+
+                    <div class="contenedor_btn_carrito">
+                        <button class="add_carrito">Añadir al carrito +</button>
+
+                    </div>
+
+
+                </div> <!-- Cierre contenedor Derecha, descripcion, referencia y btn-editar -->
+
+            </div> <!-- Cierre del contenedor para visualizar la herramienta -->
+
+
+        </div><!-- Cierre del Contenedor contenido-->
+
+        </div> <!-- Cierre de lado derecho -->
+
+
+        </div> <!-- Cierre del contenedor -->
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../js/showToolUser.js"></script>
+
+</body>
+
+</html>

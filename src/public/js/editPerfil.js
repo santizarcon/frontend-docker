@@ -140,26 +140,26 @@ fetch(urlComprobar, options)
 // MOSTRAR las los datos del usuario
 
 
-const optionss = {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    id: idUser,
-  }),
-};
-fetch(recurso, optionss)
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-    // if (data.error) {
-    //   console.error("error al mostrar datos", data);
-    // } else {
+// const optionss = {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify({
+//     id: idUser,
+//   }),
+// };
+// fetch(recurso, optionss)
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//     // if (data.error) {
+//     //   console.error("error al mostrar datos", data);
+//     // } else {
       
-    // }
-  })
-  .catch((err) => console.log(err));
+//     // }
+//   })
+//   .catch((err) => console.log(err));
 
 
 

@@ -9,6 +9,7 @@ import {
   editarPerfil,
   fichasAdmin,
   gestionarCuentasAdmin,
+  informeSolicitudUser,
   inventarioAdmin,
   inventarioUser,
   pedidosAdmin,
@@ -17,6 +18,7 @@ import {
   trasnferirResponsabilidad,
   verFormularios,
   verHerramienta,
+  VerHerramientaUser,
   verReporte,
 } from "../controllers/controllers.dash.js";
 
@@ -51,6 +53,9 @@ rutaDash.get("/ajustesAdmin", ajustesAdmin);
 
 // RUTAS USER
 rutaDash.get("/inventarioUser", inventarioUser);
+rutaDash.get("/VerHerramientaUser", VerHerramientaUser);
+
+rutaDash.get("/informeSolicitudUser", informeSolicitudUser);
 
 
 export default rutaDash;

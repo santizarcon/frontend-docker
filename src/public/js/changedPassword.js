@@ -1,6 +1,8 @@
 let fondo = document.querySelector(".fondo2");
 let ventana = document.querySelector(".ventana");
 
+const container_loading = document.getElementById("container_loading");
+
 function cerrarVentana() {
   ventana.classList.add("eliminar");
   fondo.classList.add("eliminar");
@@ -35,7 +37,7 @@ const checkOTP = () => {
     .then((data) => {
       if (data.error == true) {
         Swal.fire({
-          icon: "error",
+          icon: "question",
           title: "El código OTP no es válido o ha caducado",
           showConfirmButton: false,
           timer: 1500,
@@ -75,7 +77,7 @@ const againOTP = () => {
         });
       } else {
         Swal.fire({
-          icon: "info",
+          icon: "success",
           title: "Codigo otp enviado nuevamente",
           showConfirmButton: false,
           timer: 1500,
@@ -135,8 +137,10 @@ const recoverPassword = () => {
         });
       } else {
         sessionStorage.setItem("email", "");
+        container_loading.style.display = "block";
         setTimeout(function () {
           window.location.href = "/login";
+          container_loading.style.display = "none";
         }, 2000);
       }
     })

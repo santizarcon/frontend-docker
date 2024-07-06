@@ -88,14 +88,35 @@ menu_icon.addEventListener("click", () => {
   });
 });
 
-// btnAdd.addEventListener("click", () => {
-//     window.location.href = 'agregarHerramienta.html';
-// })
+// FUNCION DEL CARRITO
+const carrito = document.getElementById("carrito");
+const cont_carrito = document.getElementById("container_carrito");
+const cierre_carrito = document.getElementById("icono_cerrar");
+const eliminar_carrito = document.getElementById("icono_eliminar");
+
+carrito.addEventListener("click", () =>{
+  carrito.style.display = "none";
+  cont_carrito.style.display = "block";
+})
+
+// Cerrar el carrito mientras esta en compras
+cierre_carrito.addEventListener("click", () => {
+  carrito.style.display = "block";
+  cont_carrito.style.display = "none";
+})
+
+// Aparece un mensaje de si quiere eliminar este carrito y no pedir
+eliminar_carrito.addEventListener("click", () => {
+  carrito.style.display = "block";
+  cont_carrito.style.display = "none";
+})
+
+
 
 // PASAR DE HOJA A HOJA
-const editarPerfil = () => {
-  window.location.href = "/dash/editarPerfil";
-};
+// const editarPerfil = () => {
+//   window.location.href = "/dash/editarPerfil";
+// };
 
 // CONSUMO
 const token = sessionStorage.getItem("token");
@@ -137,32 +158,96 @@ fetch(urlComprobar, options)
     }
   });
 
+  
+// MOSTRAR herramientas en el inventario
+fetch(recurso)
+.then((res) => res.json())
+.then((data) => {
+  if (data.error) {
+    console.error("error al mostrar datos", data);
+  } else {
+    mostrar(data.body);
+  }
+})
+.catch((error) => console.log(error));
+
+const mostrar = (data) => {
+let body = "";
+
+for (let i = 0; i < data.length; i++) {
+  body += `
+   <li>
+          <div class="card">
+              <div class="cont-img">
+                  <img src="${data[i].imagen}" alt="">
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title">${
+                    data[i].nombre_herramienta.substring(0, 30)
+                  }</h5>
+                  <p class="card-text">${
+                    data[i].descripcion.substring(0, 20) + "..."
+                  }</p>
+                  <div class="cont-btn">
+                      <button class="btn" onclick="viewDetails('${
+                        data[i].nombre_herramienta
+                      }', '${data[i].imagen}' ,'${data[i].descripcion}', '${
+    data[i].cantidad_disponible
+  }', '${data[i].cantidad_total}', '${
+    data[i].referencia
+  }');">Ver dettales</button>
+                  </div>
+              </div>
+          </div>
+  </li>                  
+  `;
+}
+document.getElementById("data").innerHTML = body;
+
+};
+
+// CAPTURAR datos y mandarlos a otra hoja, (showToolUser)
+function viewDetails(
+  nombre_herramienta,
+  imagen,
+  descripcion,
+  cantidad_disponible,
+  cantidad_total,
+  referencia
+) {
+  // Guardar los datos en localStorage
+  localStorage.setItem("nombreHerramienta", nombre_herramienta);
+  localStorage.setItem("imagen", imagen);
+  localStorage.setItem("descripcion", descripcion);
+  localStorage.setItem("cantidadDisponible", cantidad_disponible);
+
+  // Redirigir a la página de detalles
+  window.location.href = "./VerHerramientaUser";
+}
 
 
 // BARRA DE BUSQUEDA
-// const search = document.getElementById("search_invenatry");
+const search = document.getElementById("search_invenatry");
 
-// search.addEventListener("keyup", (e) => {
-//   const query = e.target.value.toLowerCase();
+search.addEventListener("keyup", (e) => {
+  const query = e.target.value.toLowerCase();
 
-//   document.querySelectorAll("#data li").forEach((row) => {
-//     const nombreHerramienta = row
-//       .querySelector(".card-title")
-//       .textContent.toLowerCase();
+  document.querySelectorAll("#data li").forEach((row) => {
+    const nombreHerramienta = row.querySelector(".card-title").textContent.toLowerCase();
 
-//     if (nombreHerramienta.includes(query)) {
-//       row.classList.remove("filtro");
-//     } else {
-//       row.classList.add("filtro");
-//     }
-//   });
-// });
+    if (nombreHerramienta.includes(query)) {
+      row.classList.remove("filtro");
+    } else {
+      row.classList.add("filtro");
+    }
+  });
+});
 
-// const style = document.createElement("style");
-// style.innerHTML = `
-// .filtro {
-//     display: none;
-//     }
-// `;
+const style = document.createElement("style");
+style.innerHTML = `
+.filtro {
+    display: none;
+    }
+`;
 
-// document.head.appendChild(style);
+document.head.appendChild(style);

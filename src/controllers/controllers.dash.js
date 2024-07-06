@@ -74,3 +74,12 @@ export const inventarioUser = (req, res) => {
   res.render("user/views.inventory.user.ejs");
 };
 
+export const VerHerramientaUser = (req, res) => {
+  res.render("user/views.show.tool.user.ejs");
+};
+
+export const informeSolicitudUser = (req, res) => {
+  res.render("user/views.request.report.user.ejs");
+};
+
+
