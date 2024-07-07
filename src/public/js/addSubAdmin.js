@@ -192,6 +192,10 @@ const crear = () =>{
                 showConfirmButton: false,
                 timer: 1500
             });
+
+            setTimeout(function () {
+                window.location.href = "/dash/gestionCuentasAdmin";
+              }, 2000);
       
         }else{
 

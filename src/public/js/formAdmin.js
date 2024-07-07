@@ -128,6 +128,8 @@ fetch(urlComprobar, options)
     }
   });
 
+  
+
 
 // BARRA DE BUSQUEDA
 const search = document.getElementById("search_invenatry");

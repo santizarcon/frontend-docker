@@ -192,6 +192,11 @@ const modificar = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+
+        setTimeout(function () {
+          window.location.href = "/dash/tablaHerramientas";
+        }, 2000);
+
       } else {
         Swal.fire({
           icon: "error",

@@ -100,7 +100,7 @@ menu_icon.addEventListener("click", () => {
 
 // PASAR DE HOJA A HOJA
 const salir = () => {
-    window.location.href = "/dash/tablaHerramientas";
+    window.location.href = "/dash/inventarioAdmin";
 };
  
 const editarPerfil = () => {
@@ -193,6 +193,10 @@ const crear = () =>{
                 showConfirmButton: false,
                 timer: 1500
             });
+
+            setTimeout(function () {
+                window.location.href = "/dash/inventarioAdmin";
+              }, 2000);
       
         }else{
 

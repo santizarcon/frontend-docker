@@ -183,6 +183,10 @@ const crearSubAdmin = () =>{
               showConfirmButton: false,
               timer: 1500
           });
+
+          setTimeout(function () {
+            window.location.href = "/dash/fichasAdmin";
+          }, 2000);
     
       }else{
 
