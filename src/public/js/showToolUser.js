@@ -144,12 +144,7 @@ fetch(urlComprobar, options)
   });
 
 // CARGAR los datos de localStorage y mostrarlos en la página
-<<<<<<< HEAD
 document.getElementById('tool_img').src = localStorage.getItem('imagen');
-document.getElementById('name_tool').innerText = localStorage.getItem('nombreHerramienta');
-document.getElementById('texto').innerText = localStorage.getItem('descripcion');
-document.getElementById('cantidad').innerText = localStorage.getItem('cantidadDisponible');
-=======
 document.getElementById("name_tool").innerText =
   localStorage.getItem("nombreHerramienta");
 document.getElementById("texto").innerText =
@@ -209,4 +204,4 @@ const addToolCart = () => {
       console.log("Tenemos un problema", err);
     });
 };
->>>>>>> d6ecef21baf3f58fd0f4ae25c770cbe3cebe2360
+
