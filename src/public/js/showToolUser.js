@@ -156,11 +156,21 @@ document.getElementById("cantidad").innerText =
 const addToolCart = () => {
   const urlApi = url + "/api/cartTool";
   const idUser = sessionStorage.getItem("idUser");
-  const idTool = localStorage.getItem("idTool");
+  const idTool = localStorage.getItem("idT");
   const stock = localStorage.getItem("cantidadDisponible");
   const order = document.getElementById("number").value;
 
-  if (order > stock) {
+  if (!parseInt(order)) {
+    Swal.fire({
+      icon: "warning",
+      title: "Agregue una cantidad mayor a 0",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    return;
+  }
+
+  if (parseInt(order) > parseInt(stock)) {
     Swal.fire({
       icon: "warning",
       title: "Cantidad pedida es mayor a la disponible",
@@ -198,6 +208,7 @@ const addToolCart = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        window.location.href = "/dash/VerHerramientaUser";
       }
     })
     .catch((err) => {
