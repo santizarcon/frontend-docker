@@ -84,7 +84,7 @@ menu_icon.addEventListener("click", () => {
 
 
 // PASAR DE HOJA A HOJA con informacion
-const pasar = (event) => {
+const pasar = (event, imagen) => {
   const fila = event.target.parentElement.parentElement;
   const idTool = fila.cells[0].innerText;
   const name_tool = fila.cells[1].innerText;
@@ -93,12 +93,14 @@ const pasar = (event) => {
   const amount_total = fila.cells[4].innerText;
   const reference = fila.cells[5].innerText;
 
+  localStorage.setItem("editImagen", imagen);
   localStorage.setItem("EditIdTool", idTool);
   localStorage.setItem("editNameTool", name_tool);
   localStorage.setItem("editDescripcion", descripcion_tool);
   localStorage.setItem("editAmountAvailable", amount_available);
   localStorage.setItem("editAmountTotal", amount_total);
   localStorage.setItem("editReference", reference);
+
 
   window.location.href = "/dash/editarHerramienta";
 };
@@ -159,7 +161,7 @@ fetch(recurso)
       mostrar(data.body);
     }
   })
-  .catch((error) => console.log(err));
+  .catch((err) => console.log(err));
 
 const mostrar = (data) => {
   let body = "";
@@ -175,7 +177,7 @@ const mostrar = (data) => {
                     <td>${data[i].cantidad_total}</td>
                     <td>${data[i].referencia}</td>
                     <td scope="btn">
-                        <button class="act-icon green btn-edit" onclick="pasar(event);">Editar</button>
+                        <button class="act-icon green btn-edit" onclick="pasar(event, '${data[i].imagen}');">Editar</button>
                         <button class="act-icon red btn-trash-open" onclick="eliminar(event);">Eliminar</button>
                     </td>
             </tr>                        

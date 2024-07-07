@@ -138,7 +138,7 @@ const options = {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
+    "Authorization" : `Bearer ${token}`,
   },
 };
 fetch(urlComprobar, options)
@@ -185,7 +185,7 @@ const mostrar = (data) => {
       data[i].cantidad_disponible
     }', '${data[i].cantidad_total}', '${
       data[i].referencia
-    }');">Ver dettales</button>
+    }');">Ver detalles</button>
                     </div>
                 </div>
             </div>

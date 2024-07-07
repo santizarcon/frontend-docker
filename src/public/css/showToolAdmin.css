@@ -369,8 +369,8 @@
 }
 
 img {
-  width: 60%;
-  height: 90%;
+  width: 230px;
+  height: 190px;
   border: 1px solid rgb(219, 219, 219);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

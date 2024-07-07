@@ -133,6 +133,8 @@ fetch(urlComprobar, options)
   });
 
 // CARGAR los datos de localStorage y mostrarlos en la página
+
+document.getElementById('img_herramienta').src = localStorage.getItem('imagen');
 document.getElementById('titulo').innerText = localStorage.getItem('nombreHerramienta');
 document.getElementById('texto1').innerText = localStorage.getItem('descripcion');
 document.getElementById('texto2').innerText = localStorage.getItem('referencia');

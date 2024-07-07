@@ -82,4 +82,19 @@ export const informeSolicitudUser = (req, res) => {
   res.render("user/views.request.report.user.ejs");
 };
 
+export const formulariosUser = (req, res) => {
+  res.render("user/views.formu.user.ejs");
+};
+
+export const crearFormuNew = (req, res) => {
+  res.render("user/views.order.new.tool.ejs");
+};
+
+export const crearFormuDano = (req, res) => {
+  res.render("user/views.demage.tool.ejs");
+};
+
+export const editarPerfilUser = (req, res) => {
+  res.render("user/views.edit.perfil.user.ejs");
+};
 

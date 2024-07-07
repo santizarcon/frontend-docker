@@ -319,160 +319,255 @@
     height: 100%;
     padding: 20px;
     padding-top: 70px;
-    display: flex;
-    justify-content: center;
+    overflow-y: auto;
 }
 
-.contenedor_agregar_Herramienta{
-    width: 60%;
-    height: 100%;
-    border-radius: 5px;
-    text-align: center;
-    border: 1px solid rgb(201, 201, 201);
 
-    transition: all 2s ease;
-}
-
-.linea-color{
+/* CONTENEDOR DE LOS BOTONES */
+.navbuttons {
     width: 100%;
-    height: 1%;
-    background-color: blue;
-    display: flex;
-}
-
-/* HEADER contiene titulo, y la x */
-.header{
-    width: 100%;
-    height: 9%;
-    border-bottom: 1px solid rgb(201, 201, 201);
     display: flex;
     flex-direction: row;
-}
-.encabezado{
-    height: 100%;
-    width: 80%;
-    padding: 5px;
-    padding-left: 20px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-
-    font-size: 18px;
-}
-
-.btn-cerrar{
-    height: 100%;
-    width: 20%;
-    padding: 5px;
-    padding-right: 20px;
-    display: flex;
     justify-content: end;
-    align-items: center;
+    background-color: rgb(247, 247, 247);
+    border-radius: 8px;
+    padding: 10px;
 
-    font-size: 18px;
+    margin-bottom: 10px;
 }
 
-.btn-cerrar-salir{
-    border: none;
-    border-radius: 5px;
-    background-color: white;
-}
-.bx{
-    padding: 5px;
-    font-size: 20px;
-}
-.btn-cerrar-salir:hover{
-    border: 1px solid #bebebe;
-    box-shadow: 0 0 5px rgba(82, 95, 109, 0.5);
-}
-
-/* BODY Contenedor del los inputs y span */
-.body{
-    width: 100%;
-    height: 80%;  
-    padding: 20px; 
-    display: block;
-    overflow: hidden;
-
-    text-align: start;
-    
-}
-
-.body span{
-    font-weight: bold;
-   
-}
-
-input{
-    width: 100%;
-    height: 30px;
-    padding-left: 5px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 5px;
-    border: 1px solid rgb(201, 201, 201);
-    outline: none;
-
-    margin: 10px 0px;
-
-
-}
-input:focus {
-    border: 1px solid #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.level_of_education{
-    width: 100%;
-    height: 30px;
-    padding-left: 5px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 5px;
-    border: 1px solid rgb(201, 201, 201);
-    outline: none;
-
-    margin: 10px 0px;
-}
-
-.level_of_education:focus{
-    border: 1px solid #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-
-
-/* FOOTER contenedor del boton */
-.footer{
-    width: 100%;
-    height: 10%;
-    border-top: 1px solid rgb(201, 201, 201);
-    padding: 5px;
+.icon-btn {
     display: flex;
-    justify-content: end;
     align-items: center;
+    margin-left: 10px;
 }
 
-.btn-update{
-    width: 180px;
-    height: 30px;
+.btn-add-subadmin,
+.btn-change {
+    width: 200px;
+    height: 50px;
     border: none;
-    background-color: blue;
+    /* background-color: blue; */
     border-radius: 5px;
     padding: 5px;
-    margin-right: 20px;
+    margin: 5px;
 
     color: rgb(255, 255, 255);
-    font-size: 14px;
+    font-size: 17px;
 }
 
-.btn-update:hover {
+.btn-add-subadmin{
+    background-color: rgb(255, 20, 165);
+}
+
+.btn-add-subadmin:hover {
+    cursor: pointer;
+    background-color: rgb(126, 126, 126);
+
+}
+
+.btn-change{
+    background-color: rgb(140, 0, 255);
+}
+
+.btn-change:hover {
     cursor: pointer;
     background-color: rgb(126, 126, 126);
 }
+
+.file,
+.bxs-file-plus {
+    font-size: 45px;
+    color: rgb(199, 199, 199);
+}
+
+/* Contenedor del bucador y filtro */
+.navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(247, 247, 247);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor del buscador y el boton de busqueda */
+.search-together {
+    width: 60%;
+    display: flex;
+    justify-content: start;
+}
+
+/* Contenedor de filtro de busqueda */
+.search-only {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+}
+
+/* Buscador */
+.search_invenatry {
+    width: 300px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 15px;
+}
+
+.search_invenatry:focus {
+    border: 1px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Boton de busqueda */
+.btn-search {
+    min-width: 80px;
+    height: 35px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    color: blue;
+    font-size: 17px;
+}
+
+.btn-search:hover {
+    background-color: blue;
+    border: none;
+    color: white;
+}
+
+/* Filtro de busqueda */
+.filtro {
+    width: 170px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    background-color: white;
+}
+
+.filtro:focus {
+    border: 1px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+    /* outline: 1px solid rgb(29, 219, 29);
+    box-shadow: 0 0 5px rgb(29, 219, 29); */
+}
+
+option {
+    padding: 5px;
+}
+
+/* TABLA */
+/* colapsa los bordes y aplica un fondo blanco con una sombra sutil para darle un 
+efecto de tarjeta. Además, se agregan bordes redondeados. */
+
+
+.container_tabla {
+    height: 68%;
+    /* max-height: 85%; */
+    background-color: rgb(247, 247, 247);
+    border-radius: 4px;
+    padding: 20px 10px;
+    padding-top: 50px;
+    overflow-y: auto;
+}
+
+/* Tabla de los REPORTES */
+.tabla {
+    width: 100%;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cada contenedor REPORTES */
+.caja_reporte {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-rows: 1fr;
+    border: 1px solid gainsboro;
+}
+
+/* Caja de la IZQUIERDA */
+.contenido_reporte {
+    display: block;
+    padding: 15px 15px;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+/* Contenedor flexible, contiene el titulo y la fecha */
+.content-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contexto_title {
+    font-size: 17px;
+
+}
+
+.contexto {
+    margin-top: 10px;
+
+}
+
+/* Márgenes en la parte inferior titulo y contexto */
+.contexto,
+.contexto_title {
+    margin-bottom: 5px;
+    color: black;
+}
+
+/* Estilo para pequeños textos fecha */
+small {
+    font-size: 15px;
+    color: #6c757d;
+}
+
+/* Caja de la DERECHA */
+.acciones {
+    display: block;
+    padding: 15px 15px;
+    background-color: #fff;
+    display: grid;
+    place-items: center;
+}
+
+.icono {
+    font-size: 25px;
+    color: red;
+}
+
+.icono:hover {
+    color: rgb(160, 160, 160);
+    cursor: pointer;
+}
+
 
 
 /* RESPONSIVE */
 @media screen and (width<=800px) {
 
+    /* Buscador */
+    .search_invenatry {
+        width: 150px;
+        margin-right: 10px;
+    }
+
+    /* Boton de busqueda */
+    .btn-search {
+        min-width: 70px;
+    }
+
+    /* Filtro de busqueda */
+    .filtro {
+        width: 110px;
+    }
 
 }
 
@@ -538,6 +633,21 @@ input:focus {
         padding-right: 50px;
     }
 
+    /* Buscador */
+    .search_invenatry {
+        width: 180px;
+        margin-right: 10px;
+    }
+
+    /* Boton de busqueda */
+    .btn-search {
+        min-width: 70px;
+    }
+
+    /* Filtro de busqueda */
+    .filtro {
+        width: 130px;
+    }
 
 
 }

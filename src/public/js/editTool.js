@@ -125,6 +125,7 @@ document.getElementById("descripcion_tool").value = localStorage.getItem("editDe
 document.getElementById("amount_available").value = localStorage.getItem("editAmountAvailable");
 document.getElementById("amount_total").value = localStorage.getItem("editAmountTotal");
 document.getElementById("reference").value = localStorage.getItem("editReference");
+document.getElementById("imagen").value = localStorage.getItem("editImagen");
 
 
 // VERIFICAR INGRESO

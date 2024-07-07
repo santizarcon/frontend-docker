@@ -31,7 +31,7 @@ const register = () =>{
     if (!email.includes('@')) {
         Swal.fire({
             icon: "error",
-            title: "Su correo es incorrecto!",
+            title: "Su correo es incorrecto, No contiene @!",
             showConfirmButton: false,
             timer: 1500
         });

@@ -71,7 +71,7 @@
   top: 65px;
 }
 
-.eleccion_usuario2 > button {
+.eleccion_usuario2>button {
   width: 100%;
   height: 45px;
   background-color: rgba(0, 0, 255, 0);
@@ -81,7 +81,7 @@
   color: rgb(90, 90, 90);
 }
 
-.eleccion_usuario2 > button:hover {
+.eleccion_usuario2>button:hover {
   background-color: rgb(207, 207, 207);
   color: black;
 }
@@ -101,7 +101,7 @@
   top: 140px;
 }
 
-.eleccion_usuario > button {
+.eleccion_usuario>button {
   width: 100%;
   height: 45px;
   background-color: rgba(0, 0, 255, 0);
@@ -118,7 +118,7 @@
   margin: 8px 0px;
 }
 
-.eleccion_usuario > button:hover {
+.eleccion_usuario>button:hover {
   background-color: rgb(207, 207, 207);
   color: black;
 }
@@ -272,7 +272,7 @@
 }
 
 /* Nombre usuario */
-.contenedor_nombre > p {
+.contenedor_nombre>p {
   font-size: 20px;
   font-weight: bold;
   margin-right: 10px;
@@ -336,55 +336,56 @@
 }
 
 /* Imagen de la herramienta */
-.imagen{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.tool_img{
-    width: 60%;
-    height: 80%;
+.imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.contenedor_title{
-    text-align: center;
-    /* padding: 0px 20px;
+.tool_img {
+  width: 230px;
+  height: 190px;
+}
+
+.contenedor_title {
+  text-align: center;
+  /* padding: 0px 20px;
     padding-right: 20%; */
 }
 
-.container_botones_cantidad{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container_botones_cantidad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ESTILO AL BOTON DE + Y - */
 .btn_mate {
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    width: 30px;
-    height: 30px;
-    font-size: 24px;
-    text-align: center;
-    /* line-height: 50px; */
-    cursor: pointer;
-    margin: 0 10px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  text-align: center;
+  /* line-height: 50px; */
+  cursor: pointer;
+  margin: 0 10px;
 }
 
 input[type="text"] {
-    width: 60px;
-    height: 40px;
-    text-align: center;
-    font-size: 24px;
-    border: 1px solid #000;
-    border-radius: 5px;
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  font-size: 24px;
+  border: 1px solid #000;
+  border-radius: 5px;
 }
 
-.btn_mate:focus{
-    border: 1px solid #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+.btn_mate:focus {
+  border: 1px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 /* Btn para cerrar */
@@ -415,42 +416,46 @@ input[type="text"] {
 }
 
 /* TEXTO */
-.texto{
-    padding: 20px;
+.texto {
+  padding: 20px;
 }
 
-.cantidad{
-    padding: 20px;
-    font-size: 18px;
-    
+.cantidad {
+  padding: 20px;
+  font-size: 18px;
+
 }
 
 /* Btn para añadir cosas al carrito */
-.contenedor_btn_carrito{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.contenedor_btn_carrito {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.add_carrito{
-    width: 50%;
-    height: 80%;
-    background-color: blue;
-    border-radius: 5px;
-    border: none;
 
-    font-size: 18px;
-    color: white;
+.add_carrito {
+  width: 50%;
+  height: 80%;
+  background-color: blue;
+  border-radius: 5px;
+  border: none;
+
+  font-size: 18px;
+  color: white;
 }
-.add_carrito:hover{
-    background-color: grey;
+
+.add_carrito:hover {
+  background-color: grey;
 }
-.add_carrito:focus{
-    border: 1px solid #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+
+.add_carrito:focus {
+  border: 1px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 /* RESPONSIVE */
 @media screen and (width<=1000px) {
+
   /* Contenedor DERECHA descripcion, referencia y  btn-editar */
   .contenedor_texto {
     display: grid;
@@ -469,6 +474,7 @@ input[type="text"] {
 }
 
 @media screen and (width<=800px) {
+
   /* Contenedor de la visualizacion de la herramienta */
   .contenedor_herramienta {
     display: grid;
@@ -491,6 +497,7 @@ input[type="text"] {
 }
 
 @media screen and (width<=548px) {
+
   /* La barra desaparece cuando este en este tamaño*/
   .barra-lateral {
     position: fixed;

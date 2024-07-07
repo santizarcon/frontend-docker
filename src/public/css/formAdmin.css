@@ -439,7 +439,7 @@ efecto de tarjeta. Además, se agregan bordes redondeados. */
 .caja_reporte {
     width: 100%;
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 4fr 1fr;
     grid-template-rows: 1fr;
     border: 1px solid gainsboro;
 }
@@ -483,26 +483,13 @@ small {
 
 /* Caja de la DERECHA */
 .acciones {
-    display: block;
+    display: grid;
     padding: 15px 15px;
     background-color: #fff;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
     place-items: center;
 
 }
 
-/* MENSAJE con color */
-.mensaje {
-    width: 90px;
-    height: 35px;
-    background-color: rgba(59, 255, 59, 0.548);
-    border: 2px solid rgb(59, 255, 59);
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .icono {
     font-size: 25px;

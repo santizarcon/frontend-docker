@@ -5,6 +5,8 @@ const menu = document.querySelector(".menu");
 const contenedorContenido = document.querySelector(".contenedor_contenido");
 const barraUsuario = document.querySelector(".barra_usuario");
 
+
+
 const fotoUsuario = document.querySelector(".foto_usuario");
 const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 
@@ -13,56 +15,63 @@ const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
 
+const btnAddNewAdmin = document.querySelector(".btn-add-subadmin");
+const btn_change = document.querySelector(".btn-change");
+
+
+
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
     eleccionUsuario.classList.toggle("aparece");
-});
+
+})
 
 // Ocultar el menú si se hace clic fuera de él RESPONSIVE
 document.addEventListener("click", (event) => {
-    const isClickInside =
-        eleccionUsuario.contains(event.target) ||
-        fotoUsuario2.contains(event.target);
+    const isClickInside = eleccionUsuario.contains(event.target) || fotoUsuario2.contains(event.target);
     // Comprueba si el elemento en el que se hizo clic (event.target) está contenido dentro del div (eleccion_usuario2 o fotoUsuario)
     // ||, si el clic ocurrió dentro de cualquiera de estos elementos, isClickInside será TRUE.
     //  contains, se usa para determinar si el elemento en el que se hizo clic (event.target) es un descendiente del div con la clase.
 
-    if (!isClickInside) {
-        // si es diferente a TRUE, significa que el clic no ocurrio dentro del div
+    if (!isClickInside) { // si es diferente a TRUE, significa que el clic no ocurrio dentro del div
         eleccionUsuario.classList.remove("aparece");
     }
 });
 
+
 // NORMAL ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario.addEventListener("click", () => {
     eleccionUsuario2.classList.toggle("apareceInicial");
-});
+
+})
 
 // Ocultar el menú si se hace clic fuera de él NORMAL
 document.addEventListener("click", (event) => {
-    const isClickInside =
-        eleccionUsuario2.contains(event.target) ||
-        fotoUsuario.contains(event.target);
+    const isClickInside = eleccionUsuario2.contains(event.target) || fotoUsuario.contains(event.target);
 
     if (!isClickInside) {
         eleccionUsuario2.classList.remove("apareceInicial");
     }
 });
 
+
+
 // MENU RESPONSIVE
 menu.addEventListener("click", () => {
     // Esta el el RESPOSIVE, vuelva a la posicion
     barraLateral.classList.toggle("max-barra-lateral");
 
-    // classList.contains() es una función de JavaScript que se
+    // classList.contains() es una función de JavaScript que se 
     // utiliza para verificar si un elemento HTML tiene una clase específica
     if (barraLateral.classList.contains("max-barra-lateral")) {
         menu.children[0].style.display = "none"; // icon menu
         menu.children[1].style.display = "block"; //icon circulo
-    } else {
+    }
+    else {
         menu.children[0].style.display = "block"; // icon menu
         menu.children[1].style.display = "none"; // icon circulo
     }
+
 });
 
 // MENU DESPEGABLE NORMAL VISTA
@@ -73,8 +82,10 @@ menu_icon.addEventListener("click", () => {
     // Barra Lateral
     barraLateral.classList.toggle("mini-barra-lateral");
 
-    // organizar el margin-left del CONTENIDO.
+    // organizar el margin-left del CONTENIDO. 
     contenedorContenido.classList.toggle("min-contenido");
+
+
 
     // Para todos los span encontrados le agregamos la CALSE .oculto
     spans.forEach((span) => {
@@ -82,33 +93,25 @@ menu_icon.addEventListener("click", () => {
     });
 });
 
-// FUNCION DE BOTON SE + Y -
-const decrementButton = document.getElementById('decrement');
-const incrementButton = document.getElementById('increment');
-const numberInput = document.getElementById('number');
-
-decrementButton.addEventListener('click', () => {
-    let currentValue = parseInt(numberInput.value);
-    if (currentValue > 0) { // optional: Prevenir numeros menores de 0
-        numberInput.value = currentValue - 1;
-    }
-});
-
-incrementButton.addEventListener('click', () => {
-    let currentValue = parseInt(numberInput.value);
-    numberInput.value = currentValue + 1;
-});
 
 // PASAR DE HOJA A HOJA
+btnAddNewAdmin.addEventListener("click", () => {
+    window.location.href = '/dash/crearFormuDano';
+});
+
+btn_change.addEventListener("click", () =>{
+    window.location.href = '/dash/crearFormuNew';
+});
 
 const editarPerfil = () => {
-  window.location.href = "/dash/editarPerfilUser";
+    window.location.href = "/dash/editarPerfilUser";
 };
-
-// CONSUMO
 
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
+const id_admin = sessionStorage.getItem("idUser");
+const endpoint = "/api/accounts";
+const recurso = url + endpoint;
 
 // CERRAS SESION
 const cerrarSesion = () => {
@@ -116,35 +119,63 @@ const cerrarSesion = () => {
     sessionStorage.setItem("urlApi", "");
     sessionStorage.setItem("idUser", "");
     window.location.href = '/login';
-}
+};
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
 
 if (token == "" || token == null) {
-    window.location.href = "/login"
+  window.location.href = "/login"
 };
 if (url == "" || url == null) {
-    window.location.href = "/login"
+  window.location.href = "/login"
 };
 
 const options = {
-    method: "POST",
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-    }
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json',
+     'Authorization' : `Bearer ${token}`
+  }
 }
 fetch(urlComprobar, options)
-    .then(res => res.json())
-    .then(data => {
-        if (data.error == true) {
-            window.location.href = "/login"
-        }
-    });
+  .then(res => res.json())
+  .then(data => {
+    if (data.error == true) {
+      window.location.href = "/login"
+    }
+  });
 
-// CARGAR los datos de localStorage y mostrarlos en la página
-document.getElementById('tool_img').src = localStorage.getItem('imagen');
-document.getElementById('name_tool').innerText = localStorage.getItem('nombreHerramienta');
-document.getElementById('texto').innerText = localStorage.getItem('descripcion');
-document.getElementById('cantidad').innerText = localStorage.getItem('cantidadDisponible');
+
+
+
+// BARRA DE BUSQUEDA
+// const search = document.getElementById("search_invenatry");
+
+// search.addEventListener("keyup", e => {
+//     const query = e.target.value.toLowerCase();
+    
+//     document.querySelectorAll('#data tr').forEach(row =>{
+
+//         const rol = row.querySelector('.rol').textContent.toLowerCase();
+//         const email = row.querySelector('.email').textContent.toLowerCase();
+//         const nombre = row.querySelector('.nombre').textContent.toLowerCase();
+//         const apellido = row.querySelector('.apellido').textContent.toLowerCase();
+//         const estado = row.querySelector('.estado').textContent.toLowerCase();
+
+//         if(rol.includes(query) || email.includes(query) || nombre.includes(query) || apellido.includes(query) || estado.includes(query)){
+//             row.classList.remove('filtro');
+//         } else {
+//             row.classList.add('filtro');
+//         }
+//     });
+// });
+
+// const style = document.createElement('style')
+// style.innerHTML = `
+// .filtro {
+//     display: none;
+//     }
+// `;
+
+// document.head.appendChild(style);

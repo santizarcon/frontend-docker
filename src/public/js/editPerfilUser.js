@@ -16,53 +16,55 @@ const fotoUsuario2 = document.querySelector(".foto_usuario2");
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
   eleccionUsuario.classList.toggle("aparece");
-});
+
+})
 
 // Ocultar el menú si se hace clic fuera de él RESPONSIVE
 document.addEventListener("click", (event) => {
-  const isClickInside =
-    eleccionUsuario.contains(event.target) ||
-    fotoUsuario2.contains(event.target);
+  const isClickInside = eleccionUsuario.contains(event.target) || fotoUsuario2.contains(event.target);
   // Comprueba si el elemento en el que se hizo clic (event.target) está contenido dentro del div (eleccion_usuario2 o fotoUsuario)
   // ||, si el clic ocurrió dentro de cualquiera de estos elementos, isClickInside será TRUE.
   //  contains, se usa para determinar si el elemento en el que se hizo clic (event.target) es un descendiente del div con la clase.
 
-  if (!isClickInside) {
-    // si es diferente a TRUE, significa que el clic no ocurrio dentro del div
+  if (!isClickInside) { // si es diferente a TRUE, significa que el clic no ocurrio dentro del div
     eleccionUsuario.classList.remove("aparece");
   }
 });
 
+
 // NORMAL ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario.addEventListener("click", () => {
   eleccionUsuario2.classList.toggle("apareceInicial");
-});
+
+})
 
 // Ocultar el menú si se hace clic fuera de él NORMAL
 document.addEventListener("click", (event) => {
-  const isClickInside =
-    eleccionUsuario2.contains(event.target) ||
-    fotoUsuario.contains(event.target);
+  const isClickInside = eleccionUsuario2.contains(event.target) || fotoUsuario.contains(event.target);
 
   if (!isClickInside) {
     eleccionUsuario2.classList.remove("apareceInicial");
   }
 });
 
+
+
 // MENU RESPONSIVE
 menu.addEventListener("click", () => {
   // Esta el el RESPOSIVE, vuelva a la posicion
   barraLateral.classList.toggle("max-barra-lateral");
 
-  // classList.contains() es una función de JavaScript que se
+  // classList.contains() es una función de JavaScript que se 
   // utiliza para verificar si un elemento HTML tiene una clase específica
   if (barraLateral.classList.contains("max-barra-lateral")) {
     menu.children[0].style.display = "none"; // icon menu
     menu.children[1].style.display = "block"; //icon circulo
-  } else {
+  }
+  else {
     menu.children[0].style.display = "block"; // icon menu
     menu.children[1].style.display = "none"; // icon circulo
   }
+
 });
 
 // MENU DESPEGABLE NORMAL VISTA
@@ -73,7 +75,7 @@ menu_icon.addEventListener("click", () => {
   // Barra Lateral
   barraLateral.classList.toggle("mini-barra-lateral");
 
-  // organizar el margin-left del CONTENIDO.
+  // organizar el margin-left del CONTENIDO. 
   contenedorContenido.classList.toggle("min-contenido");
 
   // Para todos los span encontrados le agregamos la CALSE .oculto
@@ -83,19 +85,23 @@ menu_icon.addEventListener("click", () => {
 });
 
 
-// PASAR DE HOJA A HOJA
+
+
+// PASAR DE HOJA A HOJA 
 const salir = () => {
-  window.location.href = "/dash/pedidosAdmin";
-}
+  window.location.href = "/dash/inventarioUser";
+};
 
 const editarPerfil = () => {
-  window.location.href = "/dash/editarPerfil";
+  window.location.href = "/dash/editarPerfilUser";
 };
 
 // CONSUMO
-
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
+const idUser = sessionStorage.getItem("idUser");
+const endpoint = "/api/userShow";
+const recurso = url + endpoint;
 
 // CERRAS SESION
 const cerrarSesion = () => {
@@ -103,7 +109,7 @@ const cerrarSesion = () => {
   sessionStorage.setItem("urlApi", "");
   sessionStorage.setItem("idUser", "");
   window.location.href = '/login';
-}    
+}
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
@@ -119,7 +125,7 @@ const options = {
   method: "POST",
   headers: {
     'Content-Type': 'application/json',
-     'Authorization' : `Bearer ${token}`
+    'Authorization': `Bearer ${token}`
   }
 }
 fetch(urlComprobar, options)
@@ -129,4 +135,103 @@ fetch(urlComprobar, options)
       window.location.href = "/login"
     }
   });
+
+
+// Mostrar datos del usuario
+const optionss = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    id: idUser,
+  }),
+};
+fetch(recurso, optionss)
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.error) {
+      console.error("error al mostrar datos", data);
+    } else {
+
+      document.getElementById("email").value = data.body[0].email;
+      document.getElementById("names").value = data.body[0].nombre;
+      document.getElementById("last_names").value = data.body[0].apellido;
+
+    }
+
+  })
+  .catch((err) => console.log(err));
+
+
+
+
+// MODIFICAR los datos de perfil
+const modificar = () => {
+  const recursos = url + "/api/account";
+
+  const email = document.getElementById("email").value;
+  const names = document.getElementById("names").value;
+  const last_names = document.getElementById("last_names").value;
+  const password = document.getElementById("password").value || "";
+  const confirm_password = document.getElementById("confirm_password").value || "";
+  const estado = "activo";
+
+  // Verificar que lo campos no esten vacios
+  if ( !names || !last_names) {
+    Swal.fire({
+      icon: "warning",
+      title: "Los campos de nombre, apellido no pueden ser vacios!",
+      showConfirmButton: false,
+      timer: 1500
+    });
+    return;
+  }
+
+  // Validar si la contraseña es correcta en los dos campos
+  if (password === confirm_password) {
+
+  } else {
+    Swal.fire("Las contraseñas no coinciden!");
+    return;
+  }
+
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password,
+      nombre: names,
+      apellido: last_names,
+      estado: estado,
+    }),
+  };
+
+  fetch(recursos, options)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.error == false) {
+        Swal.fire({
+          icon: "success",
+          title: "¡Ha sido actualizado exitosamente!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "¡No se puedo actualizar!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log("Tenemos un problema", err);
+    });
+};
+
 

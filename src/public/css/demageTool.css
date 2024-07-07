@@ -324,20 +324,13 @@
 }
 
 .contenedor_agregar_Herramienta{
-    width: 60%;
+    width: 80%;
     height: 100%;
     border-radius: 5px;
     text-align: center;
     border: 1px solid rgb(201, 201, 201);
 
     transition: all 2s ease;
-}
-
-.linea-color{
-    width: 100%;
-    height: 1%;
-    background-color: blue;
-    display: flex;
 }
 
 /* HEADER contiene titulo, y la x */
@@ -350,40 +343,14 @@
 }
 .encabezado{
     height: 100%;
-    width: 80%;
+    width: 100%;
     padding: 5px;
     padding-left: 20px;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
 
-    font-size: 18px;
-}
-
-.btn-cerrar{
-    height: 100%;
-    width: 20%;
-    padding: 5px;
-    padding-right: 20px;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-
-    font-size: 18px;
-}
-
-.btn-cerrar-salir{
-    border: none;
-    border-radius: 5px;
-    background-color: white;
-}
-.bx{
-    padding: 5px;
-    font-size: 20px;
-}
-.btn-cerrar-salir:hover{
-    border: 1px solid #bebebe;
-    box-shadow: 0 0 5px rgba(82, 95, 109, 0.5);
+    font-size: 23px;
 }
 
 /* BODY Contenedor del los inputs y span */
@@ -417,6 +384,22 @@ input{
 
 }
 input:focus {
+    border: 1px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+textarea{
+    width: 100%;
+    height: 120px;
+    padding: 5px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 1px solid rgb(201, 201, 201);
+    outline: none;
+
+    margin: 10px 0px;
+}
+textarea:focus {
     border: 1px solid #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
@@ -469,6 +452,33 @@ input:focus {
     background-color: rgb(126, 126, 126);
 }
 
+.btn-update:focus{
+    border: 1px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.cancelar{
+    width: 180px;
+    height: 30px;
+    border: none;
+    background-color: red;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 20px;
+
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+}
+
+.cancelar:hover {
+    cursor: pointer;
+    background-color: rgb(126, 126, 126);
+}
+
+.cancelar:focus{
+    border: 1px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
 
 /* RESPONSIVE */
 @media screen and (width<=800px) {

@@ -91,9 +91,9 @@ menu_icon.addEventListener("click", () => {
 
 
 // PASAR DE HOJA A HOJA
-// const editarPerfil = () => {
-//   window.location.href = "/dash/editarPerfil";
-// };
+const editarPerfil = () => {
+  window.location.href = "/dash/editarPerfilUser";
+};
 
 // CONSUMO
 const token = sessionStorage.getItem("token");

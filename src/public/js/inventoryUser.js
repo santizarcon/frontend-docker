@@ -114,9 +114,9 @@ eliminar_carrito.addEventListener("click", () => {
 
 
 // PASAR DE HOJA A HOJA
-// const editarPerfil = () => {
-//   window.location.href = "/dash/editarPerfil";
-// };
+const editarPerfil = () => {
+  window.location.href = "/dash/editarPerfilUser";
+};
 
 const reporte = () =>{
   window.location.href = "/dash/informeSolicitudUser"; 
