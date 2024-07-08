@@ -26,7 +26,6 @@
                     <div class="search-only">
                         <select class="filtros" name="" id="">
                             <option value="" selected>Filtro</option>
-                            <option value="">Todos</option>
                             <option value="">Disponibles</option>
                             <option value="">No Disponibles</option>
                         </select>
@@ -38,7 +37,7 @@
 
                     <div class="container_tabla"> <!-- Contenedor de la tabla de formularios -->
 
-                        <div class="tabla">
+                        <div class="tabla" id="data">  <!-- Contendor de los FORMULARIOS NUEVA DE HERRAMIENTA -->
     
                             <!-- <div class="caja_reporte">
     
@@ -59,10 +58,15 @@
     
                             </div> -->
     
-                           
-                            
-                        </div>
+                        </div> <!-- Cierre Contendor de los FORMULARIOS NUEVA DE HERRAMIENTA -->
+
+
     
+                        <div class="tabla" id="data2"> <!-- Contendor de los FORMULARIOS DAÑO DE HERRAMIENTA -->
+
+                        </div> <!-- Cierre Contendor de los FORMULARIOS DAÑO DE HERRAMIENTA -->
+
+
                     </div> <!-- Cierre del contenedor de la tabla de formularios -->
     
                     <div class="caja">
@@ -87,7 +91,6 @@
     </div> <!-- Cierre del contenedor -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/formAdmin.js"></script>
 
 </body>

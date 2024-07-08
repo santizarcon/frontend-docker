@@ -16,7 +16,7 @@ const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
 
 const btnAddNewAdmin = document.querySelector(".btn-add-subadmin");
-const btn_change = document.querySelector(".btn-change");
+// const btn_change = document.querySelector(".btn-change");
 
 
 
@@ -99,9 +99,9 @@ btnAddNewAdmin.addEventListener("click", () => {
     window.location.href = '/dash/crearSubAdmin';
 });
 
-btn_change.addEventListener("click", () =>{
-    window.location.href = '/dash/trasnferirResponsabilidad';
-});
+// btn_change.addEventListener("click", () =>{
+//     window.location.href = '/dash/trasnferirResponsabilidad';
+// });
 
 const editarPerfil = () => {
     window.location.href = "/dash/editarPerfil";

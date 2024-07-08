@@ -539,6 +539,14 @@ small {
 
 }
 
+#data2{
+    margin-top: 10px;
+}
+
+.green{
+    color: rgb(21, 255, 0);
+}
+
 /* RESPONSIVE */
 @media screen and (width<=800px) {
 
