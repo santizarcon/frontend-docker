@@ -108,15 +108,25 @@ cierre_carrito.addEventListener("click", () => {
 eliminar_carrito.addEventListener("click", () => {
   carrito.style.display = "block";
   cont_carrito.style.display = "none";
+  Swal.fire({
+    title: "Estas seguro?",
+    text: "No podras revertir esta accion!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Si, eliminar!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      deleteToolCart(0);
+    }
+  });
 });
 
 // PASAR DE HOJA A HOJA
 const editarPerfil = () => {
   window.location.href = "/dash/editarPerfilUser";
-};
-
-const reporte = () => {
-  window.location.href = "/dash/informeSolicitudUser";
 };
 
 // CONSUMO
@@ -238,6 +248,7 @@ const tool = {
     id_user: idUser,
   }),
 };
+
 fetch(cart, tool)
   .then((res) => res.json())
   .then((data) => {
@@ -255,7 +266,7 @@ const cartTool = (data) => {
   for (let i = 0; i < data.length; i++) {
     body += `
     <div class="carrito_herramienta">
-      <i class='bx bx-x'></i>
+      <i class='bx bx-x' onclick="deleteToolCart(${data[i].id});"></i>
       <img src="${data[i].imagen}" alt="" class="tool_img">
       <p class="text_nom">${data[i].nombre_herramienta}</p>
       <h1 class="number">${data[i].cantidad_herramienta}</h1>
@@ -263,7 +274,55 @@ const cartTool = (data) => {
   `;
   }
   document.getElementById("cart").innerHTML = body;
+  solicitar.addEventListener("click", () => {
+    if (data.length === 0) {
+      Swal.fire({
+        icon: "warning",
+        title: "Debera agregar algo al carrito para continuar con la solicitud",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      window.location.href = "/dash/informeSolicitudUser";
+    }
+  });
 };
+
+const deleteToolCart = (id) => {
+  const cart = sessionStorage.getItem("urlApi") + "/api/cartTool";
+  const tool = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id_carrito_herramienta: id,
+      id_user: idUser,
+    }),
+  };
+
+  fetch(cart, tool)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.error) {
+        console.error("error al eliminar datos", data);
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "La herramienta a sido eliminada de carrito",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setTimeout(() => {
+          window.location.href = "/dash/inventarioUser";
+        }, 1500);
+      }
+    })
+    .catch((error) => console.log(error));
+};
+
+// Boton de enviar solicitud
+const solicitar = document.getElementById("btn_solicitar");
 
 // Enviar
 

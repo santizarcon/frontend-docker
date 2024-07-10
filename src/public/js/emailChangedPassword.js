@@ -28,14 +28,12 @@ const sendEmail = () => {
     .then((res) => res.json())
     .then((data) => {
       if (data.error == true) {
-
         Swal.fire({
           icon: "warning",
           title: "Correo no existe",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
-
       } else {
         setTimeout(function () {
           window.location.href = "/cambioContra";
