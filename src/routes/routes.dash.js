@@ -3,6 +3,7 @@ import {
   addFichas,
   agregarHerramienta,
   ajustesAdmin,
+  ajustesUser,
   crearFormuDano,
   crearFormuNew,
   crearSubAdmin,
@@ -17,6 +18,7 @@ import {
   inventarioAdmin,
   inventarioUser,
   pedidosAdmin,
+  pedidosUser,
   principalAdmin,
   tablaHerramientas,
   trasnferirResponsabilidad,
@@ -60,13 +62,14 @@ rutaDash.get("/inventarioUser", inventarioUser);
 rutaDash.get("/VerHerramientaUser", VerHerramientaUser);
 
 rutaDash.get("/informeSolicitudUser", informeSolicitudUser);
+rutaDash.get("/pedidosUser", pedidosUser);
 
 rutaDash.get("/formulariosUser", formulariosUser);
 rutaDash.get("/crearFormuNew", crearFormuNew);
 rutaDash.get("/crearFormuDano", crearFormuDano);
 
 rutaDash.get("/editarPerfilUser", editarPerfilUser);
-
+rutaDash.get("/ajustesUser", ajustesUser);
 
 
 export default rutaDash;

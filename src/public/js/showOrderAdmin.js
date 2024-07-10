@@ -96,6 +96,7 @@ const editarPerfil = () => {
 
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
+const recurso = url + "/api/reportTools";
 
 // CERRAS SESION
 const cerrarSesion = () => {
@@ -130,3 +131,72 @@ fetch(urlComprobar, options)
     }
   });
 
+// CARGAR los datos de localStorage y mostrarlos en la página
+document.getElementById('email').value = localStorage.getItem('nombre') + " " + localStorage.getItem('apellido') +  " --- " + localStorage.getItem('email');
+document.getElementById('fecha').value = localStorage.getItem('fecha').substring(0, 10);
+document.getElementById('ficha').value = localStorage.getItem('numero_ficha');
+
+const id_informe = localStorage.getItem('id_informe');
+const estado_solicitud = localStorage.getItem('estado_solicitud');
+const estado_entrega = localStorage.getItem('estado_entrega');
+
+const caja1 = document.getElementById("caja1");
+const caja2 = document.getElementById("caja2");
+
+// INTERRACCION DE LOS BOTONES
+if (estado_solicitud === "aceptado") {
+  caja2.style.display = "none";
+  caja1.style.display = "block";
+  
+} else {
+  caja2.style.display = "block";
+  caja1.style.display = "none";
+}
+
+
+// MOSTRAR las herramientas de informe
+
+const optionss = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    id_informe: id_informe,
+  }),
+};
+fetch(recurso, optionss)
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.error) {
+      console.error("error al mostrar datos", data);
+    } else {
+      mostra(data.body);
+    }
+  })
+  .catch((error) => console.log(error));
+
+const mostra = (data) => {
+  let body = "";
+
+  for (let i = 0; i < data.length; i++) {
+    body += `
+       <div class="caja_herramienta">
+                        
+                        <p>1</p>
+                        <div class="cont_nombre">
+                            <p>${data[i].nombre_herramienta}</p>
+                        </div>
+                        <div class="cont_img">
+                            <img src="${data[i].imagen}" alt="" class="imagen">
+                        </div>
+                        <div class="cont_numero">
+                            <p>${data[i].cantidad_herramienta}</p>
+                        </div>
+    
+                    </div>
+  `;
+  }
+  document.getElementById("data").innerHTML = body;
+
+};

@@ -221,7 +221,7 @@
   height: 1px;
   background-color: white;
   margin: 10px 0px;
-  margin-top: 190px;
+  margin-top: 330px;
 }
 
 /* CONTENIDO DE LA PAGINA */
@@ -464,7 +464,7 @@ option {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 20px;
   justify-content: start;
 
   transition: all 1s ease;

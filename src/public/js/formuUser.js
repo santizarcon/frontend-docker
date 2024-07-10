@@ -205,47 +205,70 @@ const reporte = (asunto, cantidad, descripcion, email, nombre, apellido) => {
   const pageWidth = reporte.internal.pageSize.width;
 
   // Encabezado
-  reporte.setFontSize(16);
-  reporte.setTextColor(0, 0, 255);
-  reporte.text("Tool Inventory - SENA", pageWidth / 2, 15, { align: "end" });
+  reporte.setFontSize(20);
+  reporte.setTextColor(0, 51, 153); // Azul oscuro
+  reporte.setFont("helvetica", "bold");
+  reporte.text('Tool_Inventory - SENA', 105, 15, null, null, 'center');
+  reporte.setDrawColor(0, 51, 153); // Azul oscuro
   reporte.setLineWidth(1);
   reporte.line(10, 20, pageWidth - 10, 20);
 
   // Contenido
   let fila = 30;
   reporte.setFontSize(16);
-  reporte.setTextColor(0, 0, 0);
-  reporte.setFont("helvetica", "bold");
-  reporte.setFontSize(13);
-  reporte.text(10, fila, "Formulario Peticion de Nueva Herramienta:");
+  reporte.setTextColor(220, 53, 69); // Rojo
+  reporte.text(10, fila, "Formulario Petición de Nueva Herramienta");
 
+  fila += 10;
   reporte.setFontSize(12);
-  reporte.text(10, (fila += 10), `Enviado por:`);
+  reporte.setTextColor(0, 0, 0); // Negro
+  reporte.setFont("helvetica", "bold");
+  reporte.text(10, (fila += 10), "Enviado por:");
   reporte.setFont("helvetica", "normal");
-  reporte.text(10, (fila += 10), ` ${email}`);
+  reporte.text(50, fila, email);
 
   reporte.setFont("helvetica", "bold");
-  reporte.text(10, (fila += 10), `Asunto:`);
+  reporte.text(10, (fila += 10), "Asunto:");
   reporte.setFont("helvetica", "normal");
-  reporte.text(10, (fila += 10), `Este asunto es de ${nombre} ${apellido}, ${asunto}`);
+  reporte.text(50, fila, asunto);
 
   reporte.setFont("helvetica", "bold");
-  reporte.text(10, (fila += 10), `Cantidad que requiere:   ${cantidad}`);
-  
-  reporte.setFont("helvetica", "bold");
-  reporte.text(10, (fila += 10), `Descripción:`);
+  reporte.text(10, (fila += 10), "Nombre:");
   reporte.setFont("helvetica", "normal");
-  reporte.text(10, (fila += 10), ` ${descripcion}`);
+  reporte.text(50, fila, `${nombre} ${apellido}`);
 
-  // Pie de página
-  const fechaImpresion = new Date();
-  reporte.setTextColor(0, 0, 255);
+  reporte.setFont("helvetica", "bold");
+  reporte.text(10, (fila += 10), "Cantidad que requiere:");
+  reporte.setFont("helvetica", "normal");
+  reporte.text(70, fila, cantidad.toString());
+
+  reporte.setFont("helvetica", "bold");
+  reporte.text(10, (fila += 10), "Descripción:");
+  reporte.setFont("helvetica", "normal");
+  reporte.text(50, fila, descripcion);
+
+  // Agregar pie de página con la fecha
+  const formattedDate = new Date().toLocaleDateString('es-ES', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+  const formattedTime = new Date().toLocaleTimeString('es-ES', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  reporte.setDrawColor(0, 51, 153); // Azul oscuro
+  reporte.line(10, 280, pageWidth - 10, 280);
+  reporte.setTextColor(0, 51, 153); // Azul oscuro
   reporte.setFontSize(10);
-  reporte.text(`Fecha y hora de impresión: ${fechaImpresion}`, 10, 285);
+  reporte.setFont("helvetica", "italic");
+  reporte.text(`Fecha y hora de impresión: ${formattedDate} -- ${formattedTime}`, 10, 285);
 
   // Guardar el PDF
   reporte.save("FormularioNuevaHerramienta.pdf");
 };
+
 
 
 
@@ -298,46 +321,66 @@ const crearReporte = (asunto, cantidad, descripcion, email, nombre, apellido, no
   const pageWidth = reporte.internal.pageSize.width;
 
   // Encabezado
-  reporte.setFontSize(16);
-  reporte.setTextColor(0, 0, 255);
-  reporte.text("Tool Inventory - SENA", pageWidth / 2, 15, { align: "end" });
+  reporte.setFontSize(20);
+  reporte.setFont("helvetica", "bold");
+  reporte.text('Tool_Inventory - SENA', 105, 15, null, null, 'center');
   reporte.setLineWidth(1);
   reporte.line(10, 20, pageWidth - 10, 20);
 
   // Contenido
   let fila = 30;
   reporte.setFontSize(16);
-  reporte.setTextColor(0, 0, 0);
-  reporte.setFont("helvetica", "bold");
-  reporte.setFontSize(13);
-  reporte.text(10, fila, "Formulario Daño de Herramienta:");
+  reporte.setTextColor(220, 53, 69); // Rojo
+  reporte.text(10, fila, "Formulario Daño de Herramienta");
 
+  fila += 10;
   reporte.setFontSize(12);
-  reporte.text(10, (fila += 10), `Enviado por:`);
+  reporte.setTextColor(0, 0, 0); // Negro
+  reporte.setFont("helvetica", "bold");
+  reporte.text(10, (fila += 10), "Enviado por:");
   reporte.setFont("helvetica", "normal");
-  reporte.text(10, (fila += 10), ` ${email}`);
+  reporte.text(50, fila, email);
 
   reporte.setFont("helvetica", "bold");
-  reporte.text(10, (fila += 10), `Asunto:`);
+  reporte.text(10, (fila += 10), "Asunto:");
   reporte.setFont("helvetica", "normal");
-  reporte.text(10, (fila += 10), `Este asunto es de ${nombre} ${apellido}, ${asunto}`);
+  reporte.text(50, fila, asunto);
 
   reporte.setFont("helvetica", "bold");
-  reporte.text(10, (fila += 10), `Herramienta:   ${nombre_herramienta}`);
-
-  reporte.setFont("helvetica", "bold");
-  reporte.text(10, (fila += 10), `Cantidad rotas:   ${cantidad}`);
-  
-  reporte.setFont("helvetica", "bold");
-  reporte.text(10, (fila += 10), `Descripción:`);
+  reporte.text(10, (fila += 10), "Nombre:");
   reporte.setFont("helvetica", "normal");
-  reporte.text(10, (fila += 10), ` ${descripcion}`);
+  reporte.text(50, fila, `${nombre} ${apellido}`);
 
-  // Pie de página
-  const fechaImpresion = new Date();
-  reporte.setTextColor(0, 0, 255);
+  reporte.setFont("helvetica", "bold");
+  reporte.text(10, (fila += 10), "Herramienta:");
+  reporte.setFont("helvetica", "normal");
+  reporte.text(50, fila, nombre_herramienta);
+
+  reporte.setFont("helvetica", "bold");
+  reporte.text(10, (fila += 10), "Cantidad rotas:");
+  reporte.setFont("helvetica", "normal");
+  reporte.text(50, fila, cantidad.toString());
+
+  reporte.setFont("helvetica", "bold");
+  reporte.text(10, (fila += 10), "Descripción:");
+  reporte.setFont("helvetica", "normal");
+  reporte.text(50, fila, descripcion);
+
+  // Agregar pie de página con la fecha
+  const formattedDate = new Date().toLocaleDateString('es-ES', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+  const formattedTime = new Date().toLocaleTimeString('es-ES', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  reporte.line(10, 280, pageWidth - 10, 280);
   reporte.setFontSize(10);
-  reporte.text(`Fecha y hora de impresión: ${fechaImpresion}`, 10, 285);
+  reporte.setFont("helvetica", "italic");
+  reporte.text(`Fecha y hora de impresión: ${formattedDate} -- ${formattedTime}`, 10, 285);
 
   // Guardar el PDF
   reporte.save("FormularioDañoHerramienta.pdf");

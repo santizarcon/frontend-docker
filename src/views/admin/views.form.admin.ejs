@@ -14,32 +14,32 @@
 
     <%- include('../partials/partials.menu.head.ejs') %>
 
-            <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
+        <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
 
 
-                <div class="navbar"> <!-- Contenedor del Buscador y filtro -->
+            <div class="navbar"> <!-- Contenedor del Buscador y filtro -->
 
-                    <div class="search-together">
-                        <input class="search_invenatry" id="search_invenatry" type="search" placeholder="Search">
-                        <!-- <button class="btn-search" type="submit">Buscar</button> -->
-                    </div>
-                    <div class="search-only">
-                        <select class="filtros" name="" id="">
-                            <option value="" selected>Filtro</option>
-                            <option value="">Disponibles</option>
-                            <option value="">No Disponibles</option>
-                        </select>
-                    </div>
+                <div class="search-together">
+                    <input class="search_invenatry" id="search_invenatry" type="search" placeholder="Search">
+                    <!-- <button class="btn-search" type="submit">Buscar</button> -->
+                </div>
+                <div class="search-only">
+                    <select class="filtros" name="" id="">
+                        <option value="" selected>Filtro</option>
+                        <option value="">Disponibles</option>
+                        <option value="">No Disponibles</option>
+                    </select>
+                </div>
 
-                </div><!-- Cierre del buscador y filtro -->
+            </div><!-- Cierre del buscador y filtro -->
 
-                <div class="espacio">
+            <div class="espacio">
 
-                    <div class="container_tabla"> <!-- Contenedor de la tabla de formularios -->
+                <div class="container_tabla"> <!-- Contenedor de la tabla de formularios -->
 
-                        <div class="tabla" id="data">  <!-- Contendor de los FORMULARIOS NUEVA DE HERRAMIENTA -->
-    
-                            <!-- <div class="caja_reporte">
+                    <div class="tabla" id="data"> <!-- Contendor de los FORMULARIOS NUEVA DE HERRAMIENTA -->
+
+                        <!-- <div class="caja_reporte">
     
                                 <div class="contenido_reporte">
                                     <div class="content-between">
@@ -57,41 +57,44 @@
                                 </div>
     
                             </div> -->
-    
-                        </div> <!-- Cierre Contendor de los FORMULARIOS NUEVA DE HERRAMIENTA -->
+
+                    </div> <!-- Cierre Contendor de los FORMULARIOS NUEVA DE HERRAMIENTA -->
 
 
-    
-                        <div class="tabla" id="data2"> <!-- Contendor de los FORMULARIOS DAÑO DE HERRAMIENTA -->
 
-                        </div> <!-- Cierre Contendor de los FORMULARIOS DAÑO DE HERRAMIENTA -->
+                    <div class="tabla" id="data2"> <!-- Contendor de los FORMULARIOS DAÑO DE HERRAMIENTA -->
+
+                    </div> <!-- Cierre Contendor de los FORMULARIOS DAÑO DE HERRAMIENTA -->
 
 
-                    </div> <!-- Cierre del contenedor de la tabla de formularios -->
-    
-                    <div class="caja">
-                        <p>Descargar el Reporte de Daños de Herramientas</p>
-                        <button class="descargar_reporte">
-                            <i class='bx bx-download'></i>
-                        </button>
-                    </div>
+                </div> <!-- Cierre del contenedor de la tabla de formularios -->
 
+                <div class="caja">
+                    <p>Descargar el Reporte de Daños de Herramientas</p>
+                    <button class="descargar_reporte" id="generatePdfBtn">
+                        <i class='bx bx-download'></i>
+                    </button>
                 </div>
 
-               
+            </div>
 
 
 
-            </div><!-- Cierre del Contenedor contenido-->
+
+
+        </div><!-- Cierre del Contenedor contenido-->
 
 
 
         </div> <!-- Cierre de lado derecho -->
 
-    </div> <!-- Cierre del contenedor -->
+        </div> <!-- Cierre del contenedor -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
-    <script src="../js/formAdmin.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+        <script src="../js/formAdmin.js"></script>
 
 </body>
 
