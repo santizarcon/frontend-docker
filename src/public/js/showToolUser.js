@@ -144,7 +144,7 @@ fetch(urlComprobar, options)
   });
 
 // CARGAR los datos de localStorage y mostrarlos en la página
-document.getElementById('tool_img').src = localStorage.getItem('imagen');
+document.getElementById("tool_img").src = localStorage.getItem("imagen");
 document.getElementById("name_tool").innerText =
   localStorage.getItem("nombreHerramienta");
 document.getElementById("texto").innerText =
@@ -208,11 +208,12 @@ const addToolCart = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        window.location.href = "/dash/VerHerramientaUser";
+        setTimeout(() => {
+          window.location.href = "/dash/inventarioUser";
+        }, 1500);
       }
     })
     .catch((err) => {
       console.log("Tenemos un problema", err);
     });
 };
-

@@ -15,7 +15,6 @@ const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
 //ESPECIAL DE ESTA HOJA
 
-
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
   eleccionUsuario.classList.toggle("aparece");
@@ -88,8 +87,6 @@ menu_icon.addEventListener("click", () => {
   });
 });
 
-
-
 // PASAR DE HOJA A HOJA
 const editarPerfil = () => {
   window.location.href = "/dash/editarPerfilUser";
@@ -98,6 +95,7 @@ const editarPerfil = () => {
 // CONSUMO
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
+const idUser = sessionStorage.getItem("idUser");
 const endpoint = "/api/tool/";
 const recurso = url + endpoint;
 
@@ -119,7 +117,6 @@ if (url == "" || url == null) {
   window.location.href = "/login";
 }
 
-
 const options = {
   method: "POST",
   headers: {
@@ -135,5 +132,116 @@ fetch(urlComprobar, options)
     }
   });
 
+const cancelar = () => {
+  window.location.href = "/dash/inventarioUser";
+};
 
+const solicitar = document.getElementById("solicitar");
+const cart = sessionStorage.getItem("urlApi") + "/api/showCartTool";
+const tool = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    id_user: idUser,
+  }),
+};
 
+fetch(cart, tool)
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.error) {
+      console.error("error al mostrar datos", data);
+    } else {
+      cartTool(data.body);
+    }
+  })
+  .catch((error) => console.log(error));
+
+const cartTool = (data) => {
+  let body = "";
+  error = false;
+  for (let i = 0; i < data.length; i++) {
+    body += `
+    <div class="caja_herramienta">
+                    <p>${i + 1}</p>
+                    <div class="cont_nombre">
+                        <p>${data[i].nombre_herramienta}</p>
+                    </div>
+                    <div class="cont_img">
+                        <div class="foto"><img src="${
+                          data[i].imagen
+                        }" alt="" class="toolImg"></div>
+                    </div>
+                    <div class="cont_numero">
+                        <p>${data[i].cantidad_herramienta}</p>
+                    </div>
+                </div>                  
+  `;
+    if (data[i].cantidad_herramienta > data[i].cantidad_total) {
+      error = true;
+    }
+  }
+  document.getElementById("cart").innerHTML = body;
+  solicitar.addEventListener("click", () => {
+    const fecha = document.getElementById("fecha").value;
+    const ficha = document.getElementById("ficha").value;
+    console.log(ficha, fecha);
+    if (ficha === "" || fecha === "") {
+      Swal.fire({
+        icon: "warning",
+        title: "Campos vacios!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else if (data.length === 0) {
+      Swal.fire({
+        icon: "warning",
+        title: "Debera agregar algo al carrito para continuar con la solicitud",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else if (error) {
+      Swal.fire({
+        icon: "warning",
+        title:
+          "Hay una herramienta que supera la cantidad disponible, porfavor revisar y eliminarla del carrito para poder hacer la solicitud",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      const info = sessionStorage.getItem("urlApi") + "/api/reportRequest";
+      const option = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          numero_ficha: ficha,
+          fecha: fecha,
+          id_user: idUser,
+        }),
+      };
+
+      fetch(info, option)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.error) {
+            console.error("error al mostrar datos", data);
+          } else {
+            Swal.fire({
+              icon: "success",
+              title: "Se a creado el informe de solicitud con exito",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            setTimeout(() => {
+              window.location.href = "/dash/inventarioUser";
+            }, 1500);
+          }
+        })
+        .catch((error) => console.log(error));
+    }
+  });
+};
