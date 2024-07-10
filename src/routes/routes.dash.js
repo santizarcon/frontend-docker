@@ -26,6 +26,7 @@ import {
   verHerramienta,
   VerHerramientaUser,
   verReporte,
+  verReporteUser,
 } from "../controllers/controllers.dash.js";
 
 const rutaDash = Router();
@@ -63,6 +64,7 @@ rutaDash.get("/VerHerramientaUser", VerHerramientaUser);
 
 rutaDash.get("/informeSolicitudUser", informeSolicitudUser);
 rutaDash.get("/pedidosUser", pedidosUser);
+rutaDash.get("/verReporteUser", verReporteUser);
 
 rutaDash.get("/formulariosUser", formulariosUser);
 rutaDash.get("/crearFormuNew", crearFormuNew);

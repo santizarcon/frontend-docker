@@ -7,12 +7,12 @@
     <title>Tool Inventary</title>
     <link rel="icon" href="img/logo-sena.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../css/showOrderAdmin.css">
+    <link rel="stylesheet" href="../css/showOrderUser.css">
 </head>
 
 <body>
 
-    <%- include('../partials/partials.menu.head.ejs') %>
+    <%- include('../partials/partials.menu.user.ejs') %>
 
         <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
 
@@ -81,18 +81,12 @@
                 </div>
     
                 <div class="footer">
-                    <div class="caja1" id="caja1">
-                        <button class="btn entregado">Entregar</button>
-                    </div>
-
-                    <div class="caja2" id="caja2">
-                        <button class="btn rechazar">Rechazar</button>
-                        <button class="btn aceptar">Aceptar</button>
-                    </div>
-
-                    <div class="caja3" id="caja3">
-                        <p>Este pedido ha sido entregado EXITOSAMENTE</p>
-                    </div>
+                     <!-- <div class="caja2">
+                        <p>Esta en PROCESO</p>
+                    </div> 
+                    <div class="caja3">
+                        <p>Este pedido ha sido entregado EXITOSAMANTE</p>
+                    </div> -->
                 </div>
     
     
@@ -108,7 +102,7 @@
         </div> <!-- Cierre del contenedor -->
 
 
-        <script src="../js/showOrderAdmin.js"></script>
+        <script src="../js/showOrderUser.js"></script>
 
 </body>
 

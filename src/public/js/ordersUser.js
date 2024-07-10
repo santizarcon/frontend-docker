@@ -100,7 +100,8 @@ const mostrar = () => {
 
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
-const endpoint = "/api/tool/";
+const id_user = sessionStorage.getItem("idUser");
+const endpoint = "/api/userReport/";
 const recurso = url + endpoint;
 
 
@@ -122,6 +123,7 @@ if (url == "" || url == null) {
     window.location.href = "/login"
 };
 
+
 const options = {
     method: "POST",
     headers: {
@@ -136,6 +138,84 @@ fetch(urlComprobar, options)
             window.location.href = "/login"
         }
     });
+
+
+// MOSTRAR los formualrios NUEVA HERRAMIENTA
+const optionss = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+        id: id_user,
+    }),
+};
+fetch(recurso, optionss)
+    .then((res) => res.json())
+    .then((data) => {
+        if (data.error) {
+            console.error("error al mostrar datos", data);
+        } else {
+            mostra(data.body);
+        }
+    })
+    .catch((error) => console.log(error));
+
+const mostra = (data) => {
+    let body = "";
+
+    for (let i = 0; i < data.length; i++) {
+        body += `
+         <div class="caja_reporte">
+  
+                          <div class="contenido_reporte">
+                              <div class="content-between">
+                                  <h5 class="contexto_title">Informe de Solicitud</h5>
+                                  <small>${data[i].fecha.substring(0, 10)}</small>
+                              </div>
+                              <p class="contexto">${data[i].email} </p>
+                          </div>
+  
+                          <div class="acciones">
+                              <div class="mensaje">
+                              ${data[i].estado_solicitud}
+                              </div>
+                              <div class="ojito">
+                                  <i class='icono bx bxs-hide' onclick="viewDetails('${data[i].id}', '${data[i].fecha}', '${data[i].email}', '${data[i].nombre}', '${data[i].apellido}', '${data[i].numero_ficha}', '${data[i].estado_solicitud}', '${data[i].estado_entrega}');"></i>
+                              </div>
+                          </div>
+  
+                      </div>
+    `;
+    }
+    document.getElementById("data").innerHTML = body;
+
+};
+
+// CAPTURAR datos y mostrarlos en el reporte
+function viewDetails(
+    id_informe,
+    fecha,
+    email,
+    nombre,
+    apellido,
+    numero_ficha,
+    estado_solicitud,
+    estado_entrega
+) {
+    // Guardar los datos en localStorage
+    localStorage.setItem("id_informe", id_informe);
+    localStorage.setItem("fecha", fecha);
+    localStorage.setItem("email", email);
+    localStorage.setItem("nombre", nombre);
+    localStorage.setItem("apellido", apellido);
+    localStorage.setItem("numero_ficha", numero_ficha);
+    localStorage.setItem("estado_solicitud", estado_solicitud);
+    localStorage.setItem("estado_entrega", estado_entrega);
+
+    // Redirigir a la página de detalles
+    window.location.href = "./verReporteUser";
+}
 
 
 // BARRA DE BUSQUEDA

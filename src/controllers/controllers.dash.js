@@ -86,6 +86,10 @@ export const pedidosUser = (req, res) => {
   res.render("user/views.orders.user.ejs");
 };
 
+export const verReporteUser = (req, res) => {
+  res.render("user/views.show.order.user.ejs");
+};
+
 export const formulariosUser = (req, res) => {
   res.render("user/views.formu.user.ejs");
 };
