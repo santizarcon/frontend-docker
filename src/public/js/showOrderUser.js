@@ -140,18 +140,25 @@ const id_informe = localStorage.getItem('id_informe');
 const estado_solicitud = localStorage.getItem('estado_solicitud');
 const estado_entrega = localStorage.getItem('estado_entrega');
 
-// const caja1 = document.getElementById("caja1");
-// const caja2 = document.getElementById("caja2");
+const caja1 = document.getElementById("caja1");
+const caja2 = document.getElementById("caja2");
+const caja3 = document.getElementById("caja3");
 
-// // INTERRACCION DE LOS BOTONES
-// if (estado_solicitud === "aceptado") {
-//   caja2.style.display = "none";
-//   caja1.style.display = "block";
-  
-// } else {
-//   caja2.style.display = "block";
-//   caja1.style.display = "none";
-// }
+// INTERRACCION DE LOS BOTONES
+if (estado_solicitud === "aceptado") {
+  caja1.style.display = "none";
+  caja3.style.display = "none";
+  caja2.style.display = "block";
+} else {
+  caja1.style.display = "block";
+  caja2.style.display = "none";
+  caja3.style.display = "none";
+}
+
+if (estado_entrega === "entregado") {
+  caja2.style.display = "none";
+  caja3.style.display = "block";
+} 
 
 
 // MOSTRAR las herramientas de informe

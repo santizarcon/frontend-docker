@@ -92,6 +92,10 @@ const editarPerfil = () => {
   window.location.href = "/dash/editarPerfilUser";
 };
 
+const cancelar = () => {
+  window.location.href = "/dash/inventarioUser";
+};
+
 // CONSUMO
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
@@ -132,10 +136,56 @@ fetch(urlComprobar, options)
     }
   });
 
-const cancelar = () => {
-  window.location.href = "/dash/inventarioUser";
+// MOSTRAR las fichas
+const recur = url + "/api/ficha";
+fetch(recur)
+.then((res) => res.json())
+.then((data) => {
+  if (data.error) {
+    console.error("error al mostrar datos", data);
+  } else {
+    mostrar(data.body);
+  }
+})
+.catch((error) => console.log(error));
+
+const mostrar = (data) => {
+let body = "";
+
+for (let i = 0; i < data.length; i++) {
+  body += `
+    <option value="${data[i].numero_ficha}" id="opcion_id">${data[i].numero_ficha}</option>   
+  `;
+}
+document.getElementById("ficha").innerHTML = body;
+
 };
 
+// MOSTRAR el correo del usuario
+const rec = sessionStorage.getItem("urlApi")  + "/api/userShow/";
+const optio = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    id: idUser,
+  }),
+};
+fetch(rec, optio)
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.error) {
+      console.error("error al mostrar datos", data);
+    } else {
+      document.getElementById("names").value = data.body[0].email;
+    }
+
+  })
+ 
+
+
+// MOSTRAR las herramientas a pedir
 const solicitar = document.getElementById("solicitar");
 const cart = sessionStorage.getItem("urlApi") + "/api/showCartTool";
 const tool = {
@@ -170,9 +220,8 @@ const cartTool = (data) => {
                         <p>${data[i].nombre_herramienta}</p>
                     </div>
                     <div class="cont_img">
-                        <div class="foto"><img src="${
-                          data[i].imagen
-                        }" alt="" class="toolImg"></div>
+                        <div class="foto"><img src="${data[i].imagen
+      }" alt="" class="toolImg"></div>
                     </div>
                     <div class="cont_numero">
                         <p>${data[i].cantidad_herramienta}</p>
@@ -187,7 +236,6 @@ const cartTool = (data) => {
   solicitar.addEventListener("click", () => {
     const fecha = document.getElementById("fecha").value;
     const ficha = document.getElementById("ficha").value;
-    console.log(ficha, fecha);
     if (ficha === "" || fecha === "") {
       Swal.fire({
         icon: "warning",
@@ -211,6 +259,7 @@ const cartTool = (data) => {
         timer: 1500,
       });
     } else {
+      // CREAR el informe de solicitud
       const info = sessionStorage.getItem("urlApi") + "/api/reportRequest";
       const option = {
         method: "POST",

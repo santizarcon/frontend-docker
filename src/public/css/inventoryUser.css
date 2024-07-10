@@ -579,8 +579,8 @@ img {
 /* Parte de arriba del carrito  */
 .header{
   padding: 12px;
-  background-color: rgb(224, 224, 224);
-  border-bottom: 1px solid gray;
+  background-color: rgb(121, 172, 250);
+  border-bottom: 1px solid rgb(253, 253, 253);
   border-radius: 5px 5px 0px 0px;
   display: flex;
   justify-content: space-between;
@@ -588,6 +588,7 @@ img {
 }
 .header i{
   font-size: 20px;
+  color: white;
 }
 .header i:hover{
   color: blue;
@@ -598,15 +599,15 @@ img {
 .body{
   width: 100%;
   height: 70%;
-  background-color: rgb(224, 224, 224);
-  border-bottom: 1px solid gray;
+  background-color: rgb(121, 172, 250);
+  border-bottom: 1px solid rgb(255, 255, 255);
   overflow-y: auto;
 }
 .carrito_herramienta{
   padding: 10px;
   display: grid;
   grid-template-columns: 8% 30% 45% 15%;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgb(255, 255, 255);
 }
 .carrito_herramienta i{
   font-size: 20px;
@@ -618,8 +619,8 @@ img {
 }
 /* Imagen de la herramienta */
 .tool_img{
-  width: 90%;
-  height: 80%;
+  width: 70px;
+  height: 70px;
   margin: 5px;
   border-radius: 5px;
 }
@@ -638,7 +639,7 @@ img {
 /* Parte de abajo del boton */
 .footer{
   padding: 18px;
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(121, 172, 250);
   border-radius: 0px 0px 5px 5px;
   display: flex;
   justify-content: end;

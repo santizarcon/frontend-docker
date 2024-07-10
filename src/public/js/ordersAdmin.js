@@ -231,7 +231,7 @@ const mostra = (data) => {
 
                         <div class="contenido_reporte">
                             <div class="content-between">
-                                <h5 class="contexto_title">Informe de Solicitud</h5>
+                                <h5 class="contexto_title">Informe de Solicitud ${i}</h5>
                                 <small>${data[i].fecha.substring(0, 10)}</small>
                             </div>
                             <p class="contexto">Enviado por: ${data[i].email} </p>

@@ -150,20 +150,21 @@ const caja2 = document.getElementById("caja2");
 const caja3 = document.getElementById("caja3");
 
 // INTERRACCION DE LOS BOTONES
-if (estado_solicitud === "aceptado") {
+if (estado_solicitud === "aceptado" ) {
   caja2.style.display = "none";
   caja1.style.display = "block";
+  caja3.style.display = "none";
 } else {
   caja2.style.display = "block";
   caja1.style.display = "none";
   caja3.style.display = "none";
 }
 
-
 if (estado_entrega === "entregado") {
   caja1.style.display = "none";
-  caja3.style.display = "block";
+  caja3.style.display = "block"; 
 } 
+
 
 // MOSTRAR las herramientas de informe
 const optionss = {
