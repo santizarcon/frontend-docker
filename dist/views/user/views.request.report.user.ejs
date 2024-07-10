@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Inventary</title>
+    <link rel="icon" href="img/logo-sena.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/requestReportUser.css">
+</head>
+
+<body>
+
+
+    <%- include('../partials/partials.menu.user.ejs') %>
+
+    <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
+
+        <div class="inventory-container"> <!-- contenedor del inventario -->
+
+            <div class="header">
+                <div class="title">
+                    <h1>Informe de Solicitud</h1>
+                </div>
+
+                <div class="contenedor_inputs">
+                    <span>Quien envia:</span>
+                    <input type="text" class="input" placeholder="Nombres" id="names" readonly>
+                </div>
+
+                <div class="contenedor_inputs">
+                    <span>Eligue una ficha:</span>
+                    <select name="" id="ficha" class="input">
+                        <option value=""></option>
+                        
+                    </select>
+                </div>
+
+                <div class="contenedor_inputs large">
+                    <span>Digita la fecha en la que los reclamaras:</span>
+                    <input type="date" class="input" id="fecha">
+                </div>
+
+            </div>
+
+            <div class="body">
+                <div class="caja_titulos">
+
+                    <p>#</p>
+
+                    <p>Nombre de la Herramienta</p>
+
+                    <p>Imagen</p>
+
+                    <p>Cantidad</p>
+
+                </div>
+                <div id="cart">
+
+
+
+                </div>
+
+            </div>
+
+            <div class="footer">
+                <button class="btn cancelar" onclick="cancelar();">Cancelar</button>
+                <button class="btn enviar" id="solicitar">Enviar</button>
+            </div>
+
+
+
+        </div><!-- Cierre del contenedor del inevnatrio -->
+
+
+
+    </div><!-- Cierre del Contenedor contenido-->
+
+    </div> <!-- Cierre de lado derecho -->
+
+
+    </div> <!-- Cierre del contenedor -->
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/requestReportUser.js"></script>
+
+</body>
+
+</html>

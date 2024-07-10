@@ -15,7 +15,6 @@ const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
 //ESPECIAL DE ESTA HOJA
 
-
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
   eleccionUsuario.classList.toggle("aparece");
@@ -88,18 +87,52 @@ menu_icon.addEventListener("click", () => {
   });
 });
 
-// btnAdd.addEventListener("click", () => {
-//     window.location.href = 'agregarHerramienta.html';
-// })
+// FUNCION DEL CARRITO
+const carrito = document.getElementById("carrito");
+const cont_carrito = document.getElementById("container_carrito");
+const cierre_carrito = document.getElementById("icono_cerrar");
+const eliminar_carrito = document.getElementById("icono_eliminar");
+
+carrito.addEventListener("click", () => {
+  carrito.style.display = "none";
+  cont_carrito.style.display = "block";
+});
+
+// Cerrar el carrito mientras esta en compras
+cierre_carrito.addEventListener("click", () => {
+  carrito.style.display = "block";
+  cont_carrito.style.display = "none";
+});
+
+// Aparece un mensaje de si quiere eliminar este carrito y no pedir
+eliminar_carrito.addEventListener("click", () => {
+  carrito.style.display = "block";
+  cont_carrito.style.display = "none";
+  Swal.fire({
+    title: "Estas seguro?",
+    text: "No podras revertir esta accion!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Si, eliminar!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      deleteToolCart(0);
+    }
+  });
+});
 
 // PASAR DE HOJA A HOJA
 const editarPerfil = () => {
-  window.location.href = "/dash/editarPerfil";
+  window.location.href = "/dash/editarPerfilUser";
 };
 
 // CONSUMO
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
+const idUser = sessionStorage.getItem("idUser");
 const endpoint = "/api/tool/";
 const recurso = url + endpoint;
 
@@ -107,6 +140,7 @@ const recurso = url + endpoint;
 const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
+  sessionStorage.setItem("idUser", "");
   window.location.href = "/login";
 };
 
@@ -119,7 +153,6 @@ if (token == "" || token == null) {
 if (url == "" || url == null) {
   window.location.href = "/login";
 }
-
 
 const options = {
   method: "POST",
@@ -136,32 +169,187 @@ fetch(urlComprobar, options)
     }
   });
 
+// MOSTRAR herramientas en el inventario
+fetch(recurso)
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.error) {
+      console.error("error al mostrar datos", data);
+    } else {
+      mostrar(data.body);
+    }
+  })
+  .catch((error) => console.log(error));
 
+const mostrar = (data) => {
+  let body = "";
+
+  for (let i = 0; i < data.length; i++) {
+    body += `
+   <li>
+          <div class="card">
+              <div class="cont-img">
+                  <img src="${data[i].imagen}" alt="">
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title">${data[i].nombre_herramienta.substring(
+                    0,
+                    30
+                  )}</h5>
+                  <p class="card-text">${
+                    data[i].descripcion.substring(0, 20) + "..."
+                  }</p>
+                  <div class="cont-btn">
+                      <button class="btn" onclick="viewDetails('${
+                        data[i].id
+                      }', '${data[i].nombre_herramienta}', '${
+      data[i].imagen
+    }' ,'${data[i].descripcion}', '${data[i].cantidad_disponible}', '${
+      data[i].cantidad_total
+    }', '${data[i].referencia}');">Ver detalles</button>
+                  </div>
+              </div>
+          </div>
+  </li>                  
+  `;
+  }
+  document.getElementById("data").innerHTML = body;
+};
+
+// CAPTURAR datos y mandarlos a otra hoja, (showToolUser)
+function viewDetails(
+  id,
+  nombre_herramienta,
+  imagen,
+  descripcion,
+  cantidad_disponible,
+  cantidad_total,
+  referencia
+) {
+  // Guardar los datos en localStorage
+  localStorage.setItem("idT", id);
+  localStorage.setItem("nombreHerramienta", nombre_herramienta);
+  localStorage.setItem("imagen", imagen);
+  localStorage.setItem("descripcion", descripcion);
+  localStorage.setItem("cantidadDisponible", cantidad_disponible);
+
+  // Redirigir a la página de detalles
+  window.location.href = "./VerHerramientaUser";
+}
+
+// Mostrar carrito
+const cart = sessionStorage.getItem("urlApi") + "/api/showCartTool";
+const tool = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    id_user: idUser,
+  }),
+};
+
+fetch(cart, tool)
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.error) {
+      console.error("error al mostrar datos", data);
+    } else {
+      cartTool(data.body);
+    }
+  })
+  .catch((error) => console.log(error));
+
+const cartTool = (data) => {
+  let body = "";
+
+  for (let i = 0; i < data.length; i++) {
+    body += `
+    <div class="carrito_herramienta">
+      <i class='bx bx-x' onclick="deleteToolCart(${data[i].id});"></i>
+      <img src="${data[i].imagen}" alt="" class="tool_img">
+      <p class="text_nom">${data[i].nombre_herramienta}</p>
+      <h1 class="number">${data[i].cantidad_herramienta}</h1>
+    </div>                  
+  `;
+  }
+  document.getElementById("cart").innerHTML = body;
+  solicitar.addEventListener("click", () => {
+    if (data.length === 0) {
+      Swal.fire({
+        icon: "warning",
+        title: "Debera agregar algo al carrito para continuar con la solicitud",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      window.location.href = "/dash/informeSolicitudUser";
+    }
+  });
+};
+
+const deleteToolCart = (id) => {
+  const cart = sessionStorage.getItem("urlApi") + "/api/cartTool";
+  const tool = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id_carrito_herramienta: id,
+      id_user: idUser,
+    }),
+  };
+
+  fetch(cart, tool)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.error) {
+        console.error("error al eliminar datos", data);
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "La herramienta a sido eliminada de carrito",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setTimeout(() => {
+          window.location.href = "/dash/inventarioUser";
+        }, 1500);
+      }
+    })
+    .catch((error) => console.log(error));
+};
+
+// Boton de enviar solicitud
+const solicitar = document.getElementById("btn_solicitar");
+
+// Enviar
 
 // BARRA DE BUSQUEDA
-// const search = document.getElementById("search_invenatry");
+const search = document.getElementById("search_invenatry");
 
-// search.addEventListener("keyup", (e) => {
-//   const query = e.target.value.toLowerCase();
+search.addEventListener("keyup", (e) => {
+  const query = e.target.value.toLowerCase();
 
-//   document.querySelectorAll("#data li").forEach((row) => {
-//     const nombreHerramienta = row
-//       .querySelector(".card-title")
-//       .textContent.toLowerCase();
+  document.querySelectorAll("#data li").forEach((row) => {
+    const nombreHerramienta = row
+      .querySelector(".card-title")
+      .textContent.toLowerCase();
 
-//     if (nombreHerramienta.includes(query)) {
-//       row.classList.remove("filtro");
-//     } else {
-//       row.classList.add("filtro");
-//     }
-//   });
-// });
+    if (nombreHerramienta.includes(query)) {
+      row.classList.remove("filtro");
+    } else {
+      row.classList.add("filtro");
+    }
+  });
+});
 
-// const style = document.createElement("style");
-// style.innerHTML = `
-// .filtro {
-//     display: none;
-//     }
-// `;
+const style = document.createElement("style");
+style.innerHTML = `
+.filtro {
+    display: none;
+    }
+`;
 
-// document.head.appendChild(style);
+document.head.appendChild(style);

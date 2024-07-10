@@ -15,12 +15,6 @@ const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
 
-// ESPECIAL DE ESTA HOJA
-
-
-
-
-
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
     eleccionUsuario.classList.toggle("aparece");
@@ -86,8 +80,6 @@ menu_icon.addEventListener("click", () => {
     // organizar el margin-left del CONTENIDO. 
     contenedorContenido.classList.toggle("min-contenido");
 
-
-
     // Para todos los span encontrados le agregamos la CALSE .oculto
     spans.forEach((span) => {
         span.classList.toggle("oculto");
@@ -97,7 +89,7 @@ menu_icon.addEventListener("click", () => {
 
 // PASAR DE UNA HOJA A OTRA
 const salir = () => {
-    window.location.href = "/dash/gestionCuentasAdmin";
+    window.location.href = "/dash/fichasAdmin";
 };
 
 const editarPerfil = () => {
@@ -108,12 +100,13 @@ const editarPerfil = () => {
 
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
-const endpoint = "/api/admin";
+const endpoint = "/api/ficha";
 const recurso = url + endpoint;
 
 // CERRAS SESION
 const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
+  sessionStorage.setItem("idUser", "");
   sessionStorage.setItem("urlApi", "");
   window.location.href = '/login';
 }
@@ -146,10 +139,74 @@ fetch(urlComprobar, options)
 
 
 // CREAR una nuevo SubAdmin
-// const crear = () =>{
+const crearSubAdmin = () =>{
+
+  const number_ficha = document.getElementById("number_ficha").value;
+  const amount_of_aprendices = document.getElementById("amount_of_aprendices").value;
+  const level_of_education = document.getElementById("level_of_education").value;
+  const training_program = document.getElementById("training_program").value;
+  const ambiente = document.getElementById("ambiente").value;
 
 
-// }
+  // Verificar que lo campos no esten vacios
+  if (!number_ficha || !amount_of_aprendices || !level_of_education || !training_program || !ambiente) {
+      Swal.fire({
+          icon: "warning",
+          title: "Campos vacios!",
+          showConfirmButton: false,
+          timer: 1500
+      });
+      return;
+  }
+
+  const options ={
+      method:"POST",
+      headers:{
+          'Content-Type' : 'application/json',
+          'Authorization' : `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        numero_ficha : number_ficha,
+        cantidad_aprendices : amount_of_aprendices,
+        nivel_formacion : level_of_education,
+        programa_formacion : training_program,
+        ambiente : ambiente,
+      })
+  };
+  fetch(recurso, options)
+  .then(res=>res.json())
+  .then(data=>{
+      if(data.error==false){
+          Swal.fire({
+              icon: "success",
+              title: "Se ha creado una nueva ficha",
+              showConfirmButton: false,
+              timer: 1500
+          });
+
+          setTimeout(function () {
+            window.location.href = "/dash/fichasAdmin";
+          }, 2000);
+    
+      }else{
+
+          Swal.fire({
+              icon: "error",
+              title: "No se pudo crear la ficha",
+              showConfirmButton: false,
+              timer: 1500
+          });
+
+      }
+      
+  })
+  .catch(err=>{
+      console.log("Tenemos un problema", err);
+  });
+  
+
+
+}
 
 
 

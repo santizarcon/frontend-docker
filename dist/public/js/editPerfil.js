@@ -93,20 +93,22 @@ const salir = () => {
 };
 
 const editarPerfil = () => {
-    window.location.href = "/dash/editarPerfil";
+  window.location.href = "/dash/editarPerfil";
 };
 
 // CONSUMO
-
+// CONSUMO
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
-const endpoint = "/api/tool";
+const idUser = sessionStorage.getItem("idUser");
+const endpoint = "/api/adminShow";
 const recurso = url + endpoint;
 
 // CERRAS SESION
 const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
+  sessionStorage.setItem("idUser", "");
   window.location.href = '/login';
 }
 
@@ -124,7 +126,7 @@ const options = {
   method: "POST",
   headers: {
     'Content-Type': 'application/json',
-     'Authorization' : `Bearer ${token}`
+    'Authorization': `Bearer ${token}`
   }
 }
 fetch(urlComprobar, options)
@@ -134,5 +136,103 @@ fetch(urlComprobar, options)
       window.location.href = "/login"
     }
   });
+
+
+// Mostrar datos del usuario
+const optionss = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    id: idUser,
+  }),
+};
+fetch(recurso, optionss)
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.error) {
+      console.error("error al mostrar datos", data);
+    } else {
+
+      document.getElementById("email").value = data.body[0].email;
+      document.getElementById("names").value = data.body[0].nombre;
+      document.getElementById("last_names").value = data.body[0].apellido;
+
+    }
+
+  })
+  .catch((err) => console.log(err));
+
+
+
+
+// MODIFICAR los datos de perfil
+const modificar = () => {
+  const recursos = url + "/api/account";
+
+  const email = document.getElementById("email").value;
+  const names = document.getElementById("names").value;
+  const last_names = document.getElementById("last_names").value;
+  const password = document.getElementById("password").value || "";
+  const confirm_password = document.getElementById("confirm_password").value || "";
+  const estado = "activo";
+
+  // Verificar que lo campos no esten vacios
+  if ( !names || !last_names) {
+    Swal.fire({
+      icon: "warning",
+      title: "Los campos de nombre, apellido no pueden ser vacios!",
+      showConfirmButton: false,
+      timer: 1500
+    });
+    return;
+  }
+
+  // Validar si la contraseña es correcta en los dos campos
+  if (password === confirm_password) {
+
+  } else {
+    Swal.fire("Las contraseñas no coinciden!");
+    return;
+  }
+
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password,
+      nombre: names,
+      apellido: last_names,
+      estado: estado,
+    }),
+  };
+
+  fetch(recursos, options)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.error == false) {
+        Swal.fire({
+          icon: "success",
+          title: "¡Ha sido actualizado exitosamente!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "¡No se puedo actualizar!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log("Tenemos un problema", err);
+    });
+};
 
 

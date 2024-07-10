@@ -74,3 +74,39 @@ export const inventarioUser = (req, res) => {
   res.render("user/views.inventory.user.ejs");
 };
 
+export const VerHerramientaUser = (req, res) => {
+  res.render("user/views.show.tool.user.ejs");
+};
+
+export const informeSolicitudUser = (req, res) => {
+  res.render("user/views.request.report.user.ejs");
+};
+
+export const pedidosUser = (req, res) => {
+  res.render("user/views.orders.user.ejs");
+};
+
+export const verReporteUser = (req, res) => {
+  res.render("user/views.show.order.user.ejs");
+};
+
+export const formulariosUser = (req, res) => {
+  res.render("user/views.formu.user.ejs");
+};
+
+export const crearFormuNew = (req, res) => {
+  res.render("user/views.order.new.tool.ejs");
+};
+
+export const crearFormuDano = (req, res) => {
+  res.render("user/views.demage.tool.ejs");
+};
+
+export const editarPerfilUser = (req, res) => {
+  res.render("user/views.edit.perfil.user.ejs");
+};
+
+export const ajustesUser = (req, res) => {
+  res.render("user/views.setting.user.ejs");
+};
+

@@ -227,7 +227,7 @@
     height: 1px;
     background-color: white;
     margin: 10px 0px;
-    margin-top: 190px;
+    margin-top: 230px;
 }
 
 /* CONTENIDO DE LA PAGINA */
@@ -466,7 +466,7 @@ efecto de tarjeta. Además, se agregan bordes redondeados. */
 
 .container_tabla {
     /* height: 85%; */
-    max-height: 85%;
+    max-height: 65%;
     background-color: rgb(247, 247, 247);
     border-radius: 4px;
     padding: 20px 10px;

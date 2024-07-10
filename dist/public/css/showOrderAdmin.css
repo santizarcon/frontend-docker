@@ -221,7 +221,7 @@
   height: 1px;
   background-color: white;
   margin: 10px 0px;
-  margin-top: 190px;
+  margin-top: 230px;
 }
 
 /* CONTENIDO DE LA PAGINA */
@@ -314,136 +314,182 @@
   overflow-y: auto;
 }
 
-/* Contenedor de la visualizacion de la herramienta */
-.contenedor_reporte {
+
+/* CONTENEDOR DEL INVENTARIO LAS HERRAMIENTAS */
+.inventory-container {
   width: 100%;
   height: 100%;
-  background-color: rgb(242, 242, 242);
-  border-radius: 2px;
+  background-color: rgb(247, 247, 247);
   padding: 10px;
-
+  overflow-y: auto;
 }
 
-/* Contenedor del salir y titulo */
-.contendor_header{
+/* Encabezado titulo nombres fechas.. */
+.header {
   width: 100%;
-  padding: 20px;
   display: grid;
-  grid-template-columns: 1fr 7fr;
+  grid-template-columns: 1fr 5fr 4fr;
+  grid-template-rows: 3fr 2fr 2fr;
 }
 
-/* Btn para cerrar */
-.btn-close {
-  padding: 8px;
-  padding-top: 10px;
-  border-radius: 4px;
-
-  text-align: center;
+/* Btn salir de la vista */
+.btn-cerrar-salir{
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
 }
-
-.btn-close:hover {
-  background-color: rgb(255, 255, 255);
-}
-
-.btn-close i {
+.bx{
   font-size: 20px;
-  color: black;
+}
+.btn-cerrar-salir:hover{
+  border: 1px solid #bebebe;
+  box-shadow: 0 0 5px rgba(82, 95, 109, 0.5);
 }
 
-.contenedor_titulo{
+/* Titulo INFORME */
+.title {
+  grid-column: span 2;
   width: 100%;
-  padding: 20px;
-  font-size: 40px;
+  padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-
-/* Contenedor de los datos del usuario */
-.contenido_user{
-  width: 100%;
-  padding: 10px;
-  display: grid;
-  grid-template-columns: 4fr 2fr;
-  margin-bottom: 15px;
-
-}
-
-.pi{
-  display: flex;
-  flex-direction: column;
-}
-
-.pi h1{
-  font-size: 25px;
-  margin-right: 10px;
-}
-
-.pi p{
   font-size: 25px;
 }
 
-.select_ficha{
+/* Contenedor del texto y inputs */
+.contenedor_inputs {
   width: 100%;
-  height: 80%;
-  border: none;
+  padding: 5px;
+  display: block;
+}
+
+.quienEnvia{
+  grid-row: 2;
+  grid-column: span 2;
+}
+
+/* DIseño de loa inputs */
+.input {
+  width: 100%;
+  height: 30px;
+  padding-left: 5px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  border: 1px solid rgb(201, 201, 201);
   outline: none;
+
+  margin: 8px 0px;
 }
 
-.select_ficha:hover{
+.input:focus {
   border: 1px solid #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Contenedor de las herramientas */
-.contenedor_body{
-  width: 100%;
-  height: 200px;
-  overflow-y: auto;
+.large {
+  grid-row: 3;
+  grid-column: span 3;
 }
 
-
-.caja_herramienta{
+/* Body contnedor de las herramientas */
+.body {
   width: 100%;
-  height: auto;
-  padding: 10px;
+  padding: 5px;
+}
+
+/* titulo de las herramientas */
+.caja_titulos {
+  width: 100%;
+  background-color: white;
   display: grid;
-  grid-template-columns: 5fr 1fr;
+  grid-template-columns: 1fr 4fr 4fr 2fr;
+  padding: 5px 10px;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 5px;
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
-/* Contendor de los botones */
-.contenedor_botons{
+/* caja de cada herramienta */
+.caja_herramienta {
   width: 100%;
-  height: auto;
-  padding: 20px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 4fr 4fr 2fr;
+  padding: 5px 10px;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.imagen{
+  width: 70px;
+  height: 70px;
+}
+
+.cont_numero {
+  font-size: 25px;
+}
+
+/* donde estan los botones */
+.footer {
+  width: 100%;
+  padding: 5px;
+  padding-top: 40px;
   display: flex;
   justify-content: end;
-  align-items: center;
 }
 
-.btn{
-  width: 120px;
-  height: 40px;
-  background-color: blue;
-  border-radius: 5px;
+.btn {
+  width: 140px;
+  height: 35px;
   border: none;
+  background-color: rgb(0, 60, 255);
+  border-radius: 5px;
+  padding: 5px;
 
-  font-size: 20px;
-  color: white;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
 }
 
 .rechazar{
-  margin-right: 15px;
+  background-color: red;
+  margin-right: 10px;
 }
+
+.entregado{
+  background-color: green;
+  margin-right: 10px;
+
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(126, 126, 126);
+}
+
+.btn:focus {
+  border: 1px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
 
 /* RESPONSIVE */
 @media screen and (width<=1000px) {
 }
 
 @media screen and (width<=700px) {
-
+  .foto {
+    width: 60%;
+    height: 80px;
+    border-radius: 5px;
+    background-color: #007bff;
+  }
 
 }
 
