@@ -444,39 +444,6 @@
   justify-content: end;
 }
 
-.btn {
-  width: 140px;
-  height: 35px;
-  border: none;
-  background-color: rgb(0, 60, 255);
-  border-radius: 5px;
-  padding: 5px;
-
-  color: rgb(255, 255, 255);
-  font-size: 16px;
-}
-
-.rechazar{
-  background-color: red;
-  margin-right: 10px;
-}
-
-.entregado{
-  background-color: green;
-  margin-right: 10px;
-
-}
-
-.btn:hover {
-  cursor: pointer;
-  background-color: rgb(126, 126, 126);
-}
-
-.btn:focus {
-  border: 1px solid #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
 
 
 /* RESPONSIVE */

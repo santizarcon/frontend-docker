@@ -12,6 +12,7 @@ const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
+
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
   eleccionUsuario.classList.toggle("aparece");
@@ -81,10 +82,11 @@ menu_icon.addEventListener("click", () => {
   });
 });
 
+
 // PASAR DE HOJA A HOJA
 const salir = () => {
-  window.location.href = "/dash/pedidosAdmin";
-};
+  window.location.href = "/dash/pedidosUser";
+}
 
 const editarPerfil = () => {
   window.location.href = "/dash/editarPerfil";
@@ -101,74 +103,57 @@ const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
   sessionStorage.setItem("idUser", "");
-  window.location.href = "/login";
-};
+  window.location.href = '/login';
+}    
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
 
 if (token == "" || token == null) {
-  window.location.href = "/login";
-}
+  window.location.href = "/login"
+};
 if (url == "" || url == null) {
-  window.location.href = "/login";
-}
+  window.location.href = "/login"
+};
 
 const options = {
   method: "POST",
   headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-  },
-};
+    'Content-Type': 'application/json',
+     'Authorization' : `Bearer ${token}`
+  }
+}
 fetch(urlComprobar, options)
-  .then((res) => res.json())
-  .then((data) => {
+  .then(res => res.json())
+  .then(data => {
     if (data.error == true) {
-      window.location.href = "/login";
+      window.location.href = "/login"
     }
   });
 
 // CARGAR los datos de localStorage y mostrarlos en la página
-document.getElementById("email").value =
-  localStorage.getItem("nombre") +
-  " " +
-  localStorage.getItem("apellido") +
-  " --- " +
-  localStorage.getItem("email");
-document.getElementById("fecha").value = localStorage
-  .getItem("fecha")
-  .substring(0, 10);
-document.getElementById("ficha").value = localStorage.getItem("numero_ficha");
+document.getElementById('email').value = localStorage.getItem('nombre') + " " + localStorage.getItem('apellido') +  " --- " + localStorage.getItem('email');
+document.getElementById('fecha').value = localStorage.getItem('fecha').substring(0, 10);
+document.getElementById('ficha').value = localStorage.getItem('numero_ficha');
 
-const id_informe = localStorage.getItem("id_informe");
-const estado_solicitud = localStorage.getItem("estado_solicitud");
-const estado_entrega = localStorage.getItem("estado_entrega");
+const id_informe = localStorage.getItem('id_informe');
+const estado_solicitud = localStorage.getItem('estado_solicitud');
+const estado_entrega = localStorage.getItem('estado_entrega');
 
-const caja1 = document.getElementById("caja1");
-const caja2 = document.getElementById("caja2");
-const caja3 = document.getElementById("caja3");
+// const caja1 = document.getElementById("caja1");
+// const caja2 = document.getElementById("caja2");
 
-// INTERRACCION DE LOS BOTONES
-if (estado_solicitud === "aceptado") {
-  caja2.style.display = "none";
-  caja1.style.display = "block";
-} else {
-  caja2.style.display = "block";
-  caja1.style.display = "none";
-  caja3.style.display = "none";
-}
-
-<<<<<<< HEAD
-=======
-if (estado_entrega === "entregado") {
-  caja1.style.display = "none";
-  caja3.style.display = "block";
+// // INTERRACCION DE LOS BOTONES
+// if (estado_solicitud === "aceptado") {
+//   caja2.style.display = "none";
+//   caja1.style.display = "block";
   
-} 
+// } else {
+//   caja2.style.display = "block";
+//   caja1.style.display = "none";
+// }
 
 
->>>>>>> mari
 // MOSTRAR las herramientas de informe
 
 const optionss = {
@@ -213,118 +198,5 @@ const mostra = (data) => {
   `;
   }
   document.getElementById("data").innerHTML = body;
-};
 
-const updateStatus = (status) => {
-  const urlStatus = url + "/api/admin";
-  const option = {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      id: id_informe,
-      estado: status,
-    }),
-  };
-  if (status === "rechazado") {
-    Swal.fire({
-      title: "Estas seguro?",
-      text: "Deseas rechazar esta solicitud!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si, rechazar!",
-      cancelButtonText: "Cancelar",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(urlStatus, option)
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.error) {
-              console.error("error", data);
-            } else {
-              Swal.fire({
-                icon: "success",
-                title: "La solicitud a sido rechazada",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              setTimeout(() => {
-                window.location.href = "/dash/pedidosAdmin";
-              }, 1500);
-            }
-          })
-          .catch((error) => console.log(error));
-      }
-    });
-  }
-  if (status === "aceptado") {
-    Swal.fire({
-      title: "Estas seguro?",
-      text: "Deseas aceptar esta solicitud!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si, aceptar!",
-      cancelButtonText: "Cancelar",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(urlStatus, option)
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.error) {
-              console.error("error", data);
-            } else {
-              Swal.fire({
-                icon: "success",
-                title: "La solicitud a sido aceptada",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              setTimeout(() => {
-                window.location.href = "/dash/pedidosAdmin";
-              }, 1500);
-            }
-          })
-          .catch((error) => console.log(error));
-      }
-    });
-  }
-
-  if (status === "entregado") {
-    Swal.fire({
-      title: "Estas seguro?",
-      text: "Dale clic en confirmar si las herramientas fueron entregadas al destinatario!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Confirmar!",
-      cancelButtonText: "Cancelar",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(urlStatus, option)
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.error) {
-              console.error("error", data);
-            } else {
-              Swal.fire({
-                icon: "success",
-                title: "El estado fue actualizado",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              setTimeout(() => {
-                window.location.href = "/dash/pedidosAdmin";
-              }, 1500);
-            }
-          })
-          .catch((error) => console.log(error));
-      }
-    });
-  }
 };
