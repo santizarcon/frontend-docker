@@ -31,14 +31,15 @@
 
                 <div class="contenedor_inputs">
                     <span>Eligue una ficha:</span>
-                    <select name="" id="" class="input">
-                        <option value="121212">121212</option>
+                    <select name="" id="ficha" class="input">
+                        <option value=""></option>
+                        <option value="2696118">2696118</option>
                     </select>
                 </div>
 
                 <div class="contenedor_inputs large">
                     <span>Digita la fecha en la que los reclamaras:</span>
-                    <input type="text" class="input" placeholder="Fecha" id="fecha">
+                    <input type="date" class="input" id="fecha">
                 </div>
 
             </div>
@@ -55,60 +56,15 @@
                     <p>Cantidad</p>
 
                 </div>
-
-                <div class="caja_herramienta">
-
-                    <p>1</p>
-                    <div class="cont_nombre">
-                        <p>Tijeras</p>
-                    </div>
-                    <div class="cont_img">
-                        <div class="foto"> </div>
-                    </div>
-                    <div class="cont_numero">
-                        <p>24</p>
-                    </div>
+                <div id="cart">
 
                 </div>
-
-                
-                <div class="caja_herramienta">
-                    
-                    <p>1</p>
-                    <div class="cont_nombre">
-                        <p>Tijeras</p>
-                    </div>
-                    <div class="cont_img">
-                        <div class="foto"> </div>
-                    </div>
-                    <div class="cont_numero">
-                        <p>24</p>
-                    </div>
-
-                </div>
-
-                
-                <div class="caja_herramienta">
-                    
-                    <p>1</p>
-                    <div class="cont_nombre">
-                        <p>Tijeras</p>
-                    </div>
-                    <div class="cont_img">
-                        <div class="foto"> </div>
-                    </div>
-                    <div class="cont_numero">
-                        <p>24</p>
-                    </div>
-
-                </div>
-                
 
             </div>
 
             <div class="footer">
-                <button class="btn cancelar">Cancelar</button>
-                <button class="btn enviar">Enviar</button>
+                <button class="btn cancelar" onclick="cancelar();">Cancelar</button>
+                <button class="btn enviar" id="solicitar">Enviar</button>
             </div>
 
 
@@ -128,7 +84,7 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/requestReportUser.js"></script>
 
 </body>
