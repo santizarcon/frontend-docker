@@ -160,8 +160,8 @@ fetch(cart, tool)
   .catch((error) => console.log(error));
 
 const cartTool = (data) => {
+  let limit = false;
   let body = "";
-  error = false;
   for (let i = 0; i < data.length; i++) {
     body += `
     <div class="caja_herramienta">
@@ -179,15 +179,14 @@ const cartTool = (data) => {
                     </div>
                 </div>                  
   `;
-    if (data[i].cantidad_herramienta > data[i].cantidad_total) {
-      error = true;
+    if (data[i].cantidad_herramienta > data[i].cantidad_disponible) {
+      limit = true;
     }
   }
   document.getElementById("cart").innerHTML = body;
   solicitar.addEventListener("click", () => {
     const fecha = document.getElementById("fecha").value;
     const ficha = document.getElementById("ficha").value;
-    console.log(ficha, fecha);
     if (ficha === "" || fecha === "") {
       Swal.fire({
         icon: "warning",
@@ -202,7 +201,7 @@ const cartTool = (data) => {
         showConfirmButton: false,
         timer: 1500,
       });
-    } else if (error) {
+    } else if (limit) {
       Swal.fire({
         icon: "warning",
         title:
