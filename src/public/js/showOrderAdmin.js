@@ -159,18 +159,13 @@ if (estado_solicitud === "aceptado") {
   caja3.style.display = "none";
 }
 
-<<<<<<< HEAD
-=======
+
 if (estado_entrega === "entregado") {
   caja1.style.display = "none";
   caja3.style.display = "block";
-  
 } 
 
-
->>>>>>> mari
 // MOSTRAR las herramientas de informe
-
 const optionss = {
   method: "POST",
   headers: {
