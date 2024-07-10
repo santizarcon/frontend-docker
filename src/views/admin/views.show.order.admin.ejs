@@ -82,12 +82,12 @@
     
                 <div class="footer">
                     <div class="caja1" id="caja1">
-                        <button class="btn entregado">Entregar</button>
+                        <button class="btn entregado" onclick="updateStatus('entregado');">Entregar</button>
                     </div>
 
                     <div class="caja2" id="caja2">
-                        <button class="btn rechazar">Rechazar</button>
-                        <button class="btn aceptar">Aceptar</button>
+                        <button class="btn rechazar" onclick="updateStatus('rechazado');">Rechazar</button>
+                        <button class="btn aceptar" onclick="updateStatus('aceptado');">Aceptar</button>
                     </div>
 
                     <!-- <div class="caja3">
@@ -107,7 +107,7 @@
 
         </div> <!-- Cierre del contenedor -->
 
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../js/showOrderAdmin.js"></script>
 
 </body>
