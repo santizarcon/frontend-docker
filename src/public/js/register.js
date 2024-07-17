@@ -27,9 +27,18 @@ const register = () => {
   }
 
   // Validar que el correo
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) {
-    Swal.fire("El correo NO cumple con los requisitos para ser valido!!");
+  const gmail = /^[^\s@]+@[^gmail]+\.[^com]+$/;
+  const hotmail = /^[^\s@]+@[^hotmail]+\.[^com]+$/;
+  const texto = /^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+$/i;
+
+  if (!gmail.test(email) || !hotmail.test(email)) {
+    Swal.fire("El correo NO cumple con los requisitos para ser valido!");
+    return;
+  }
+  if (!texto.test(names) || !texto.test(lastNames)) {
+    Swal.fire(
+      "El campo nombre y apellido no puede contenter numeros o simbolos"
+    );
     return;
   }
 
