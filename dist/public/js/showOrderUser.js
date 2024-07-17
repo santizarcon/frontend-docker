@@ -12,7 +12,6 @@ const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
-
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
   eleccionUsuario.classList.toggle("aparece");
@@ -82,14 +81,13 @@ menu_icon.addEventListener("click", () => {
   });
 });
 
-
 // PASAR DE HOJA A HOJA
 const salir = () => {
   window.location.href = "/dash/pedidosUser";
-}
+};
 
 const editarPerfil = () => {
-  window.location.href = "/dash/editarPerfil";
+  window.location.href = "/dash/editarPerfilUser";
 };
 
 // CONSUMO
@@ -103,42 +101,49 @@ const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
   sessionStorage.setItem("idUser", "");
-  window.location.href = '/login';
-}    
+  window.location.href = "/login";
+};
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
 
 if (token == "" || token == null) {
-  window.location.href = "/login"
-};
+  window.location.href = "/login";
+}
 if (url == "" || url == null) {
-  window.location.href = "/login"
-};
+  window.location.href = "/login";
+}
 
 const options = {
   method: "POST",
   headers: {
-    'Content-Type': 'application/json',
-     'Authorization' : `Bearer ${token}`
-  }
-}
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+};
 fetch(urlComprobar, options)
-  .then(res => res.json())
-  .then(data => {
+  .then((res) => res.json())
+  .then((data) => {
     if (data.error == true) {
-      window.location.href = "/login"
+      window.location.href = "/login";
     }
   });
 
 // CARGAR los datos de localStorage y mostrarlos en la página
-document.getElementById('email').value = localStorage.getItem('nombre') + " " + localStorage.getItem('apellido') +  " --- " + localStorage.getItem('email');
-document.getElementById('fecha').value = localStorage.getItem('fecha').substring(0, 10);
-document.getElementById('ficha').value = localStorage.getItem('numero_ficha');
+document.getElementById("email").value =
+  localStorage.getItem("nombre") +
+  " " +
+  localStorage.getItem("apellido") +
+  " --- " +
+  localStorage.getItem("email");
+document.getElementById("fecha").value = localStorage
+  .getItem("fecha")
+  .substring(0, 10);
+document.getElementById("ficha").value = localStorage.getItem("numero_ficha");
 
-const id_informe = localStorage.getItem('id_informe');
-const estado_solicitud = localStorage.getItem('estado_solicitud');
-const estado_entrega = localStorage.getItem('estado_entrega');
+const id_informe = localStorage.getItem("id_informe");
+const estado_solicitud = localStorage.getItem("estado_solicitud");
+const estado_entrega = localStorage.getItem("estado_entrega");
 
 const caja1 = document.getElementById("caja1");
 const caja2 = document.getElementById("caja2");
@@ -158,8 +163,7 @@ if (estado_solicitud === "aceptado") {
 if (estado_entrega === "entregado") {
   caja2.style.display = "none";
   caja3.style.display = "block";
-} 
-
+}
 
 // MOSTRAR las herramientas de informe
 
@@ -205,5 +209,4 @@ const mostra = (data) => {
   `;
   }
   document.getElementById("data").innerHTML = body;
-
 };
