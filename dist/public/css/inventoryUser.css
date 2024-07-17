@@ -221,7 +221,7 @@
   height: 1px;
   background-color: white;
   margin: 10px 0px;
-  margin-top: 190px;
+  margin-top: 330px;
 }
 
 /* CONTENIDO DE LA PAGINA */
@@ -453,7 +453,7 @@ option {
 /* CONTENEDOR DEL INVENTARIO LAS HERRAMIENTAS */
 .inventory-container {
   width: 100%;
-  height: 68%;
+  height: 86%;
   background-color: rgb(247, 247, 247);
   padding: 15px;
   overflow-y: auto;
@@ -464,7 +464,7 @@ option {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 20px;
   justify-content: start;
 
   transition: all 1s ease;
@@ -527,6 +527,7 @@ img {
   color: #fff;
   background-color: #007bff;
   border-radius: 5px;
+  text-decoration: none;
   border: none;
 }
 
@@ -534,6 +535,132 @@ img {
   background-color: #88c1ff;
   cursor: pointer;
 }
+
+/* CARRITO Circulo*/
+.carrito{
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background-color: black;
+  
+  text-align: center;
+
+  color: white;
+  font-size: 40px;
+
+  position:absolute;
+  right: 30px;
+  bottom: 30px;
+
+}
+
+.carrito:hover{
+  cursor: pointer;
+  border: 1px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.bx-cart{
+  margin-top: 9px;
+
+}
+/* Container de las herramientas a pedir */
+.container_carrito{
+  width: 370px;
+  height: 350px;
+  background-color: #007bff;
+  border-radius: 5px;
+
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: none;
+}
+/* Parte de arriba del carrito  */
+.header{
+  padding: 12px;
+  background-color: rgb(121, 172, 250);
+  border-bottom: 1px solid rgb(253, 253, 253);
+  border-radius: 5px 5px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header i{
+  font-size: 20px;
+  color: white;
+}
+.header i:hover{
+  color: blue;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Parte del medio del carrito */
+.body{
+  width: 100%;
+  height: 70%;
+  background-color: rgb(121, 172, 250);
+  border-bottom: 1px solid rgb(255, 255, 255);
+  overflow-y: auto;
+}
+.carrito_herramienta{
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 8% 30% 45% 15%;
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+.carrito_herramienta i{
+  font-size: 20px;
+  margin: 5px;
+}
+.carrito_herramienta i:hover{
+  cursor: pointer;
+  color: blue;
+}
+/* Imagen de la herramienta */
+.tool_img{
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+  border-radius: 5px;
+}
+/* Nombre de la herramienta */
+.text_nom{
+  text-align: start;
+  margin: 5px;
+  font-size: 18px;
+}
+/* Numero de cantidad */
+.number{
+  margin: 10px;
+}
+
+
+/* Parte de abajo del boton */
+.footer{
+  padding: 18px;
+  background-color: rgb(121, 172, 250);
+  border-radius: 0px 0px 5px 5px;
+  display: flex;
+  justify-content: end;
+}
+
+.btn_solicitar{
+  width: 60%;
+  height: 30px;
+  background-color: blue;
+  border-radius: 5px;
+  border: none;
+
+  color: white;
+  font-size: 18px;
+}
+.btn_solicitar:hover{
+  border: 1px solid blue;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  background-color: gray;
+}
+
 
 /* RESPONSIVE */
 @media screen and (width<=800px) {

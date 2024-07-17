@@ -90,6 +90,36 @@ menu_icon.addEventListener("click", () => {
 });
 
 
+// Abrir documentos
+// REQUISITOS FUNCIONALES
+document.getElementById('openPdfBtnRequisitos').addEventListener('click', function() {
+  var pdfViewer = document.getElementById('pdfViewer');
+  pdfViewer.style.display = 'block';
+  pdfViewer.src = '/plugins/documentacion/.pdf'; 
+});
+
+// CASOS DE USO
+document.getElementById('openPdfBtnCasosUso').addEventListener('click', function() {
+  var pdfViewer = document.getElementById('pdfViewer');
+  pdfViewer.style.display = 'block';
+  pdfViewer.src = '/plugins/documentacion/.pdf'; 
+});
+
+// MANUAL DE USUARIO
+document.getElementById('openPdfBtnManualUsuario').addEventListener('click', function() {
+  var pdfViewer = document.getElementById('pdfViewer');
+  pdfViewer.style.display = 'block';
+  pdfViewer.src = '/plugins/documentacion/FormularioNuevaHerramienta.pdf'; 
+});
+
+// MANUAL TECNICO
+document.getElementById('openPdfBtnManualTecnico').addEventListener('click', function() {
+  var pdfViewer = document.getElementById('pdfViewer');
+  pdfViewer.style.display = 'block';
+  pdfViewer.src = '/plugins/documentacion/pitch_samsoft.pdf'; 
+});
+
+
 // PASAR DE HOJA A HOJA
 const ir = () => {
   window.location.href = "/dash/editarPerfil";
@@ -106,6 +136,7 @@ const url = sessionStorage.getItem("urlApi");
 const cerrarSesion = () => {
     sessionStorage.setItem("token", "");
     sessionStorage.setItem("urlApi", "");
+    sessionStorage.setItem("idUser", "");
     window.location.href = '/login';
 };
 

@@ -16,75 +16,89 @@
 
         <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
 
-            <div class="contenedor_reporte"> <!-- Contenedor para visualizar la herramienta -->
+            <div class="inventory-container"> <!-- contenedor del inventario -->
 
-                <div class="contendor_header">
+                <div class="header">
 
-                    <div class="contenedor_btn">
-                        <a class="btn-close" href="./pedidosAdmin">
-                            <i class='bx bx-exit'></i>
-                        </a>
+                    <button class="btn-cerrar-salir" onclick="salir();">
+                        <i class='bx bx-exit' title="Salir Editar Perfil"></i>
+                    </button>
+
+                    <div class="title">
+                        <h1>Informe de Solicitud de Herramientas</h1>
                     </div>
-
-                    <div class="contenedor_titulo">
-                        Solicitud de Herramientas
+    
+                    <div class="contenedor_inputs quienEnvia">
+                        <span>Quien envia:</span>
+                        <input type="text" class="input" placeholder="Nombres" id="email" readonly>
                     </div>
-
+    
+                    <div class="contenedor_inputs">
+                        <span>Ficha:</span>
+                        <input type="text" class="input" placeholder="121212" id="ficha" readonly>
+                    </div>
+    
+                    <div class="contenedor_inputs large">
+                        <span>La fecha en la que los reclama:</span>
+                        <input type="text" class="input" placeholder="Fecha" id="fecha" readonly>
+                    </div>
+    
                 </div>
-
-                <div class="contenido_user">
-                    <span class="pi">
-                        <h1>Nombre quien lo envia:</h1>
-                        <p>Tatiana</p>
-                    </span>
-
-                    <span class="s">
-                        <select name="" id="" class="select_ficha">
-                            <option value="">2696188</option>
-                            <option value="">5566779</option>
-                        </select>
-                    </span>
-
-                </div>
-
-                <div class="contenedor_body">
-
-                    <div class="caja_herramienta">
+    
+                <div class="body">
+                    <div class="caja_titulos">
+    
+                        <p>#</p>
+    
                         <p>Nombre de la Herramienta</p>
+    
+                        <p>Imagen</p>
+    
                         <p>Cantidad</p>
+    
                     </div>
-                    <div class="caja_herramienta">
-                        <p>Nombre de la Herramienta</p>
-                        <p>Cantidad</p>
-                    </div>
-                    <div class="caja_herramienta">
-                        <p>Nombre de la Herramienta</p>
-                        <p>Cantidad</p>
-                    </div>
-                    <div class="caja_herramienta">
-                        <p>Nombre de la Herramienta</p>
-                        <p>Cantidad</p>
-                    </div>
-                    <div class="caja_herramienta">
-                        <p>Nombre de la Herramienta</p>
-                        <p>Cantidad</p>
-                    </div>
-                    <div class="caja_herramienta">
-                        <p>Nombre de la Herramienta</p>
-                        <p>Cantidad</p>
+
+                    <div id="data">
+
+                         <!-- <div class="caja_herramienta">
+                        
+                        <p>1</p>
+                        <div class="cont_nombre">
+                            <p>Tijeras</p>
+                        </div>
+                        <div class="cont_img">
+                            <div class="foto"> </div>
+                        </div>
+                        <div class="cont_numero">
+                            <p>24</p>
+                        </div>
+    
+                    </div> -->
+
                     </div>
                     
-
+    
                 </div>
+    
+                <div class="footer">
+                    <div class="caja1" id="caja1">
+                        <button class="btn entregado" onclick="updateStatus('entregado');">Entregar</button>
+                    </div>
 
-                <div class="contenedor_botons">
-                    <button class="rechazar btn">Rechazar</button>
-                    <button class="aceptar btn">Aceptar</button>
+                    <div class="caja2" id="caja2">
+                        <button class="btn rechazar" onclick="updateStatus('rechazado');">Rechazar</button>
+                        <button class="btn aceptar" onclick="updateStatus('aceptado');">Aceptar</button>
+                    </div>
 
+                    <div class="caja3" id="caja3">
+                        <p>Este pedido ha sido entregado EXITOSAMENTE</p>
+                    </div>
                 </div>
-
-            </div> <!-- Cierre del contenedor para visualizar la herramienta -->
-
+    
+    
+    
+            </div><!-- Cierre del contenedor del inevnatrio -->
+    
 
         </div><!-- Cierre del Contenedor contenido-->
 
@@ -93,7 +107,7 @@
 
         </div> <!-- Cierre del contenedor -->
 
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../js/showOrderAdmin.js"></script>
 
 </body>

@@ -3,21 +3,30 @@ import {
   addFichas,
   agregarHerramienta,
   ajustesAdmin,
+  ajustesUser,
+  crearFormuDano,
+  crearFormuNew,
   crearSubAdmin,
   editarFicha,
   editarHerramienta,
   editarPerfil,
+  editarPerfilUser,
   fichasAdmin,
+  formulariosUser,
   gestionarCuentasAdmin,
+  informeSolicitudUser,
   inventarioAdmin,
   inventarioUser,
   pedidosAdmin,
+  pedidosUser,
   principalAdmin,
   tablaHerramientas,
   trasnferirResponsabilidad,
   verFormularios,
   verHerramienta,
+  VerHerramientaUser,
   verReporte,
+  verReporteUser,
 } from "../controllers/controllers.dash.js";
 
 const rutaDash = Router();
@@ -51,6 +60,18 @@ rutaDash.get("/ajustesAdmin", ajustesAdmin);
 
 // RUTAS USER
 rutaDash.get("/inventarioUser", inventarioUser);
+rutaDash.get("/VerHerramientaUser", VerHerramientaUser);
+
+rutaDash.get("/informeSolicitudUser", informeSolicitudUser);
+rutaDash.get("/pedidosUser", pedidosUser);
+rutaDash.get("/verReporteUser", verReporteUser);
+
+rutaDash.get("/formulariosUser", formulariosUser);
+rutaDash.get("/crearFormuNew", crearFormuNew);
+rutaDash.get("/crearFormuDano", crearFormuDano);
+
+rutaDash.get("/editarPerfilUser", editarPerfilUser);
+rutaDash.get("/ajustesUser", ajustesUser);
 
 
 export default rutaDash;

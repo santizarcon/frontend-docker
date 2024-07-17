@@ -98,22 +98,9 @@ menu_icon.addEventListener("click", () => {
     });
 });
 
-
-// salirAgregarHerramienta.addEventListener("click", () => {
-//     window.location.href = 'editarHerramientasAdmin.html';
-// });
-
-// editarPerfil.forEach(function (button) {
-//     button.addEventListener("click", function () {
-//         window.location.href = 'editarPerfilAdmin.html';
-//     });
-// });
-
-
-
 // PASAR DE HOJA A HOJA
 const salir = () => {
-    window.location.href = "/dash/tablaHerramientas";
+    window.location.href = "/dash/inventarioAdmin";
 };
  
 const editarPerfil = () => {
@@ -130,6 +117,7 @@ const recurso = url + endpoint;
 const cerrarSesion = () => {
     sessionStorage.setItem("token", "");
     sessionStorage.setItem("urlApi", "");
+    sessionStorage.setItem("idUser", "");
     window.location.href = '/login';
 }
 
@@ -205,6 +193,10 @@ const crear = () =>{
                 showConfirmButton: false,
                 timer: 1500
             });
+
+            setTimeout(function () {
+                window.location.href = "/dash/inventarioAdmin";
+              }, 2000);
       
         }else{
 

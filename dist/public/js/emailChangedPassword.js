@@ -12,9 +12,9 @@ const sendEmail = () => {
     return;
   }
 
+  sessionStorage.setItem("email", email);
   sessionStorage.setItem("urlApi", url);
   const urlApi = sessionStorage.getItem("urlApi") + "/api/sendOTP";
-  console.log(urlApi);
   const options = {
     method: "POST",
     headers: {
@@ -29,23 +29,15 @@ const sendEmail = () => {
     .then((data) => {
       if (data.error == true) {
         Swal.fire({
-          icon: "error",
-          title: "Correo no valido",
+          icon: "warning",
+          title: "Correo no existe",
           showConfirmButton: false,
           timer: 1500,
         });
       } else {
-        // console.log(data);
-        // if (data.body.info[0].rol) {
-        //   setTimeout(function () {
-        //     window.location.href = "/";
-        //   }, 2000);
-        // } else {
-        //   setTimeout(function () {
-        //     window.location.href = "/dash/inventarioUser";
-        //   }, 2000);
-        // }
-        console.log("malo");
+        setTimeout(function () {
+          window.location.href = "/cambioContra";
+        }, 2000);
       }
     })
     .catch((err) => {

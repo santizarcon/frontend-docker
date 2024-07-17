@@ -227,7 +227,7 @@
     height: 1px;
     background-color: white;
     margin: 10px 0px;
-    margin-top: 190px;
+    margin-top: 230px;
 }
 
 /* CONTENIDO DE LA PAGINA */
@@ -403,7 +403,6 @@
 
 .body span{
     font-weight: bold;
-   
 }
 
 input{
@@ -416,8 +415,6 @@ input{
     outline: none;
 
     margin: 10px 0px;
-
-
 }
 input:focus {
     border: 1px solid #007bff;

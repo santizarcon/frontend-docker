@@ -1,0 +1,588 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --primary-color-BLUE: rgb(121, 172, 250);
+
+  --tran-05: all 0.4s ease;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  /* si defines un ancho de 100px para un elemento y luego le agregas 
+    10px de relleno y 5px de borde, el tamaño total será de 115px.
+    cuando utilizas box-sizing: border-box;, le estás diciendo al navegador que incluya el relleno 
+    y el borde en el tamaño total que especificaste inicialmente.  */
+}
+
+.container_principal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  /* background-color: greenyellow; */
+}
+
+/* MENU RESPONSIVE CELULAR */
+.menu {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(121, 172, 250);
+  border-radius: 50%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: white;
+  position: fixed;
+  cursor: pointer;
+  right: 15px;
+  top: 15px;
+}
+
+/* FOTO USUARIO RESPONSIVE CELULAR */
+.foto_usuario2 {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(127, 197, 255);
+  border: 2px solid rgb(127, 197, 255);
+  background-size: cover;
+  background-image: url(../img/foto-perfil1.jpg);
+  border-radius: 100%;
+  display: none;
+  position: fixed;
+  cursor: pointer;
+  right: 15px;
+  top: 80px;
+}
+
+/* EDITAR PERFIL NORMAL */
+.eleccion_usuario2 {
+  width: 250px;
+  height: 130px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgb(189, 188, 188);
+  flex-direction: column;
+  padding: 10px;
+  display: none;
+  position: absolute;
+  right: 15px;
+  top: 65px;
+}
+
+.eleccion_usuario2>button {
+  width: 100%;
+  height: 45px;
+  background-color: rgba(0, 0, 255, 0);
+  border: none;
+  /* margin-bottom: 5px; */
+  font-size: 18px;
+  color: rgb(90, 90, 90);
+}
+
+.eleccion_usuario2>button:hover {
+  background-color: rgb(207, 207, 207);
+  color: black;
+}
+
+/* EDITAR PERFIL EN EL RESPONSIVE*/
+.eleccion_usuario {
+  width: 250px;
+  height: 130px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgb(189, 188, 188);
+  flex-direction: column;
+  padding: 10px;
+  display: none;
+  position: absolute;
+  right: 15px;
+  top: 140px;
+}
+
+.eleccion_usuario>button {
+  width: 100%;
+  height: 45px;
+  background-color: rgba(0, 0, 255, 0);
+  border: none;
+  /* margin-bottom: 5px; */
+  font-size: 18px;
+  color: rgb(90, 90, 90);
+}
+
+.linea2 {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(107, 107, 107);
+  margin: 8px 0px;
+}
+
+.eleccion_usuario>button:hover {
+  background-color: rgb(207, 207, 207);
+  color: black;
+}
+
+/* BARRA LATERAL */
+.barra-lateral {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  background-color: rgb(121, 172, 250);
+  padding: 20px 15px;
+  transition: width 0.5s ease, left 0.5s ease;
+}
+
+/* NUEVA ESTO ES EL TAMAÑO CUANDO SE CIERRE EL MENU */
+.mini-barra-lateral {
+  width: 80px;
+}
+
+/* (span) agregarle estilo a los span de la pagina */
+.barra-lateral span {
+  width: 100px;
+  font-size: 18px;
+  color: white;
+  text-align: left;
+  white-space: nowrap;
+  /* se utiliza para indicar que el texto dentro de un elemento 
+    HTML no debe ser dividido en varias líneas cuando se encuentre 
+    con límites de contenedor, sino que debe permanecer en una sola línea. */
+  opacity: 1;
+  transition: opacity 0.5s ease, width 0.5s ease;
+}
+
+/* NUEVA (.oculto) es una clase nueva que se le va agregar al span para que se desaparesca */
+.barra-lateral span.oculto {
+  opacity: 0;
+  width: 0;
+}
+
+/* (.nombre-pagina) Contendro del nombre de la pagina y icono */
+.barra-lateral .nombre-pagina {
+  width: 100%;
+  height: 45px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* (i) le da tamaño al icono y su contenedor propio */
+.barra-lateral .nombre-pagina i {
+  min-width: 50px;
+  /* esta propiedad garantiza que el ancho del elemento nunca sea menor que el valor 
+    especificado, incluso si el contenido o las propiedades de diseño podrían hacer 
+    que el elemento sea más estrecho. */
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  padding-left: 3px;
+}
+
+/* (span) agregarle estilo al nombre de la pagina */
+.barra-lateral .nombre-pagina span {
+  font-size: 25px;
+  margin-left: 5px;
+}
+
+/* MENU NAVEGACION */
+/* (li) */
+.barra-lateral .navegacion li {
+  list-style: none;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+/* (a) de seleccion del mundo */
+.barra-lateral .navegacion a {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(121, 172, 250);
+  border-radius: 10px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.barra-lateral .navegacion a:hover {
+  background-color: rgba(201, 199, 199, 0.842);
+}
+
+.barra-lateral .navegacion i {
+  min-width: 50px;
+  font-size: 20px;
+  padding-left: 15px;
+}
+
+.linea {
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  margin: 10px 0px;
+  margin-top: 330px;
+}
+
+/* CONTENIDO DE LA PAGINA */
+.contenedor_contenido {
+  width: calc(100% - 250px);
+  height: 100%;
+  /*  Movimiento */
+  margin-left: 250px;
+  transition: margin-left 0.6s ease, width 0.6s ease;
+  background-color: rgb(255, 255, 255);
+}
+
+/* NUEVA  (.min-contenido) para el margin del contenido*/
+.contenedor_contenido.min-contenido {
+  width: calc(100% - 80px);
+  margin-left: 80px;
+}
+
+/* NUEVA (.min-barra) para el grid de la barra */
+.barra_usuario.min-barra {
+  width: calc(100% - 80px);
+}
+
+/* BARRA DE ARRIBA */
+.barra_usuario {
+  width: calc(100% - 250px);
+  height: 60px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  transition: width 0.6s ease;
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 100%;
+  place-items: center;
+}
+
+/* Logo del sena */
+.logo_sena {
+  width: 45px;
+  height: 45px;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-image: url(/img/logo-sena.png);
+  background-size: cover;
+  border-radius: 100%;
+  margin-left: 5px;
+}
+
+/* Nombre usuario */
+.contenedor_nombre>p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Container del nombre */
+.contenedor_nombre {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+/* Contenedor de la toto del usuario */
+.foto_usuario {
+  width: 45px;
+  height: 45px;
+  background-color: rgb(127, 197, 255);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-image: url(../img/foto-perfil1.jpg);
+  background-size: cover;
+  border-radius: 100%;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+/* NUEVA  (.apareceInicial) */
+.eleccion_usuario2.apareceInicial {
+  display: flex;
+}
+
+/* CONTENIDO DIVERSO */
+.contenido {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  padding-top: 80px;
+  overflow-y: auto;
+}
+
+/* Contenedor de la visualizacion de la herramienta */
+.contenedor_herramienta {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(237, 237, 237);
+  box-shadow: 0 0 5px rgba(160, 160, 160, 0.5);
+  border-radius: 5px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+/* Contenedor IZQUIERDA icon, imagen y  nombre */
+.contendor_imagen_herramienta {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5% 50% 15% 15% 10%;
+
+}
+
+/* Imagen de la herramienta */
+.imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tool_img {
+  width: 230px;
+  height: 190px;
+}
+
+.contenedor_title {
+  text-align: center;
+  /* padding: 0px 20px;
+    padding-right: 20%; */
+}
+
+.container_botones_cantidad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ESTILO AL BOTON DE + Y - */
+.btn_mate {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  text-align: center;
+  /* line-height: 50px; */
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+input[type="text"] {
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  font-size: 24px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.btn_mate:focus {
+  border: 1px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Btn para cerrar */
+.btn-close {
+  padding: 8px;
+  padding-top: 10px;
+  border-radius: 4px;
+
+  text-align: center;
+}
+
+.btn-close:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.btn-close i {
+  font-size: 20px;
+  color: black;
+}
+
+
+
+/* Contenedor DERECHA descripcion, referencia y  btn-editar */
+.contenedor_texto {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40% 25% 10% 20%
+}
+
+/* TEXTO */
+.texto {
+  padding: 20px;
+}
+
+.cantidad {
+  padding: 20px;
+  font-size: 18px;
+
+}
+
+/* Btn para añadir cosas al carrito */
+.contenedor_btn_carrito {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add_carrito {
+  width: 50%;
+  height: 80%;
+  background-color: blue;
+  border-radius: 5px;
+  border: none;
+
+  font-size: 18px;
+  color: white;
+}
+
+.add_carrito:hover {
+  background-color: grey;
+}
+
+.add_carrito:focus {
+  border: 1px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* RESPONSIVE */
+@media screen and (width<=1000px) {
+
+  /* Contenedor DERECHA descripcion, referencia y  btn-editar */
+  .contenedor_texto {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60% 20% 20%;
+  }
+
+  .titulo {
+    font-size: 25px;
+  }
+
+  img {
+    width: 90%;
+    height: 80%;
+  }
+}
+
+@media screen and (width<=800px) {
+
+  /* Contenedor de la visualizacion de la herramienta */
+  .contenedor_herramienta {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    overflow-y: auto;
+  }
+
+  /* Contenedor ARRIBA icon, imagen y  nombre */
+
+  /* Nombre principal de la herramienta */
+  .titulo {
+    padding-right: 35px;
+  }
+
+  img {
+    width: 70%;
+    height: 80%;
+  }
+}
+
+@media screen and (width<=548px) {
+
+  /* La barra desaparece cuando este en este tamaño*/
+  .barra-lateral {
+    position: fixed;
+    left: -250px;
+  }
+
+  /* NUEVA; Que vuelva a aparecer la barra lateral cuando se le de clic, 
+    entonces en javascript se le añade esto a la barra lateral*/
+  .max-barra-lateral {
+    left: 0;
+  }
+
+  /* El menu aparece, porque estan dispay: none; */
+  .menu {
+    display: flex;
+  }
+
+  /* USUARIO FOTO RESPONSIVE */
+  .foto_usuario2 {
+    display: flex;
+  }
+
+  /* Eliminar el seleccion de la normal  */
+  /* .eleccion_usuario2 {
+        display: none;
+    } */
+
+  /* Elimina el segundo icono */
+  .menu i:nth-child(2) {
+    display: none;
+  }
+
+  /* Como esta responsive margin-left 0px */
+  .contenedor_contenido {
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  /* NUEVA (.min-contenido) Como esta responsive margin-left 0px, como para cuando se vuelva pequeño*/
+  .contenedor_contenido.min-contenido {
+    margin-left: 0px;
+  }
+
+  /* Bara de arriba (usuario) desaparece */
+  .barra_usuario {
+    display: none;
+  }
+
+  /* NUEVA (.aparece) Para cuqando de le a la imagen de la foto de perfil de suario aparezca y solo aqui en el responsive */
+  .eleccion_usuario.aparece {
+    display: flex;
+  }
+
+  /* CONTENIDO DIVERSO */
+  .contenido {
+    padding: 20px;
+    padding-top: 20px;
+    padding-right: 50px;
+  }
+
+  /* Contenedor de la visualizacion de la herramienta */
+  .contenedor_herramienta {
+    padding: 15px;
+  }
+
+  /* Contenedor ARRIBA icon, imagen y  nombre */
+
+  /* Nombre principal de la herramienta */
+  .titulo {
+    padding: 15px;
+    padding-right: 50px;
+  }
+
+  /* Contenedor ABAJO descripcion, referencia y  btn-editar */
+
+  /* Texto de la herramienta */
+  .texto1,
+  .texto2 {
+    padding: 15px;
+  }
+
+}
+
+@media screen and (height<=590px) {
+  .linea {
+    margin-top: 50px;
+  }
+}

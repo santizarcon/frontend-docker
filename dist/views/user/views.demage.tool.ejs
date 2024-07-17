@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Inventary</title>
+    <link rel="icon" href="img/logo-sena.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/demageTool.css">
+</head>
+
+<body>
+
+    <%- include('../partials/partials.menu.user.ejs') %>
+    
+        <div class="contenido"> <!-- Contenedor de TODO el contenido de la Barra lateral -->
+
+
+            <div class="contenedor_agregar_Herramienta">
+
+                <div class="header">
+                    <div class="encabezado">
+                        Formulario Daño de Herramienta
+                    </div>
+                </div>
+
+                <div class="body">
+                    <span>Asunto:</span>
+                    <input type="text" id="asunto" placeholder="Asunto">
+
+                    <span>Cantidad:</span>
+                    <input type="number"  id="account_tool" placeholder="Cantidad de herramientas dañadas">
+
+                    <span>Seleccione la herramienta:</span>
+                    <select name="" id="herramienta" class="level_of_education">
+                        <!-- <option value="tijeras" id="level_of_education">tijeras</option> -->
+                    </select>
+
+                    <textarea name="descripcion_herramienta" id="description"  placeholder="Descripcion de lo sucedido"></textarea>
+    
+                </div>
+
+                <div class="footer">
+                    <button class="cancelar" onclick="devolver();">Cancelar</button>
+                    <button class="btn-update" onclick="crearFormulario();">Enviar Formulario</button>
+                </div>
+
+            </div>
+
+
+        </div><!-- Cierre del Contenedor contenido-->
+
+        </div> <!-- Cierre de lado derecho -->
+
+        </div> <!-- Cierre del contenedor -->
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../js/demageTool.js"></script>
+
+</body>
+
+</html>

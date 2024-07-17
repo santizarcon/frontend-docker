@@ -24,19 +24,23 @@
 
             <div class="contenedor_documentacion"> <!-- Contenedor DOCUMENTACION -->
 
-                <span class="text">Docuemntacion Tecnica del Codigo BACKEND:</span>
-                <button class="btn_tecnica red">Documentacion Tenica</button>
+                <span class="text">Requisitos funcionales:</span>
+                <button class="btn_tecnica red" id="openPdfBtnRequisitos">Requisitos Funcionales</button>
 
-                <span class="text">Docuemntacion  del crud BACKEND:</span>
-                <button class="btn_tecnica green">Documentacion doc</button>
+                <span class="text">Casos de uso:</span>
+                <button class="btn_tecnica green" id="openPdfBtnCasosUso">Casos de uso</button>
 
-                <span class="text">PDF Requisitos funcionales:</span>
-                <button class="btn_tecnica yellow">Requisitos</button>
+                <span class="text">Manual de Usuario:</span>
+                <button class="btn_tecnica yellow" id="openPdfBtnManualUsuario">Manual Usuario</button>
 
-                <span class="text">PDF Casos de uso:</span>
-                <button class="btn_tecnica blue">Casos de Uso</button>
+                <span class="text">Manual tecnico:</span>
+                <button class="btn_tecnica blue"  id="openPdfBtnManualTecnico">Manual Tecnico</button>
 
             </div> <!-- Cierre del contenedor DOCUMENTACION -->
+
+            <div class="documento"> <!-- Contenedor del DOCUMENTO -->
+                <iframe id="pdfViewer" style="width: 100%; height: 800px; display: none;"></iframe>
+            </div> <!-- Cierre contenedor del DOCUMENTO -->
 
 
         </div><!-- Cierre del Contenedor contenido-->
