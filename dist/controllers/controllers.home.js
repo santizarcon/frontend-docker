@@ -5,6 +5,14 @@ export const home = (req, res) => {
   res.render("views.home.ejs");
 };
 
+export const about = (req, res) => {
+  res.render("views.about.ejs");
+};
+
+export const contact = (req, res) => {
+  res.render("views.contact.ejs");
+};
+
 export const register = (req, res) => {
   const url = process.env.BACKEND_URL;
   const options = {

@@ -92,6 +92,7 @@ const editarPerfil = () => {
 
 // CONSUMO
 
+
 const token = sessionStorage.getItem("token");
 const url = sessionStorage.getItem("urlApi");
 const recurso = url + "/api/reportTools";
