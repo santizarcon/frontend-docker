@@ -15,8 +15,7 @@ const register = () => {
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirm_password").value;
 
-<<<<<<< HEAD
-const register = () =>{
+  const register = () => {
     const names = document.getElementById("names").value;
     const lastNames = document.getElementById("last_names").value;
     const email = document.getElementById("email").value;
@@ -25,91 +24,74 @@ const register = () =>{
 
     // Verificar que lo campos no esten vacios
     if (!names || !lastNames || !email || !password || !confirmPassword) {
-        Swal.fire({
-            icon: "warning",
-            title: "Campos vacios!",
-            showConfirmButton: false,
-            timer: 1500
-        });
-        return;
+      Swal.fire({
+        icon: "warning",
+        title: "Campos vacios!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
     }
 
     // Validar que el correo contenga un @
-    if (!email.includes('@')) {
-        Swal.fire({
-            icon: "error",
-            title: "Su correo es incorrecto, No contiene @!",
-            showConfirmButton: false,
-            timer: 1500
-        });
-        return;
-    } 
+    if (!email.includes("@")) {
+      Swal.fire({
+        icon: "error",
+        title: "Su correo es incorrecto, No contiene @!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
 
     // Validar si la contraseña es correcta en los dos campos
     if (password === confirmPassword) {
-
-    }else{
-        Swal.fire("Las contraseñas no coinciden!");
-        return;
+    } else {
+      Swal.fire("Las contraseñas no coinciden!");
+      return;
     }
 
-
-    const options ={
-        method:"POST",
-        headers:{
-            "Content-Type" : "application/json",
-            'Authorization' : `Bearer ${token}`
-        },
-        body: JSON.stringify({
-            email : email,
-            password : password,
-            nombre : names,
-            apellido : lastNames,
-        }),
-
-
-    }
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        nombre: names,
+        apellido: lastNames,
+      }),
+    };
     fetch(recurso, options)
-    .then(res=>res.json())
-    .then(data=>{
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error == false) {
+          Swal.fire({
+            icon: "success",
+            title: "Haz sido registrado Exitosamente",
+            showConfirmButton: false,
+            timer: 1500,
+          });
 
-        if(data.error ==false){
-            Swal.fire({
-                icon: "success",
-                title: "Haz sido registrado Exitosamente",
-                showConfirmButton: false,
-                timer: 1500
-            });
-
-            setTimeout(function() {
-                window.location.href = '/login';
-            }, 2000);
-        }else{
-
-            Swal.fire({
-                icon: "error",
-                title: "El correo ya existe, Intenta con otro",
-                showConfirmButton: false,
-                timer: 1500
-            });
-
+          setTimeout(function () {
+            window.location.href = "/login";
+          }, 2000);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "El correo ya existe, Intenta con otro",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
-        
-    })
-    .catch(err=>{
+      })
+      .catch((err) => {
         console.log("Tenemos un problema", err);
-=======
-  // Verificar que lo campos no esten vacios
-  if (!names || !lastNames || !email || !password || !confirmPassword) {
-    Swal.fire({
-      icon: "warning",
-      title: "Campos vacios!",
-      showConfirmButton: false,
-      timer: 1500,
->>>>>>> local
-    });
+      });
     return;
-  }
+  };
 
   // Validar que el correo
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

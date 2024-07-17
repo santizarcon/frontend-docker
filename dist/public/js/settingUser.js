@@ -5,11 +5,6 @@ const menu = document.querySelector(".menu");
 const contenedorContenido = document.querySelector(".contenedor_contenido");
 const barraUsuario = document.querySelector(".barra_usuario");
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> local
 const fotoUsuario = document.querySelector(".foto_usuario");
 const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 
@@ -17,7 +12,6 @@ const eleccionUsuario2 = document.querySelector(".eleccion_usuario2");
 const eleccionUsuario = document.querySelector(".eleccion_usuario");
 const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
-<<<<<<< HEAD
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
   eleccionUsuario.classList.toggle("aparece");
@@ -68,68 +62,10 @@ menu.addEventListener("click", () => {
     menu.children[0].style.display = "block"; // icon menu
     menu.children[1].style.display = "none"; // icon circulo
   }
-=======
-
-
-
-// RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
-fotoUsuario2.addEventListener("click", () => {
-    eleccionUsuario.classList.toggle("aparece");
-
-})
-
-// Ocultar el menú si se hace clic fuera de él RESPONSIVE
-document.addEventListener("click", (event) => {
-    const isClickInside = eleccionUsuario.contains(event.target) || fotoUsuario2.contains(event.target);
-    // Comprueba si el elemento en el que se hizo clic (event.target) está contenido dentro del div (eleccion_usuario2 o fotoUsuario)
-    // ||, si el clic ocurrió dentro de cualquiera de estos elementos, isClickInside será TRUE.
-    //  contains, se usa para determinar si el elemento en el que se hizo clic (event.target) es un descendiente del div con la clase.
-
-    if (!isClickInside) { // si es diferente a TRUE, significa que el clic no ocurrio dentro del div
-        eleccionUsuario.classList.remove("aparece");
-    }
-});
-
-
-// NORMAL ELECCION DE CERRA SESION Y EDITA PERFIL
-fotoUsuario.addEventListener("click", () => {
-    eleccionUsuario2.classList.toggle("apareceInicial");
-
-})
-
-// Ocultar el menú si se hace clic fuera de él NORMAL
-document.addEventListener("click", (event) => {
-    const isClickInside = eleccionUsuario2.contains(event.target) || fotoUsuario.contains(event.target);
-
-    if (!isClickInside) {
-        eleccionUsuario2.classList.remove("apareceInicial");
-    }
-});
-
-
-
-// MENU RESPONSIVE
-menu.addEventListener("click", () => {
-    // Esta el el RESPOSIVE, vuelva a la posicion
-    barraLateral.classList.toggle("max-barra-lateral");
-
-    // classList.contains() es una función de JavaScript que se 
-    // utiliza para verificar si un elemento HTML tiene una clase específica
-    if (barraLateral.classList.contains("max-barra-lateral")) {
-        menu.children[0].style.display = "none"; // icon menu
-        menu.children[1].style.display = "block"; //icon circulo
-    }
-    else {
-        menu.children[0].style.display = "block"; // icon menu
-        menu.children[1].style.display = "none"; // icon circulo
-    }
-
->>>>>>> local
 });
 
 // MENU DESPEGABLE NORMAL VISTA
 menu_icon.addEventListener("click", () => {
-<<<<<<< HEAD
   // Barra de Arriba
   barraUsuario.classList.toggle("min-barra");
 
@@ -143,27 +79,11 @@ menu_icon.addEventListener("click", () => {
   spans.forEach((span) => {
     span.classList.toggle("oculto");
   });
-=======
-    // Barra de Arriba
-    barraUsuario.classList.toggle("min-barra");
-
-    // Barra Lateral
-    barraLateral.classList.toggle("mini-barra-lateral");
-
-    // organizar el margin-left del CONTENIDO. 
-    contenedorContenido.classList.toggle("min-contenido");
-
-
-    // Para todos los span encontrados le agregamos la CALSE .oculto
-    spans.forEach((span) => {
-        span.classList.toggle("oculto");
-    });
->>>>>>> local
 });
 
 // Abrir documentos
 // REQUISITOS FUNCIONALES
-<<<<<<< HEAD
+
 document
   .getElementById("openPdfBtnRequisitos")
   .addEventListener("click", function () {
@@ -198,43 +118,11 @@ document
     pdfViewer.style.display = "block";
     pdfViewer.src = "/plugins/documentacion/FinalManualTecnico.pdf";
   });
-=======
-document.getElementById('openPdfBtnRequisitos').addEventListener('click', function() {
-  var pdfViewer = document.getElementById('pdfViewer');
-  pdfViewer.style.display = 'block';
-  pdfViewer.src = '/plugins/documentacion/.pdf'; 
-});
-
-// CASOS DE USO
-document.getElementById('openPdfBtnCasosUso').addEventListener('click', function() {
-  var pdfViewer = document.getElementById('pdfViewer');
-  pdfViewer.style.display = 'block';
-  pdfViewer.src = '/plugins/documentacion/.pdf'; 
-});
-
-// MANUAL DE USUARIO
-document.getElementById('openPdfBtnManualUsuario').addEventListener('click', function() {
-  var pdfViewer = document.getElementById('pdfViewer');
-  pdfViewer.style.display = 'block';
-  pdfViewer.src = '/plugins/documentacion/FormularioNuevaHerramienta.pdf'; 
-});
-
-// MANUAL TECNICO
-document.getElementById('openPdfBtnManualTecnico').addEventListener('click', function() {
-  var pdfViewer = document.getElementById('pdfViewer');
-  pdfViewer.style.display = 'block';
-  pdfViewer.src = '/plugins/documentacion/pitch_samsoft.pdf'; 
-});
->>>>>>> local
 
 // PASAR DE HOJA A HOJA
 const ir = () => {
   window.location.href = "/dash/editarPerfilUser";
-<<<<<<< HEAD
 };
-=======
-}
->>>>>>> local
 
 const editarPerfil = () => {
   window.location.href = "/dash/editarPerfilUser";
@@ -245,41 +133,25 @@ const url = sessionStorage.getItem("urlApi");
 
 // CERRAS SESION
 const cerrarSesion = () => {
-<<<<<<< HEAD
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
   sessionStorage.setItem("idUser", "");
   window.location.href = "/login";
-=======
-    sessionStorage.setItem("token", "");
-    sessionStorage.setItem("urlApi", "");
-    sessionStorage.setItem("idUser", "");
-    window.location.href = '/login';
->>>>>>> local
 };
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
 
 if (token == "" || token == null) {
-<<<<<<< HEAD
   window.location.href = "/login";
 }
 if (url == "" || url == null) {
   window.location.href = "/login";
 }
-=======
-  window.location.href = "/login"
-};
-if (url == "" || url == null) {
-  window.location.href = "/login"
-};
->>>>>>> local
 
 const options = {
   method: "POST",
   headers: {
-<<<<<<< HEAD
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
   },
@@ -291,17 +163,3 @@ fetch(urlComprobar, options)
       window.location.href = "/login";
     }
   });
-=======
-    'Content-Type': 'application/json',
-     'Authorization' : `Bearer ${token}`
-  }
-}
-fetch(urlComprobar, options)
-  .then(res => res.json())
-  .then(data => {
-    if (data.error == true) {
-      window.location.href = "/login"
-    }
-  });
-
->>>>>>> local

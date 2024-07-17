@@ -14,8 +14,6 @@ const fotoUsuario2 = document.querySelector(".foto_usuario2");
 
 // ESPECIAL DE ESTA HOJA
 
-
-
 // RESPONSIVE ELECCION DE CERRA SESION Y EDITA PERFIL
 fotoUsuario2.addEventListener("click", () => {
   eleccionUsuario.classList.toggle("aparece");
@@ -88,13 +86,12 @@ menu_icon.addEventListener("click", () => {
 // PASAR de hoja a hoja
 
 const pasar = () => {
-  window.location.href = '/dash/verFormularios';
-}
+  window.location.href = "/dash/verFormularios";
+};
 
 const editarPerfil = () => {
   window.location.href = "/dash/editarPerfil";
 };
-
 
 // CONSUMO
 
@@ -103,56 +100,54 @@ const url = sessionStorage.getItem("urlApi");
 const endpoint = "/api/showBorrowTool/";
 const recurso = url + endpoint;
 
-
 // CERRAS SESION
 const cerrarSesion = () => {
   sessionStorage.setItem("token", "");
   sessionStorage.setItem("urlApi", "");
   sessionStorage.setItem("idUser", "");
-  window.location.href = '/login';
-}
+  window.location.href = "/login";
+};
 
 // VERIFICAR INGRESO
 const urlComprobar = url + "/api/oauth";
 
 if (token == "" || token == null) {
-  window.location.href = "/login"
-};
+  window.location.href = "/login";
+}
 if (url == "" || url == null) {
-  window.location.href = "/login"
-};
+  window.location.href = "/login";
+}
 
 const options = {
   method: "POST",
   headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
-  }
-}
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+};
 fetch(urlComprobar, options)
-  .then(res => res.json())
-  .then(data => {
+  .then((res) => res.json())
+  .then((data) => {
     if (data.error == true) {
-      window.location.href = "/login"
+      window.location.href = "/login";
     }
   });
 
-
-
 // MOSTRAR las herramientas prestadas REPORTE en un PDF
-document.getElementById('generatePdfBtn').addEventListener('click', function() {
-fetch(recurso)
-  .then((res) => res.json())
-  .then((data) => {
-    if (data.error) {
-      console.error("error al mostrar datos", data);
-    } else {
-      generatePdfBtn(data.body);
-    }
-  })
-  .catch((error) => console.log(error));
-});
-
+document
+  .getElementById("generatePdfBtn")
+  .addEventListener("click", function () {
+    fetch(recurso)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          console.error("error al mostrar datos", data);
+        } else {
+          generatePdfBtn(data.body);
+        }
+      })
+      .catch((error) => console.log(error));
+  });
 
 const generatePdfBtn = (data) => {
   // Crear una instancia de jsPDF
@@ -161,53 +156,64 @@ const generatePdfBtn = (data) => {
   // Agregar encabezado
   doc.setFontSize(16);
   doc.setTextColor(0, 0, 0);
-  doc.text('Tool_Inventory - SENA', 105, 10, null, null, 'center');
+  doc.text("Tool_Inventory - SENA", 105, 10, null, null, "center");
   doc.setFont("helvetica", "normal");
-  doc.text('Reporte Herramientas Prestadas:', 14, 22);
-
+  doc.text("Reporte Herramientas Prestadas:", 14, 22);
 
   // Crear la estructura de datos para la tabla
   const tableData = [];
   for (let i = 0; i < data.length; i++) {
-      const item = data[i];
-      tableData.push([
-          item.fecha.substring(0, 10),
-          item.email,
-          `${item.nombre} ${item.apellido}`,
-          item.numero_ficha,
-          `${item.programa_formacion} --- ${item.nivel_formacion}`,
-          `${item.nombre_herramienta} (CANTIDAD: ${item.cantidad_prestadas})`
-      ]);
+    const item = data[i];
+    tableData.push([
+      item.fecha.substring(0, 10),
+      item.email,
+      `${item.nombre} ${item.apellido}`,
+      item.numero_ficha,
+      `${item.programa_formacion} --- ${item.nivel_formacion}`,
+      `${item.nombre_herramienta} (CANTIDAD: ${item.cantidad_prestadas})`,
+    ]);
   }
 
   // Configurar posición y dimensiones de la tabla
   doc.autoTable({
-      startY: 30, // Posición inicial de la tabla
-      head: [['Fecha', 'Enviado por', 'Instructor', 'Ficha', 'Programa de formación', 'Herramienta']], // Encabezados de las columnas
-      body: tableData, // Datos de la tabla
-      headStyles: { fillColor: [144, 238, 144] }, // Color del encabezado
-      didDrawPage: function (data) {
-          // Agregar pie de página con la fecha
-          const formattedDate = new Date().toLocaleDateString('es-ES', {
-              day: '2-digit',
-              month: '2-digit',
-              year: 'numeric'
-          });
-          const formattedTime = new Date().toLocaleTimeString('es-ES', {
-              hour: '2-digit',
-              minute: '2-digit'
-          });
-          doc.setTextColor(0, 0, 255);
-          doc.setFontSize(12);
-          doc.setFont("helvetica", "normal");
-          doc.text(`Fecha y hora de impresión: ${formattedDate} -- ${formattedTime}`, 10, doc.internal.pageSize.height - 10);
-      }
+    startY: 30, // Posición inicial de la tabla
+    head: [
+      [
+        "Fecha",
+        "Enviado por",
+        "Instructor",
+        "Ficha",
+        "Programa de formación",
+        "Herramienta",
+      ],
+    ], // Encabezados de las columnas
+    body: tableData, // Datos de la tabla
+    headStyles: { fillColor: [144, 238, 144] }, // Color del encabezado
+    didDrawPage: function (data) {
+      // Agregar pie de página con la fecha
+      const formattedDate = new Date().toLocaleDateString("es-ES", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      });
+      const formattedTime = new Date().toLocaleTimeString("es-ES", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      doc.setTextColor(0, 0, 255);
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "normal");
+      doc.text(
+        `Fecha y hora de impresión: ${formattedDate} -- ${formattedTime}`,
+        10,
+        doc.internal.pageSize.height - 10
+      );
+    },
   });
 
   // Guardar el PDF
-  doc.save('ReporteHerramientasPrestadas.pdf');
+  doc.save("ReporteHerramientasPrestadas.pdf");
 };
-
 
 // MOSTRAR los INFORMES DE SOLICITUD
 const recursos = url + "/api/admin";
@@ -231,14 +237,16 @@ const mostra = (data) => {
 
                         <div class="contenido_reporte">
                             <div class="content-between">
-<<<<<<< HEAD
-                                <h5 class="contexto_title">Informe de Solicitud ${i + 1}</h5>
-=======
-                                <h5 class="contexto_title">Informe de Solicitud ${i}</h5>
->>>>>>> local
+
+                                <h5 class="contexto_title">Informe de Solicitud ${
+                                  i + 1
+                                }</h5>
+
                                 <small>${data[i].fecha.substring(0, 10)}</small>
                             </div>
-                            <p class="contexto">Enviado por: ${data[i].email} </p>
+                            <p class="contexto">Enviado por: ${
+                              data[i].email
+                            } </p>
                         </div>
 
                         <div class="acciones">
@@ -246,7 +254,13 @@ const mostra = (data) => {
                             ${data[i].estado_solicitud}
                             </div>
                             <div class="ojito">
-                                <i class='icono bx bxs-hide' onclick="viewDetails('${data[i].id}', '${data[i].fecha}', '${data[i].email}', '${data[i].nombre}', '${data[i].apellido}', '${data[i].numero_ficha}', '${data[i].estado_solicitud}', '${data[i].estado_entrega}');"></i>
+                                <i class='icono bx bxs-hide' onclick="viewDetails('${
+                                  data[i].id
+                                }', '${data[i].fecha}', '${data[i].email}', '${
+      data[i].nombre
+    }', '${data[i].apellido}', '${data[i].numero_ficha}', '${
+      data[i].estado_solicitud
+    }', '${data[i].estado_entrega}');"></i>
                             </div>
                         </div>
 
@@ -254,12 +268,11 @@ const mostra = (data) => {
   `;
   }
   document.getElementById("data").innerHTML = body;
-
 };
 
 // CAPTURAR datos y mostrarlos en el reporte
 function viewDetails(
- id_informe,
+  id_informe,
   fecha,
   email,
   nombre,
@@ -282,25 +295,27 @@ function viewDetails(
   window.location.href = "./verReporte";
 }
 
-
 // BARRA DE BUSQUEDA
 const search = document.getElementById("search_invenatry");
 
-search.addEventListener("keyup", e => {
+search.addEventListener("keyup", (e) => {
   const query = e.target.value.toLowerCase();
 
-  document.querySelectorAll('#data tr').forEach(row => {
+  document.querySelectorAll("#data tr").forEach((row) => {
     // const nombreHerramienta = row.querySelector('.n').textContent.toLowerCase();
     // const descripcionHerramienta = row.querySelector('.d').textContent.toLowerCase();
-    if (nombreHerramienta.includes(query) || descripcionHerramienta.includes(query)) {
-      row.classList.remove('filtro');
+    if (
+      nombreHerramienta.includes(query) ||
+      descripcionHerramienta.includes(query)
+    ) {
+      row.classList.remove("filtro");
     } else {
-      row.classList.add('filtro');
+      row.classList.add("filtro");
     }
   });
 });
 
-const style = document.createElement('style')
+const style = document.createElement("style");
 style.innerHTML = `
 .filtro {
     display: none;
