@@ -83,7 +83,6 @@ menu_icon.addEventListener("click", () => {
 
 // Abrir documentos
 // REQUISITOS FUNCIONALES
-
 document
   .getElementById("openPdfBtnRequisitos")
   .addEventListener("click", function () {
