@@ -28,10 +28,9 @@ const register = () => {
 
   // Validar que el correo
   const gmail = /^[^\s@]+@[^gmail]+\.[^com]+$/;
-  const hotmail = /^[^\s@]+@[^hotmail]+\.[^com]+$/;
   const texto = /^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+$/i;
 
-  if (!gmail.test(email) || !hotmail.test(email)) {
+  if (!gmail.test(email)) {
     Swal.fire("El correo NO cumple con los requisitos para ser valido!");
     return;
   }
