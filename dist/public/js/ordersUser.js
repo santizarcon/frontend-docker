@@ -170,7 +170,11 @@ const mostra = (data) => {
   
                           <div class="contenido_reporte">
                               <div class="content-between">
+<<<<<<< HEAD
                                   <h5 class="contexto_title">Informe de Solicitud ${i + 1}</h5>
+=======
+                                  <h5 class="contexto_title">Informe de Solicitud ${i}</h5>
+>>>>>>> local
                                   <small>${data[i].fecha.substring(0, 10)}</small>
                               </div>
                               <p class="contexto">${data[i].email} </p>
